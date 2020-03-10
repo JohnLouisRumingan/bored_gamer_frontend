@@ -5,7 +5,7 @@ import NavBar from './Components/Navbar.js'
 import About from './Components/About.js'
 import Login from './Components/Login.js'
 
-function App() {
+const App = () => {
   return (
     <div className="App" style={{height: '100%'}}>
       <NavBar />

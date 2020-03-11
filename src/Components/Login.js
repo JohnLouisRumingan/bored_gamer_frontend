@@ -6,7 +6,9 @@ const Login = () => {
 
     return (
         <div>
-            Login Form here
+           <form>
+             <input type="submit" value="Login" />
+           </form>
         </div>
     )
 }

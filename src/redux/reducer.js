@@ -26,6 +26,7 @@ const gamesReducer = (state=initialState.games, action) => {
 
 const rootReducer = combineReducers({
     profile: profileReducer,
+    games: gamesReducer,
 })
 
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 
 const Login = () => {
@@ -10,4 +11,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default connect(mapStateToProps)(Login)

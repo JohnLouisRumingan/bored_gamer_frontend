@@ -1,22 +1,36 @@
 import React from 'react';
 import './App.css';
 import {Route, Switch, Redirect, withRouter} from 'react-router-dom';
+import { connect } from 'react-redux'
 import NavBar from './Components/Navbar.js'
 import About from './Components/About.js'
 import Login from './Components/Login.js'
 
-const App = () => {
-  return (
-    <div className="App" style={{height: '100%'}}>
-      <NavBar />
+class App extends Component {
 
-      <Switch>
-        <Route exact path='/about' component={About}/>
-        <Route exact path='/login' render={()=><Login />} />
-      </Switch>
-  
-    </div>
-  );
+  componentDidMount(){
+    
+  }
+
+  render(){
+    return (
+      <div className="App" style={{height: '100%'}}>
+        <NavBar />
+
+        <Switch>
+          <Route exact path='/about' component={About}/>
+          <Route exact path='/login' render={()=><Login />} />
+        </Switch>
+    
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    // add states as needed here 
+  }
+}
+
+export default connect(mapStateToProps)(App);

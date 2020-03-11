@@ -1,17 +1,23 @@
+import {combineReducers, bindActionCreators } from 'redux';
+
 let initialState = {
-    count: 1
+    count: 1,
+    profile: {},
 }
 
-
-
-const reducer = (state = initialState, action) =>{
-    
+const profileReducer = (state = initialState.profile) => {
     switch(action.type){
 
         default:
-            return state
+            return state;
     }
 }
 
 
-export default reducer
+
+const rootReducer = combineReducers({
+    profile: profileReducer,
+})
+
+
+export default rootReducer

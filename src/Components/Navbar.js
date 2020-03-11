@@ -1,10 +1,25 @@
 import React from 'react'
+// import '../css/Navbar.css'
+import {Link} from 'react-router-dom';
 
-const NavBar = () => {
+class NavBar extends React.Component{
 
+    render(){
     return(
-        <div>NavBar</div>
+        <header>
+            <nav>
+                <div>Drawer Toggle button goes here </div>
+                <div className="spacer"></div>
+                <div className="toolbar_logo"><Link to='/'>BGmer</Link></div>
+                <div className="toolbar_navigation_items">
+                    <ul>
+                        
+                    </ul>
+                </div>
+            </nav>
+        </header>
     )
+    }
 }
 
 export default NavBar

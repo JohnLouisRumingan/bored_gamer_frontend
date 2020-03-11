@@ -5,7 +5,7 @@ let initialState = {
     profile: {},
 }
 
-const profileReducer = (state = initialState.profile) => {
+const profileReducer = (state = initialState.profile, action) => {
     switch(action.type){
 
         default:

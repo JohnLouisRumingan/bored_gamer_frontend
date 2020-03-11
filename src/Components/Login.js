@@ -11,4 +11,10 @@ const Login = () => {
     )
 }
 
+const mapStateToProps = (state) => {
+    return {
+      // add states as needed here 
+    }
+  }
+
 export default connect(mapStateToProps)(Login)

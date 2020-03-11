@@ -13,7 +13,9 @@ class NavBar extends React.Component{
                 <div className="toolbar_logo"><Link to='/'>BGmer</Link></div>
                 <div className="toolbar_navigation_items">
                     <ul>
-                        
+                        <li><Link to='/login'>Login</Link></li>
+                        <li><Link to='/about'>About</Link></li>
+                        <li><Link to='/games'>Game Page</Link></li>
                     </ul>
                 </div>
             </nav>

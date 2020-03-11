@@ -1,5 +1,5 @@
 import React from 'react'
-import GameCard from '../Components/GameCard.js'
+import GameList from '../Components/GameList'
 
 class GameContainer extends React.Component {
 
@@ -11,8 +11,7 @@ class GameContainer extends React.Component {
         
         return(
             <div>Game Container here 
-                <GameCard />
-                <GameCard />
+                <GameList />
             </div>
         )
     }

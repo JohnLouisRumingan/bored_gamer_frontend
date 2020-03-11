@@ -6,7 +6,7 @@ import NavBar from './Components/Navbar.js'
 import About from './Components/About.js'
 import Login from './Components/Login.js'
 import LandingPage from './Components/LandingPage.js'
-import GamePage from './Components/GamePage/GamePage.js'
+import GameContainer from './Containers/GameContainer'
 import {fetchingGames} from './redux/actions.js'
 
 class App extends Component {
@@ -23,7 +23,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/about' component={About}/>
           <Route exact path='/login' render={()=><Login />} />
-          <Route exact path='/games' component={GamePage} />
+          <Route exact path='/games' component={GameContainer} />
           <Route exact path='/' component={LandingPage} />
         </Switch>
     

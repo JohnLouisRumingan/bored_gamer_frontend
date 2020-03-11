@@ -1,15 +1,28 @@
 import React from 'react'
 import GameCard from './GameCard'
+import { connect } from 'react-redux'
 
 
-const GameList = () => {
+const GameList = (props) => {
 
     return (
-        <div>GameList:
-            <GameCard />
-            <GameCard />
+        <div className="ui container">
+            <div className="ui celled selection list">
+                {props.games.map(game => (
+                    <GameCard 
+                        key={game.id}
+                        game={game}
+                    />
+                ))}
+            </div>
         </div>
     )
 }
 
-export default GameList 
+const mapStateToProps = (state) => {
+    return {
+      games: state.games
+    }
+  }
+
+export default connect(mapStateToProps)(GameList)

@@ -2,7 +2,7 @@ import {combineReducers, bindActionCreators } from 'redux';
 
 let initialState = {
     profile: {},
-    games: []
+    games: [],
 }
 
 const profileReducer = (state = initialState.profile, action) => {

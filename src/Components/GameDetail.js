@@ -12,6 +12,8 @@ class GameDetail extends React.Component{
                 {this.props.detailedGame? this.props.detailedGame.name : null }
                 <br></br>
                 {this.props.detailedGame? <img src={this.props.detailedGame.image_url}/> : null }
+                <br></br>
+                {this.props.detailedGame? this.props.detailedGame.description : null }
             </div>
         )
     }
@@ -20,7 +22,6 @@ class GameDetail extends React.Component{
 
 const mapStateToProps = (state, props) => {
 
-    console.log(props) 
     return {
       detailedGame: state.games.find(game => game.id === props.routerProps.match.params.gameId)
     }

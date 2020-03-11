@@ -12,7 +12,8 @@ const GameCard = (props) => {
             <h2>
                 <em>
                     {name} - Designed by: {designers}
-                    {/* <img src={image_url}></img> */}
+                    {/* <img src={image_url}></img>  */}
+                    {/* Uncomment above to show images once I've made smaller, standardized card containers for them. Some images are gigantic */}
                 </em>
             </h2>
         </div>

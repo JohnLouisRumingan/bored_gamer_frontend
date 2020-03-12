@@ -34,7 +34,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    // add states as needed here 
+    profile: state.profile
   }
 }
 

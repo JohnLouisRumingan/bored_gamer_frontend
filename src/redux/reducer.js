@@ -3,11 +3,13 @@ import {combineReducers, bindActionCreators } from 'redux';
 let initialState = {
     profile: {},
     games: [],
+    
 }
 
 const profileReducer = (state = initialState.profile, action) => {
     switch(action.type){
-
+        case "LOAD_PROFILE":
+            return action.payload;
         default:
             return state;
     }
@@ -21,6 +23,8 @@ const gamesReducer = (state=initialState.games, action) => {
             return state;
     }
 }
+
+
 
 
 

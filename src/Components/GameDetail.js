@@ -19,11 +19,11 @@ class GameDetail extends React.Component{
     }
 }
 
-
-const mapStateToProps = (state, props) => {
+// ownProps used here to distinguish it from props sent from the store
+const mapStateToProps = (state, ownProps) => {
 
     return {
-      detailedGame: state.games.find(game => game.id === props.routerProps.match.params.gameId)
+      detailedGame: state.games.find(game => game.id === ownProps.routerProps.match.params.gameId)
     }
 }
 

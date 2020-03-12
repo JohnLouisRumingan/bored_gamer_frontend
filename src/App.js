@@ -23,7 +23,10 @@ class App extends Component {
 
         <Switch>
           <Route exact path='/about' component={About}/>
-          {this.props.profile? <Route exact path='/profile' component={ProfileContainer}/> : <Route exact path='/login' render={()=><Login />} />}
+          {this.props.profile? 
+            <div><Route exact path='/profile' component={ProfileContainer}/> <Redirect to='/profile' /></div>: 
+            <div><Route exact path='/login' render={()=><Login />} /><Redirect to='/login' /></div>
+          }
           <Route path='/games' component={GameContainer} />
           <Route exact path='/' component={LandingPage} />
         </Switch>

@@ -7,6 +7,7 @@ import About from './Components/About.js'
 import Login from './Components/Login.js'
 import LandingPage from './Components/LandingPage.js'
 import GameContainer from './Containers/GameContainer'
+import ProfileContainer from './Containers/ProfileContainer'
 import {fetchingGames} from './redux/actions.js'
 
 class App extends Component {
@@ -22,7 +23,7 @@ class App extends Component {
 
         <Switch>
           <Route exact path='/about' component={About}/>
-          <Route exact path='/login' render={()=><Login />} />
+          {this.props.profile? <Route exact path='/profile' component={ProfileContainer}/> : <Route exact path='/login' render={()=><Login />} />}
           <Route path='/games' component={GameContainer} />
           <Route exact path='/' component={LandingPage} />
         </Switch>

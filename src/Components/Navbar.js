@@ -1,6 +1,7 @@
 import React from 'react'
 // import '../css/Navbar.css'
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux'
 
 class NavBar extends React.Component{
 
@@ -13,7 +14,7 @@ class NavBar extends React.Component{
                 <div className="toolbar_logo"><Link to='/'>BGmer</Link></div>
                 <div className="toolbar_navigation_items">
                     <ul>
-                        <li><Link to='/login'>Login</Link></li>
+                        {this.props.profile? <li><Link to='/profile'>Profile</Link></li> : <li><Link to='/login'>Login</Link></li>}
                         <li><Link to='/about'>About</Link></li>
                         <li><Link to='/games'>Game Page</Link></li>
                     </ul>
@@ -24,4 +25,10 @@ class NavBar extends React.Component{
     }
 }
 
-export default NavBar
+const mapStateToProps = (state) => {
+    return {
+      profile: state.profile
+    }
+  }
+
+export default connect(mapStateToProps)(NavBar)

@@ -51,7 +51,7 @@ function login(username, password){
     }
 }
 
-function favoriteThisGame(gameInfo, profile){
+function addToCollection(gameInfo, profile, relationshipToUpdate){
 
     console.log("favorite game info:",gameInfo, profile)
 
@@ -65,7 +65,7 @@ function favoriteThisGame(gameInfo, profile){
         method: 'POST',
         body: JSON.stringify({
             collection: {
-                user_id: profile.id, game_id: id, name, year_published, min_players, max_players, description, image_url, min_playtime, max_playtime
+                user_id: profile.id, game_id: id, name, year_published, min_players, max_players, description, image_url, min_playtime, max_playtime, updated: relationshipToUpdate
             }
         }),
         headers: {
@@ -76,4 +76,4 @@ function favoriteThisGame(gameInfo, profile){
     return {type: "FAVORITE_GAME", payload: gameInfo}
 }
 
-export { fetchingGames, login, favoriteThisGame };
+export { fetchingGames, login, addToCollection };

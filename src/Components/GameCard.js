@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux'
-import {favoriteThisGame} from '../redux/actions.js';
+import {addToCollection} from '../redux/actions.js';
 
 
 const GameCard = (props) => {
@@ -22,7 +22,7 @@ const GameCard = (props) => {
                 {props.profile? 
                     <div>
                         <button onClick={() => props.favoriteGame(props.game, props.profile)}>Favorite this game!</button>
-                        <button>I own this game!</button>
+                        <button onClick={()=> props.ownGame(props.game, props.profile)}>I own this game!</button>
                     </div>
                     :null
                 }
@@ -42,7 +42,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 
     return {
-        favoriteGame: (game, profile) => { dispatch(favoriteThisGame(game, profile))}
+        favoriteGame: (game, profile) => { dispatch(addToCollection(game, profile, "favorite"))},
+        ownGame: (game, profile) => {dispatch(addToCollection(game, profile, "owned"))}
     }
 }
 

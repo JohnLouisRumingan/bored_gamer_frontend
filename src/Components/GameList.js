@@ -8,12 +8,12 @@ const GameList = (props) => {
     return (
         <div className="ui container">
             <div className="ui celled selection list">
-                {props.games.map(game => (
+                {(props.games) ? props.games.map(game => (
                     <GameCard 
                         key={game.id}
                         game={game}
                     />
-                ))}
+                )) : null }
             </div>
         </div>
     )
@@ -21,10 +21,16 @@ const GameList = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
 
-    console.log("game list props:", ownProps)
-    return {
-      games: state.games
+    if(ownProps.source==="/games"){
+        return {
+          games: state.games
+        }
     }
-  }
+    else if(ownProps.source==="/profile"){
+        return {
+            games: state.gamesInCollection
+        }
+    }
+}
 
 export default connect(mapStateToProps)(GameList)

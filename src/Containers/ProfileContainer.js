@@ -20,14 +20,15 @@ const Profile = (props) => {
             <img src={avatar}/>
             <br></br>
             Your games:
-            <GameList />
+            <GameList source={"/profile"}/>
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-      profile: state.profile
+      profile: state.profile, 
+      games: state.gamesInCollection
     }
   }
 

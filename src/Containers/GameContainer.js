@@ -23,7 +23,7 @@ class GameContainer extends React.Component {
                     />
                 </Switch>
                 <div className="ui narrow container segment">
-                    <GameList />
+                    <GameList source={"/games"}/>
                 </div>
             </div>
         )

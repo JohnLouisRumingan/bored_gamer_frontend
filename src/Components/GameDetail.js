@@ -9,11 +9,16 @@ class GameDetail extends React.Component{
             <div>
                 Game Details<br></br>
 
-                {this.props.detailedGame? this.props.detailedGame.name : null }
-                <br></br>
-                {this.props.detailedGame? <img src={this.props.detailedGame.image_url}/> : null }
-                <br></br>
-                {this.props.detailedGame? this.props.detailedGame.description : null }
+                {this.props.detailedGame? 
+                    <div>
+                    {this.props.detailedGame.name}
+                    <br></br>
+                    <img src={this.props.detailedGame.image_url}/>
+                    <br></br>
+                    {this.props.detailedGame.description}
+                    </div>
+                    : null 
+                }
             </div>
         )
     }

@@ -17,6 +17,14 @@ function fetchingGames(){
     }
 }
 
+function loginSuccessful(profile){
+    return {type: "LOAD_PROFILE", payload: profile}
+}
+
+function loginFailed(){
+    return {type: "LOGIN_FAILED"}
+}
+
 
 function login(username, password){
 
@@ -27,7 +35,7 @@ function login(username, password){
     console.log("Inside of action login:", username, password)
     return (dispatch) => {
         fetch(URL+"login", {
-            method: 'POST', //syntactic sugar: username, password instead 
+            method: 'POST', //syntactic sugar: {user: {username, password}} instead 
             body: JSON.stringify({user: {username: username, password:password}}),
             headers: {
                 'Content-Type':'application/json'
@@ -35,7 +43,10 @@ function login(username, password){
         })
         .then(res => res.json())
         .then(reply => {
+            //if-else here. If login not found, send a message and kick back to 
             console.log("reply from login: ", reply)
+            if(reply.user){dispatch(loginSuccessful(reply.user))}
+            else{dispatch(loginFailed())}
         })
     }
 }

@@ -3,7 +3,7 @@ import {combineReducers, bindActionCreators } from 'redux';
 let initialState = {
     profile: null,
     games: [],
-    
+    gamesInCollection: [],
 }
 
 const profileReducer = (state = initialState.profile, action) => {

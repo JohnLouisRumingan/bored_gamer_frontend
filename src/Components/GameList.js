@@ -19,7 +19,9 @@ const GameList = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+
+    console.log("game list props:", ownProps)
     return {
       games: state.games
     }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import {login } from '../redux/actions'
 
 class Login extends React.Component {
 
@@ -14,6 +15,7 @@ class Login extends React.Component {
   login = (e) => {
     e.preventDefault()
     console.log("Logging in...", this.state.username, this.state.password)
+    this.props.login(this.state.username, this.state.password)
   }
 
   changeField(e){
@@ -59,8 +61,8 @@ const mapStateToProps = (state) => {
     }
   }
 
-const mapDispatchToProps = (dispatch) => {
-  // login: dispatch()
-}
+const mapDispatchToProps = dispatch => ({
+  login: (username, password) => {dispatch(login(username, password))}
+})
  
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

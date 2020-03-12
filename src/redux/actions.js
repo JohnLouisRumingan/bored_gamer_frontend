@@ -17,17 +17,27 @@ function fetchingGames(){
     }
 }
 
-function updateField(){
-    
-}
 
-function login(){
+function login(username, password){
 
     // similar to fetching games, if return is true, send the profile. If it's false, return an action 
     // that can be used for something else 
 
     // return {type: "LOGIN_SUCCESSFUL", payload: profile}
-    return null
+    console.log("Inside of action login:", username, password)
+    return (dispatch) => {
+        fetch(URL+"login", {
+            method: 'POST', //syntactic sugar: username, password instead 
+            body: JSON.stringify({user: {username: username, password:password}}),
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(reply => {
+            console.log("reply from login: ", reply)
+        })
+    }
 }
 
-export { fetchingGames, updateField };
+export { fetchingGames, login };

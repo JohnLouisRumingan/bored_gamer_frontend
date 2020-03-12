@@ -24,13 +24,20 @@ const gamesReducer = (state=initialState.games, action) => {
     }
 }
 
+const collectionReducer = (state=initialState.gamesInCollection, action) => {
 
-
-
+    // console.log("inside collection reducer:", action)
+    switch(action.type){
+        
+        default:
+            return state;
+    }
+}
 
 const rootReducer = combineReducers({
     profile: profileReducer,
     games: gamesReducer,
+    gamesInCollection: collectionReducer,
 })
 
 

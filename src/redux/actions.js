@@ -51,4 +51,29 @@ function login(username, password){
     }
 }
 
-export { fetchingGames, login };
+function favoriteThisGame(gameInfo, profile){
+
+    console.log("favorite game info:",gameInfo, profile)
+
+    let {id, name, year_published, min_players, max_players, description, image_url, min_playtime, max_playtime} = gameInfo
+
+    //fetch post the game to the Game Database if it doesn't already exist
+    //then fetch post the collection with the favorite as well.
+    //if already owned, search for the game and just add the favorite. Vice versa for owning a game.
+
+    fetch(URL+"collections/create", {
+        method: 'POST',
+        body: JSON.stringify({
+            collection: {
+                user_id: profile.id, game_id: id, name, year_published, min_players, max_players, description, image_url, min_playtime, max_playtime
+            }
+        }),
+        headers: {
+            "Content-Type" : "application/json"
+        }
+    }).then(res => res.json()).then(data => console.log(data))
+    
+    return {type: "FAVORITE_GAME", payload: gameInfo}
+}
+
+export { fetchingGames, login, favoriteThisGame };

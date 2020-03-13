@@ -45,7 +45,10 @@ function login(username, password){
         .then(reply => {
             //if-else here. If login not found, send a message and kick back to 
             console.log("reply from login: ", reply)
-            if(reply.user){dispatch(loginSuccessful(reply.user))}
+            if(reply.user){
+                dispatch(loginSuccessful(reply.user))
+                dispatch(updateCollection(reply.user_collection))
+            }
             else{dispatch(loginFailed())}
         })
     }
@@ -71,7 +74,7 @@ function addToCollection(gameInfo, profile, relationshipToUpdate){
             headers: {
                 "Content-Type" : "application/json"
             }
-        }).then(res => res.json()).then(collection => dispatch(updateCollection(collection/*["user_collection"]*/)))
+        }).then(res => res.json()).then(collection => dispatch(updateCollection(collection["user_collection"])))
     }
 }
 

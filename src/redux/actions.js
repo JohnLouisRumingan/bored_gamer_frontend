@@ -52,17 +52,15 @@ function login(username, password){
 }
 
 function updateCollection(collection){
+    console.log(collection)
     return {type: "UPDATE_COLLECTION", payload: collection}
 }
 
 function addToCollection(gameInfo, profile, relationshipToUpdate){
 
     //sends fetch request with updated collection parameters to the back end. Back end returns an AoH of the user's collection
-
     let {id, name, year_published, min_players, max_players, description, image_url, min_playtime, max_playtime} = gameInfo
-
     return (dispatch) => {
-
         fetch(URL+"collections/create", {
             method: 'POST',
             body: JSON.stringify({
@@ -73,7 +71,7 @@ function addToCollection(gameInfo, profile, relationshipToUpdate){
             headers: {
                 "Content-Type" : "application/json"
             }
-        }).then(res => res.json()).then(collection => dispatch(updateCollection(collection["user_collection"])))
+        }).then(res => res.json()).then(collection => dispatch(updateCollection(collection/*["user_collection"]*/)))
     }
 }
 

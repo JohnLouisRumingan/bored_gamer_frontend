@@ -6,7 +6,7 @@ import {addToCollection} from '../redux/actions.js';
 
 const GameCard = (props) => {
 
-    let {id, name, designers, image_url} = props.game
+    let {id, name, designers, image_url, favorite, owned} = props.game
 
     return (
         
@@ -23,6 +23,8 @@ const GameCard = (props) => {
                     <div>
                         <button onClick={() => props.favoriteGame(props.game, props.profile)}>Favorite this game!</button>
                         <button onClick={()=> props.ownGame(props.game, props.profile)}>I own this game!</button>
+                        {owned? "Game owned" : null}
+                        {favorite? "Favorite game" : null}
                     </div>
                     :null
                 }

@@ -9,6 +9,7 @@ import LandingPage from './Components/LandingPage.js'
 import GameContainer from './Containers/GameContainer'
 import ProfileContainer from './Containers/ProfileContainer'
 import {fetchingGames} from './redux/actions.js'
+import MeetupContainer from './Containers/MeetupContainer';
 
 class App extends Component {
 
@@ -38,7 +39,7 @@ class App extends Component {
               <Redirect to='/profile' /> :
               <Login />
           }}/>
-
+          <Route exact path='/meetups' component={MeetupContainer}/>
           <Route path='/games' component={GameContainer} />
           <Route exact path='/about' component={About}/>
           <Route exact path='/' component={LandingPage} />

@@ -51,29 +51,30 @@ function login(username, password){
     }
 }
 
+function updateCollection(collection){
+    return {type: "UPDATE_COLLECTION", payload: collection}
+}
+
 function addToCollection(gameInfo, profile, relationshipToUpdate){
 
-    console.log("favorite game info:",gameInfo, profile)
+    //sends fetch request with updated collection parameters to the back end. Back end returns an AoH of the user's collection
 
     let {id, name, year_published, min_players, max_players, description, image_url, min_playtime, max_playtime} = gameInfo
 
-    //fetch post the game to the Game Database if it doesn't already exist
-    //then fetch post the collection with the favorite as well.
-    //if already owned, search for the game and just add the favorite. Vice versa for owning a game.
+    return (dispatch) => {
 
-    fetch(URL+"collections/create", {
-        method: 'POST',
-        body: JSON.stringify({
-            collection: {
-                user_id: profile.id, game_id: id, name, year_published, min_players, max_players, description, image_url, min_playtime, max_playtime, updated: relationshipToUpdate
+        fetch(URL+"collections/create", {
+            method: 'POST',
+            body: JSON.stringify({
+                collection: {
+                    user_id: profile.id, game_id: id, name, year_published, min_players, max_players, description, image_url, min_playtime, max_playtime, updated: relationshipToUpdate
+                }
+            }),
+            headers: {
+                "Content-Type" : "application/json"
             }
-        }),
-        headers: {
-            "Content-Type" : "application/json"
-        }
-    }).then(res => res.json()).then(data => console.log(data))
-    
-    return {type: "FAVORITE_GAME", payload: gameInfo}
+        }).then(res => res.json()).then(collection => dispatch(updateCollection(collection["user_collection"])))
+    }
 }
 
 export { fetchingGames, login, addToCollection };

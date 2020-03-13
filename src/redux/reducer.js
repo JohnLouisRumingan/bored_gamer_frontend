@@ -25,10 +25,9 @@ const gamesReducer = (state=initialState.games, action) => {
 }
 
 const collectionReducer = (state=initialState.gamesInCollection, action) => {
-
-    // console.log("inside collection reducer:", action)
     switch(action.type){
-        
+        case "UPDATE_COLLECTION":
+            return action.payload
         default:
             return state;
     }

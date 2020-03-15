@@ -1,3 +1,12 @@
+Current TODO:
+- Finish the dual use nature of game list/cards in profile page vs. game page. Must display appropriate info and options
+- New event form: finish. Implement logic for allowing other games and requiring a game owned by game host 
+- Ability to save new events on backend
+- Ability to add games from participating users to event 
+- Display all events on clicked date
+- Calendar date changes color based on events 
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

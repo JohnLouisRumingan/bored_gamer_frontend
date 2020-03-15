@@ -43,7 +43,7 @@ function login(username, password){
         })
         .then(res => res.json())
         .then(reply => {
-            //if-else here. If login not found, send a message and kick back to 
+            //if-else here. If login not found, send a message and kick back to login page
             console.log("reply from login: ", reply)
             if(reply.user){
                 dispatch(loginSuccessful(reply.user))

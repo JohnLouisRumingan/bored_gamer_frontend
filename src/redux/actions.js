@@ -95,20 +95,23 @@ function dispatchTodaysDate(day){
 
 function newEvent(formDetails, profile){
 
-    // console.log("new event submitted!",formDetails, profile )
+    
+    let submitObj = {form: formDetails, profile: profile }
+    console.log("new event submitted!", submitObj)
 
-    return (dispatch) => {
-        fetch(URL+'meetups', {
-            method: 'POST',
-            body: JSON.stringify({
-                form: formDetails,
-                profile: profile,
-            })
-        }).then(res => res.json()).then(data => console.log(data))
+    
+    // return (dispatch) => {
+    //     fetch(URL+'meetups', {
+    //         method: 'POST',
+    //         body: JSON.stringify({
+    //             form: formDetails,
+    //             profile: profile,
+    //         })
+    //     }).then(res => res.json()).then(data => console.log(data))
 
-    }
+    // }
 
-    return {type: "SUBMIT_FORM", payload: formDetails}
+    // return {type: "SUBMIT_FORM", payload: formDetails}
 }
 
 export { fetchingGames, login, addToCollection, calendarDateSelect, dispatchTodaysDate, newEvent };

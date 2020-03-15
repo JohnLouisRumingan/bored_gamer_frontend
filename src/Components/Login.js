@@ -28,7 +28,7 @@ class Login extends React.Component {
     let stateObject = (key, newValue) => {
       let newObj = {};
       newObj[key] = newValue;
-      console.log(newObj)
+      // console.log(newObj)
       return newObj 
     }
 

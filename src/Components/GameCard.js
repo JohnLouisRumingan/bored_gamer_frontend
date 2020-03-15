@@ -6,7 +6,7 @@ import {addToCollection} from '../redux/actions.js';
 
 const GameCard = (props) => {
 
-    let {id, name, designers, image_url, favorite, owned} = props.game
+    let {id, name, designers, image_url, favorite, owned, game_id } = props.game
 
     //need to come back to this later and fix the dual-use nature of displaying in game page and displaying in profile page
     // will likely need to assign two sets of game info props and just make two sets of logic 
@@ -24,14 +24,14 @@ const GameCard = (props) => {
                 {props.profile? 
                     <div>
                         {owned? "Game owned" : null}
-                        {favorite? "Favorite game" : null}
+                        {favorite? <i className="red heart icon"></i> : null}
                         <br></br>
                         <button onClick={() => props.favoriteGame(props.game, props.profile)}>Favorite this game!</button>
                         <button onClick={()=> props.ownGame(props.game, props.profile)}>I own this game!</button>
                     </div>
                     :null
                 }
-                <Link className="item" to={`/games/${id}`}><button className="ui small button">See details</button></Link>
+                <Link className="item" to={game_id? `/games/${game_id}`: `/games/${id}`}><button className="ui small button">See details</button></Link>
             </h2>
         </div>
         

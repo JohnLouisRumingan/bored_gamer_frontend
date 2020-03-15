@@ -62,7 +62,14 @@ function updateCollection(collection){
 function addToCollection(gameInfo, profile, relationshipToUpdate){
 
     //sends fetch request with updated collection parameters to the back end. Back end returns an AoH of the user's collection
-    let {id, name, year_published, min_players, max_players, description, image_url, min_playtime, max_playtime} = gameInfo
+    let {game_id, id, name, year_published, min_players, max_players, description, image_url, min_playtime, max_playtime} = gameInfo
+    
+    if (game_id){
+        id = game_id;
+    }
+    //for db purposes, backend has id and game_id, game_id = id from API. Refactor to only have one ID in the future 
+    //this allows user to favorite/own games from their profile page
+    
     return (dispatch) => {
         fetch(URL+"collections/create", {
             method: 'POST',
@@ -88,7 +95,7 @@ function dispatchTodaysDate(day){
 
 function newEvent(formDetails, profile){
 
-    console.log("new event submitted!",formDetails, profile )
+    // console.log("new event submitted!",formDetails, profile )
 
     return (dispatch) => {
         fetch(URL+'meetups', {

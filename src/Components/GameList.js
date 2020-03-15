@@ -10,7 +10,7 @@ const GameList = (props) => {
             <div className="ui celled selection list">
                 {(props.games) ? props.games.map(game => (
                     <GameCard 
-                        key={game.id}
+                        key={game.game_id? game.game_id : game.id}
                         game={game}
                     />
                 )) : null }

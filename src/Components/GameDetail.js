@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class GameDetail extends React.Component{
 
@@ -19,6 +20,8 @@ class GameDetail extends React.Component{
                     </div>
                     : null 
                 }
+                <Link to='/games'><button className="ui small button">Close Details</button>
+                </Link>
             </div>
         )
     }

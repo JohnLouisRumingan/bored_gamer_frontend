@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import {Provider} from 'react-redux'
-// import 'semantic-ui-css/semantic.min.css';
+// import 'semantic-ui/dist/semantic.min.css'; //not installed, link in ./public/index.html used instead 
 
 import App from './App';
 import store from './redux/store'

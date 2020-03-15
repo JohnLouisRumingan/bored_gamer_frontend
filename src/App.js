@@ -23,11 +23,6 @@ class App extends Component {
         <NavBar />
 
         <Switch>
-          {/* {this.props.profile? 
-            <div><Route exact path='/profile' component={ProfileContainer}/> <Redirect to='/profile' /></div>: 
-            <div><Route exact path='/login' render={()=><Login />} /><Redirect to='/login' /></div>
-          } */}
-
           <Route exact path='/profile' render={() => {
             return this.props.profile? 
               <ProfileContainer /> :
@@ -39,7 +34,7 @@ class App extends Component {
               <Redirect to='/profile' /> :
               <Login />
           }}/>
-          <Route exact path='/meetups' component={MeetupContainer}/>
+          <Route path='/meetups' component={MeetupContainer}/>
           <Route path='/games' component={GameContainer} />
           <Route exact path='/about' component={About}/>
           <Route exact path='/' component={LandingPage} />

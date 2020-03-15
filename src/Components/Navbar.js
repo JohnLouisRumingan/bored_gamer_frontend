@@ -15,8 +15,9 @@ class NavBar extends React.Component{
                 <div className="toolbar_navigation_items">
                     <ul>
                         {this.props.profile? <li><Link to='/profile'>Profile</Link></li> : <li><Link to='/login'>Login</Link></li>}
-                        <li><Link to='/about'>About</Link></li>
                         <li><Link to='/games'>Game Page</Link></li>
+                        <li><Link to='/meetups'>Meetups</Link></li>
+                        <li><Link to='/about'>About</Link></li>
                     </ul>
                 </div>
             </nav>

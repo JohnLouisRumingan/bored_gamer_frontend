@@ -4,6 +4,7 @@ let initialState = {
     profile: null,
     games: [],
     gamesInCollection: [],
+    meetups: [],
 }
 
 const profileReducer = (state = initialState.profile, action) => {

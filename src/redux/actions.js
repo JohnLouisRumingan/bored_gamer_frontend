@@ -86,4 +86,11 @@ function dispatchTodaysDate(day){
     return {type: "TODAYS_DATE", payload: day}
 }
 
-export { fetchingGames, login, addToCollection, calendarDateSelect, dispatchTodaysDate };
+function newEvent(formDetails){
+
+    console.log("new event submitted!",formDetails.profile)
+    console.log(formDetails.description)
+    return {type: "SUBMIT_FORM", payload: formDetails}
+}
+
+export { fetchingGames, login, addToCollection, calendarDateSelect, dispatchTodaysDate, newEvent };

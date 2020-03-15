@@ -2,7 +2,7 @@ import React from 'react';
 import * as dateFns from "date-fns";
 import './calendar.css'
 import {connect} from 'react-redux'
-import { calendarDateSelect, dispatchTodaysDate} from '../../redux/actions'
+import { calendarDateSelect } from '../../redux/actions'
 
 class Calendar extends React.Component {
 

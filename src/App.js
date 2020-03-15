@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import {Route, Switch, Redirect, withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
-import * as dateFns from "date-fns";
 import NavBar from './Components/Navbar.js'
 import About from './Components/About.js'
 import Login from './Components/Login.js'

@@ -86,10 +86,21 @@ function dispatchTodaysDate(day){
     return {type: "TODAYS_DATE", payload: day}
 }
 
-function newEvent(formDetails){
+function newEvent(formDetails, profile){
 
-    console.log("new event submitted!",formDetails.profile)
-    console.log(formDetails.description)
+    console.log("new event submitted!",formDetails, profile )
+
+    return (dispatch) => {
+        fetch(URL+'meetups', {
+            method: 'POST',
+            body: JSON.stringify({
+                form: formDetails,
+                profile: profile,
+            })
+        }).then(res => res.json()).then(data => console.log(data))
+
+    }
+
     return {type: "SUBMIT_FORM", payload: formDetails}
 }
 

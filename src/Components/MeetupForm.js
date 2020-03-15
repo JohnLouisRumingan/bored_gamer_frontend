@@ -18,12 +18,11 @@ class MeetupForm extends React.Component {
     }
 
     handleChange = (e, key) => {
-
-        console.log("key:", key, "value:", e.target.value)
         let returnObj = {}
         returnObj[key] = e.target.value
         this.setState(returnObj)
     }
+    
     handleRadio = (e, { value }) => this.setState({ value })
 
     render() {
@@ -33,7 +32,7 @@ class MeetupForm extends React.Component {
 
         return (
             <div className="meetup-form">
-                <Form onSubmit={() => /*this.props.newEvent(this.state)*/ console.log(this.state, date, profile)}>
+                <Form onSubmit={() => this.props.newEvent(this.state, profile) /*console.log(this.state, date, profile)*/}>
                     <Form.Field>
                         <label>Event Name</label>
                         <input placeholder='Event Name' value={this.state.event} onChange={(e) => {this.handleChange(e, "event")}}/>
@@ -84,7 +83,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        newEvent: (formDetails) => {dispatch(newEvent(formDetails))}
+        newEvent: (formDetails, profile) => {dispatch(newEvent(formDetails, profile))}
     }
 }
 

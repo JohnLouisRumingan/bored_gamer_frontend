@@ -1,6 +1,8 @@
 import React from 'react';
 import * as dateFns from "date-fns";
 import './calendar.css'
+import {connect} from 'react-redux'
+import { calendarDateSelect, dispatchTodaysDate} from '../../redux/actions'
 
 class Calendar extends React.Component {
 
@@ -9,12 +11,18 @@ class Calendar extends React.Component {
         selectedDate: new Date()
     }
 
+    componentDidMount(){
+
+        
+        this.props.todaysDate(new Date())
+    }
+
     renderHeader(){
-        const dateFormat = "mmmm yyyy";
+        const dateFormat = "MMMM yyyy";
         return (
             <div className="header row flex-middle">
             <div className="col col-start">
-                <div className="icon" onClick={() => this.prevMonth()}>
+                <div className="icon" onClick={this.prevMonth}>
                 chevron_left
                 </div>
             </div>
@@ -23,7 +31,7 @@ class Calendar extends React.Component {
                 {dateFns.format(this.state.currentMonth, dateFormat)}
                 </span>
             </div>
-            <div className="col col-end" onClick={() => this.nextMonth()}>
+            <div className="col col-end" onClick={this.nextMonth}>
                 <div className="icon">chevron_right</div>
             </div>
             </div>
@@ -31,7 +39,7 @@ class Calendar extends React.Component {
     }
 
     renderDays() {
-        const dateFormat = "dddd";
+        const dateFormat = "iiii";
         const days = [];
         let startDate = dateFns.startOfWeek(this.state.currentMonth);
         for (let i = 0; i < 7; i++) {
@@ -43,12 +51,52 @@ class Calendar extends React.Component {
         }   
         return <div className="days row">{days}</div>;
     }
-    
-    renderCells() {}
 
-    onDateClick = (day) => {
+    renderCells() {
+        const { currentMonth, selectedDate } = this.state;
+        const monthStart = dateFns.startOfMonth(currentMonth);
+        const monthEnd = dateFns.endOfMonth(monthStart);
+        const startDate = dateFns.startOfWeek(monthStart);
+        const endDate = dateFns.endOfWeek(monthEnd);
 
+        const dateFormat = "d";
+        const rows = [];
+        let days = [];
+        let day = startDate;
+        let formattedDate = "";
+        
+        while (day <= endDate) {
+            for (let i = 0; i < 7; i++) {
+                formattedDate = dateFns.format(day, dateFormat);
+                const cloneDay = day;
+            days.push(
+            <div
+                className={`col cell ${
+                !dateFns.isSameMonth(day, monthStart)
+                    ? "disabled"
+                    : dateFns.isSameDay(day, selectedDate) ? "selected" : ""
+                }`}
+                key={day}
+                onClick={() => this.props.dateClick(cloneDay)}
+            >
+                <span className="number">{formattedDate}</span>
+                <span className="bg">{formattedDate}</span>
+            </div>
+            );
+            day = dateFns.addDays(day, 1);
+        }
+        rows.push(
+            <div className="row" key={day}>
+            {days}
+            </div>
+        );
+        days = [];
+        }
+
+        return <div className="body">{rows}</div>;
     }
+    // return to line 74 if needed, but format is different. Recommended not to use parse due to different formatting
+    /*dateFns.parse(cloneDay)*/
 
     nextMonth = () => {
         this.setState({
@@ -73,5 +121,12 @@ class Calendar extends React.Component {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dateClick: (day) => dispatch(calendarDateSelect(day)),
+        todaysDate: (currentDate) => dispatch(dispatchTodaysDate(currentDate))
+    }
+}
 
-export default Calendar
+
+export default connect(null, mapDispatchToProps)(Calendar)

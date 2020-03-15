@@ -78,4 +78,12 @@ function addToCollection(gameInfo, profile, relationshipToUpdate){
     }
 }
 
-export { fetchingGames, login, addToCollection };
+function calendarDateSelect(day){
+    return {type: "SELECT_DATE", payload: day}
+}
+
+function dispatchTodaysDate(day){
+    return {type: "TODAYS_DATE", payload: day}
+}
+
+export { fetchingGames, login, addToCollection, calendarDateSelect, dispatchTodaysDate };

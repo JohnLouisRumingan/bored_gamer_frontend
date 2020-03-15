@@ -5,6 +5,8 @@ let initialState = {
     games: [],
     gamesInCollection: [],
     meetups: [],
+    dateSelected: null,
+    todaysDate: null
 }
 
 const profileReducer = (state = initialState.profile, action) => {
@@ -34,10 +36,30 @@ const collectionReducer = (state=initialState.gamesInCollection, action) => {
     }
 }
 
+const currentDateReducer = (state=initialState.todaysDate, action) => {
+    switch(action.type){
+        case "TODAYS_DATE":
+            return action.payload;
+        default: 
+            return state;
+    }
+}
+
+const dateReducer = (state=initialState.dateSelected, action) => {
+    switch(action.type){
+        case "SELECT_DATE":
+            return action.payload
+        default:
+            return state;
+    }
+}
+
 const rootReducer = combineReducers({
     profile: profileReducer,
     games: gamesReducer,
     gamesInCollection: collectionReducer,
+    dateSelected: dateReducer,
+    todaysDate: currentDateReducer,
 })
 
 

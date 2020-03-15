@@ -19,11 +19,16 @@ class MeetupForm extends React.Component {
             <div className="meetup-form">
                 <Form>
                     <Form.Field>
-                    <label>Event Name</label>
-                    <input placeholder='Event Name' />
+                        <label>Event Name</label>
+                        <input placeholder='Event Name' />
                     </Form.Field>
                     <Form.Field>
-                    <Form.TextArea label='Description' placeholder='Enter Description here' />
+                        <Form.TextArea label='Description' placeholder='Enter Description here' />
+                    </Form.Field>
+                    <Form.Field>
+                        <label>Date</label>
+                        Please click on a new date on the calendar to change
+                        <input placeholder='Date' value={this.props.date}/>
                     </Form.Field>
                     <Checkbox label='Allow other attendants to bring games' />
                     <br></br>
@@ -37,7 +42,8 @@ class MeetupForm extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        profile: state.profile
+        profile: state.profile,
+        date: state.dateSelected
     }
 }
 

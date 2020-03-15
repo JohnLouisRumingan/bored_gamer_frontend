@@ -13,8 +13,6 @@ class Calendar extends React.Component {
 
     componentDidMount(){
 
-        
-        this.props.todaysDate(new Date())
     }
 
     renderHeader(){
@@ -124,7 +122,6 @@ class Calendar extends React.Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         dateClick: (day) => dispatch(calendarDateSelect(day)),
-        todaysDate: (currentDate) => dispatch(dispatchTodaysDate(currentDate))
     }
 }
 

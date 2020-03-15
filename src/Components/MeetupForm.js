@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import './css/meetup-form.css'
 import { newEvent } from '../redux/actions'
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Button, Form, Dropdown } from 'semantic-ui-react'
 
 class MeetupForm extends React.Component {
 
@@ -13,23 +13,46 @@ class MeetupForm extends React.Component {
             description: "",
             location: "",
             date: new Date(),
-
+            chosenGames: [],
         }
     }
 
+    
+
+    
     handleChange = (e, key) => {
         let returnObj = {}
         returnObj[key] = e.target.value
         this.setState(returnObj)
     }
     
-    handleRadio = (e, { value }) => this.setState({ value })
-
+    handleRadio = (e, { value }) => this.setState({ allowed: value })
+    
+    handleDropdown = (e, {value}) => {
+        
+        //note: {value} is used with semantic react components. Allows the use of arrays 
+        this.setState({
+            chosenGames: value  
+        })
+    }
+    
     render() {
-
-        const { value } = this.state 
+        
+        const { value, chosen, allowed } = this.state 
         const {date, profile} = this.props
+        const gameOptions = [...this.props.gamesInCollection]
+        // const cloneOptions = Object.assign({}, ...gameOptions.map(game => ({ key: game.game_id, text: game.name, value: game.game_id })));
 
+        const cloneOptions = [];
+        gameOptions.forEach(game => {
+            let obj = {};
+            obj["key"] = game.game_id
+            obj["text"] = game.name
+            obj["value"] = game.id
+            cloneOptions.push(obj)
+        })
+
+        console.log("game options form:", cloneOptions)
         return (
             <div className="meetup-form">
                 <Form onSubmit={() => this.props.newEvent(this.state, profile) /*console.log(this.state, date, profile)*/}>
@@ -49,19 +72,28 @@ class MeetupForm extends React.Component {
                         <label>Location</label>
                         <input placeholder='Location' value={this.state.location} onChange={(e) => {this.handleChange(e, "location")}}/>
                     </Form.Field>
-                        <label>Allow other players to bring games?</label>
+
+                    <Form.Field>
+                    <label>Games you're bringing:</label>
+                    <Dropdown placeholder='Games' fluid multiple selection options={cloneOptions} 
+                        // value={this.state.chosenGames}
+                        onChange={this.handleDropdown}
+                    />
+                    </Form.Field>
+                    
+                    <label>Allow other players to bring games?</label>
                     <Form.Group>
                         <br></br>
                         <Form.Radio
                             label='Yes'
-                            value="true" 
-                            checked={value === "true"}
+                            value={true} 
+                            checked={allowed === true }
                             onChange={this.handleRadio}
                         />
                         <Form.Radio
                             label='No'
-                            value=""
-                            checked={value === ""}
+                            value={false}
+                            checked={allowed === false }
                             onChange={this.handleRadio}
                         />
                     </Form.Group>
@@ -77,7 +109,8 @@ class MeetupForm extends React.Component {
 const mapStateToProps = (state) => {
     return {
         profile: state.profile,
-        date: state.dateSelected
+        date: state.dateSelected,
+        gamesInCollection: state.gamesInCollection
     }
 }
 

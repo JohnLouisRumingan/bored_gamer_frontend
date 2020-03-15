@@ -111,7 +111,7 @@ function newEvent(formDetails, profile){
 
     // }
 
-    // return {type: "SUBMIT_FORM", payload: formDetails}
+    return {type: "SUBMIT_FORM", payload: formDetails}
 }
 
 export { fetchingGames, login, addToCollection, calendarDateSelect, dispatchTodaysDate, newEvent };

@@ -17,7 +17,7 @@ const Profile = (props) => {
             Bio: {bio}
             </p>
             <br></br>
-            <img src={avatar}/>
+            <img src={avatar} alt={username + bio }/>
             <br></br>
             Your games:
             <GameList source={"/profile"}/>

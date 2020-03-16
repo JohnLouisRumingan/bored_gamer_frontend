@@ -1,11 +1,13 @@
 import React from 'react'
 import { Button, Card, Image } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 
 const MeetupCard = (props) => {
 
     console.log("meetup card info:", props.info)
-    let {meetup_details:{title, location, other_games_allowed, date}} = props.info 
+    let {meetup_details:{title, location, other_games_allowed, date, id}} = props.info 
     let {host: {username, name,}} = props.info
 
     return (
@@ -18,8 +20,13 @@ const MeetupCard = (props) => {
                     <Card.Meta>{date}</Card.Meta>
                     <br></br>
                     <Card.Content extra>
-                        {other_games_allowed? <Button basic color='green'>Other games allowed</Button> : 
-                        <Button>Listed games only</Button>}
+                        {other_games_allowed? <Button basic color='green' disabled>Other games allowed</Button> : 
+                        <Button basic color='orange' disabled>Listed games only</Button>}
+                    </Card.Content>
+                    <Card.Content extra>
+                        <Link to={`/meetups/${id}`}>
+                            <Button size="mini">More Details</Button>
+                        </Link>
                     </Card.Content>
                 </Card.Content>
             </Card>
@@ -27,5 +34,11 @@ const MeetupCard = (props) => {
     )
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
 
-export default MeetupCard 
+    }
+}
+
+
+export default connect(null, mapDispatchToProps)(MeetupCard)

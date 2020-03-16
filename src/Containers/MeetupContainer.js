@@ -4,6 +4,7 @@ import { Route, Link, Switch } from 'react-router-dom';
 import MeetupList from '../Components/MeetupList'
 import MeetupForm from '../Components/MeetupForm'
 import Calendar from '../Components/Calendar/Calendar'
+import MeetupDetail from '../Components/MeetupDetail'
 import './css/meetup-container.css'
 import {Container, Button, Divider, Segment } from 'semantic-ui-react'
 
@@ -17,7 +18,10 @@ const MeetupContainer = (props) => {
 
                     Featured Events will go here under a filtered meetup list 
                     <Switch>
-
+                        <Route 
+                            path="/meetups/:meetupId"
+                            render={(props) => <MeetupDetail routerProps={props}/>}
+                        />
                         <Route exact path='/meetups'component={Calendar}/>   
                     </Switch>
                 

@@ -25,7 +25,9 @@ const Profile = (props) => {
                 <img src={avatar} alt={username + bio }/>
                 <br></br>
                 <p>
-                  Games owned: {props.games.length}
+                  Games owned: {props.games.filter(game => game.owned===true).length}
+                  <br></br>
+                  Games favorited: {props.games.filter(game => game.favorite===true).length}
                 </p>
               </Grid.Column>
               <Grid.Column >

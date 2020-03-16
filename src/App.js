@@ -15,9 +15,10 @@ class App extends Component {
 
   componentDidMount(){
     //Add this back later so app isn't constantly fetching from API while in development 
-    this.props.fetchingGames() 
+    // this.props.fetchingGames() 
 
-    this.props.fetchingMeetups()
+    // fetchingMeetups is invoked in fetchingGames to prevent any async problems. However, if above isn't being used, uncomment below during development
+    this.props.fetchingMeetups() 
 
     this.props.todaysDate(new Date())
   }

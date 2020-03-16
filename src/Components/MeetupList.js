@@ -7,10 +7,9 @@ import {Card} from 'semantic-ui-react'
 const MeetupList = (props) => {
 
     return (
-        <div>MeetupList
+        <div>
             <Card.Group>
-
-            {props.meetups? props.meetups.map(meetup => <MeetupCard info={meetup} key={meetup.meetup_details.id}/>) : null }
+                {props.meetups? props.meetups.map(meetup => <MeetupCard info={meetup} key={meetup.meetup_details.id}/>) : null }
             </Card.Group>
         </div>
     )

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import './css/meetup-form.css'
 import { newEvent } from '../redux/actions'
 import { Button, Form, Dropdown } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 class MeetupForm extends React.Component {
 
@@ -98,6 +99,7 @@ class MeetupForm extends React.Component {
                     </Form.Group>
                     <br></br>
                     <Button type='submit'>Submit</Button>
+                    <Link to='/meetups'><Button className="ui red button">Cancel</Button></Link>
                 </Form>
     
             </div>

@@ -11,9 +11,20 @@ const MeetupDetail = (props) => {
 
     console.log(props.detailedMeetup)
 
+    const meetupInfo = (details) => {
+
+        if(details){
+            let {meetup_details:{title, date, location, other_games_allowed}, host:{username, name, bio, avatar}, participants, collection} = props.detailedMeetup
+            
+            return (
+                <div>Meetup info will go here</div>
+            )
+        }
+    }
+
     return (
         <div>Meetup details go here
-            
+            {props.detailedMeetup? meetupInfo(props.detailedMeetup) : null }
         </div>
     )
 }

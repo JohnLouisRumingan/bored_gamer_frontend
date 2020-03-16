@@ -25,7 +25,7 @@ const MeetupDetail = (props) => {
                     {date}
                     Location: {location}
                     </Card>
-                    <Link to='/meetups'>Close details</Link>
+                    <Link to='/meetups'>Close details and view Calendar</Link>
                 </div>
             )
         }

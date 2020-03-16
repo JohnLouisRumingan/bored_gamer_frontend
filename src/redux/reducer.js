@@ -14,6 +14,8 @@ const profileReducer = (state = initialState.profile, action) => {
     switch(action.type){
         case "LOAD_PROFILE":
             return action.payload;
+        case "LOGOUT":
+            return null 
         default:
             return state;
     }

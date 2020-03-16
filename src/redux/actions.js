@@ -32,6 +32,10 @@ function fetchingMeetups(){
     }
 }
 
+function logout(){
+    return {type: "LOGOUT"}
+}
+
 function loginSuccessful(profile){
     return {type: "LOAD_PROFILE", payload: profile}
 }
@@ -133,4 +137,4 @@ function newEvent(formDetails, profile, date){
 // }
 
 
-export {fetchingMeetups, fetchingGames, login, addToCollection, calendarDateSelect, dispatchTodaysDate, newEvent, /*detailedMeetup*/ };
+export {fetchingMeetups, fetchingGames, login, logout, addToCollection, calendarDateSelect, dispatchTodaysDate, newEvent, /*detailedMeetup*/ };

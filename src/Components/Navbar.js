@@ -2,6 +2,7 @@ import React from 'react'
 // import '../css/Navbar.css'
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux'
+import {logout} from '../redux/actions'
 
 class NavBar extends React.Component{
 
@@ -18,6 +19,7 @@ class NavBar extends React.Component{
                         <li><Link to='/games'>Game Page</Link></li>
                         <li><Link to='/meetups'>Meetups</Link></li>
                         <li><Link to='/about'>About</Link></li>
+                        {this.props.profile? <li><Link to='/' onClick={this.props.logout}>Logout</Link></li> : null }
                     </ul>
                 </div>
             </nav>
@@ -31,5 +33,10 @@ const mapStateToProps = (state) => {
       profile: state.profile
     }
   }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logout: () => dispatch(logout())
+    }
+}
 
-export default connect(mapStateToProps)(NavBar)
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

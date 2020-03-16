@@ -128,9 +128,9 @@ function newEvent(formDetails, profile, date){
     // return {type: "SUBMIT_FORM", payload: formDetails}
 }
 
-function detailedMeetup(info){
-    return {type: "DETAILED_MEETUP", info}
-}
+// function detailedMeetup(info){
+//     return {type: "UPDATE_DETAILED_MEETUP", info}
+// }
 
 
-export {fetchingMeetups, fetchingGames, login, addToCollection, calendarDateSelect, dispatchTodaysDate, newEvent, detailedMeetup };
+export {fetchingMeetups, fetchingGames, login, addToCollection, calendarDateSelect, dispatchTodaysDate, newEvent, /*detailedMeetup*/ };

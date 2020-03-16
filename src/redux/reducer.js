@@ -7,7 +7,7 @@ let initialState = {
     meetups: [],
     dateSelected: null,
     todaysDate: null,
-    detailedMeetup: null,
+    // detailedMeetup: null,
 }
 
 const profileReducer = (state = initialState.profile, action) => {
@@ -36,6 +36,15 @@ const meetupReducer = (state=initialState.meetups, action) => {
             return state;
     }
 }
+
+// const detailedMeetupReducer = (state=initialState.detailedMeetup, action) => {
+//     switch(action.type){
+//         case "UPDATE_DETAILED_MEETUP":
+//             return action.payload;
+//         default:
+//             return state;
+//     }
+// }
 
 const collectionReducer = (state=initialState.gamesInCollection, action) => {
     switch(action.type){
@@ -71,6 +80,7 @@ const rootReducer = combineReducers({
     dateSelected: dateReducer,
     todaysDate: currentDateReducer,
     meetups: meetupReducer,
+    // detailedMeetup: detailedMeetupReducer,
     
 })
 

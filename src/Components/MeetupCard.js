@@ -26,7 +26,7 @@ const MeetupCard = (props) => {
                     </Card.Content>
                     <Card.Content extra>
                         <Link to={`/meetups/${id}`}>
-                            <Button size="mini" onClick={props.detailedMeetup(props.info)} >More Details</Button>
+                            <Button size="mini" /*onClick={props.detailedMeetup(props.info)}*/ >More Details</Button>
                         </Link>
                     </Card.Content>
                 </Card.Content>
@@ -37,7 +37,7 @@ const MeetupCard = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        detailedMeetup: (info) => dispatch(detailedMeetup(info))
+        // detailedMeetup: (info) => dispatch(detailedMeetup(info))
     }
 }
 

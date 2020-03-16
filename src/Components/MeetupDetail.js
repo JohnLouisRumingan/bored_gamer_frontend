@@ -9,7 +9,7 @@ const MeetupDetail = (props) => {
     // console.log("router meetups test:", props.meetups[1])
     // debugger
 
-    
+    console.log(props.detailedMeetup)
 
     return (
         <div>Meetup details go here
@@ -20,8 +20,8 @@ const MeetupDetail = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        // detailedMeetup: state.meetups.find(meetup => meetup.meetup_details.id === parseInt(ownProps.routerProps.match.params.meetupId))
-        meetupDetails: state.detailedMeetup
+        detailedMeetup: state.meetups.find(meetup => meetup.meetup_details.id === parseInt(ownProps.routerProps.match.params.meetupId))
+        // meetupDetails: state.detailedMeetup
     }
 }
 

@@ -10,16 +10,16 @@ import './css/meetup-container.css'
 const MeetupContainer = (props) => {
 
     return (
-        <div className="meetup-container">Meetup Container
+        <div className="meetup-container">
             <Switch>
             <Route path="/meetups/new" render={() => <MeetupForm />}/>
             </Switch>
-
-            {props.profile? <Route exact path='/meetups' render={() => <Link to='/meetups/new'>Create a new event!</Link>}></Route> : null}
-            
-            {/* Remove below once testing complete. Don't want to have to keep logging in while creating the form */}
-            {/* <Link to='/meetups/new'>Create a new event!</Link>  */}
             <MeetupList />
+
+            {props.profile? <Route exact path='/meetups' render={() => <Link to='/meetups/new'>Create a new event!</Link>}></Route> : "Create an account to make an event!"}
+            
+            {/* Add below for testing. Don't want to have to keep logging in while creating the form */}
+            {/* <Link to='/meetups/new'>Create a new event!</Link>  */}
             <Calendar />
         </div>
     )

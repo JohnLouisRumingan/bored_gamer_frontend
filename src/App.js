@@ -14,8 +14,8 @@ import MeetupContainer from './Containers/MeetupContainer';
 class App extends Component {
 
   componentDidMount(){
-    // this.props.fetchingGames() 
     //Add this back later so app isn't constantly fetching from API while in development 
+    this.props.fetchingGames() 
 
     this.props.fetchingMeetups()
 

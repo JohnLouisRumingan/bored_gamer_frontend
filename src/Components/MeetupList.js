@@ -8,7 +8,7 @@ const MeetupList = (props) => {
     return (
         <div>MeetupList
             
-            {props.meetups? props.meetups.map(meetup => <MeetupCard />) : null }
+            {props.meetups? props.meetups.map(meetup => <MeetupCard info={meetup} key={meetup.meetup_details.id}/>) : null }
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button, Card, Image } from 'semantic-ui-react'
 
 
 const MeetupCard = (props) => {
@@ -8,9 +9,17 @@ const MeetupCard = (props) => {
 
     return (
         <div className="meetup-card">
-            {title} - {location}
-            <br></br>
-            {other_games_allowed? "Other games allowed" : "This meetup is for the listed games only"}
+            <Card>
+                <Card.Content>
+                    <Card.Header>{title}</Card.Header>
+                    <Card.Meta>Location: {location}</Card.Meta>
+                    <br></br>
+                    <Card.Content extra>
+                        {other_games_allowed? <Button basic color='green'>Other games allowed</Button> : 
+                        <Button>Listed games only</Button>}
+                    </Card.Content>
+                </Card.Content>
+            </Card>
         </div>
     )
 }

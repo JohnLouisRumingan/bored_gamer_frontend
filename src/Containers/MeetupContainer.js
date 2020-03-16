@@ -11,6 +11,8 @@ const MeetupContainer = (props) => {
 
     return (
         <div className="meetup-container">
+            <Calendar />
+            
             <Switch>
             <Route path="/meetups/new" render={() => <MeetupForm />}/>
             </Switch>
@@ -20,7 +22,6 @@ const MeetupContainer = (props) => {
             
             {/* Add below for testing. Don't want to have to keep logging in while creating the form */}
             {/* <Link to='/meetups/new'>Create a new event!</Link>  */}
-            <Calendar />
         </div>
     )
 }

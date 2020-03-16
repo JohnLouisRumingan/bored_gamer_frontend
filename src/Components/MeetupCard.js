@@ -1,15 +1,16 @@
 import React from 'react'
 import { Button, Card, Image } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { detailedMeetup } from '../redux/actions'
 
 
 const MeetupCard = (props) => {
 
-    console.log("meetup card info:", props.info)
+    // console.log("meetup card info:", props.info)
     let {meetup_details:{title, location, other_games_allowed, date, id}} = props.info 
     let {host: {username, name,}} = props.info
-
+    
     return (
         <div className="meetup-card">
             <Card>
@@ -20,12 +21,12 @@ const MeetupCard = (props) => {
                     <Card.Meta>{date}</Card.Meta>
                     <br></br>
                     <Card.Content extra>
-                        {other_games_allowed? <Button basic color='green' disabled>Other games allowed</Button> : 
-                        <Button basic color='orange' disabled>Listed games only</Button>}
+                        {other_games_allowed? <Button color='green' disabled compact>Other games allowed</Button> : 
+                        <Button color='orange' disabled compact>Listed games only</Button>}
                     </Card.Content>
                     <Card.Content extra>
                         <Link to={`/meetups/${id}`}>
-                            <Button size="mini">More Details</Button>
+                            <Button size="mini" onClick={props.detailedMeetup(props.info)} >More Details</Button>
                         </Link>
                     </Card.Content>
                 </Card.Content>
@@ -36,9 +37,9 @@ const MeetupCard = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-
+        detailedMeetup: (info) => dispatch(detailedMeetup(info))
     }
 }
 
 
-export default connect(null, mapDispatchToProps)(MeetupCard)
+export default withRouter(connect(null, mapDispatchToProps)(MeetupCard))

@@ -22,7 +22,7 @@ const MeetupContainer = (props) => {
                             path="/meetups/:meetupId"
                             render={(props) => <MeetupDetail routerProps={props}/>}
                         />
-                        <Route exact path='/meetups'component={Calendar}/>   
+                        <Route exact path='/meetups'component={Calendar}/>  
                     </Switch>
                 
                     Events here will show upcoming week by default. Add Buttons that allow you to see events by clicked date 
@@ -33,7 +33,12 @@ const MeetupContainer = (props) => {
 
                 <Divider horizontal>Or</Divider>
                     <Switch>
-                        <Route path="/meetups/new" render={() => <MeetupForm />}/>
+                        <Route path="/meetups/new" render={() => 
+                            <div>
+                                <Calendar />
+                                <MeetupForm />
+                            </div>
+                        }/>
                     </Switch>
                     {props.profile? <Route exact path='/meetups' render={() => <Link to='/meetups/new'>Create a new event!</Link>}></Route> : "Create an account to make an event!"}
                     {/* Add below for testing. Don't want to have to keep logging in while creating the form */}

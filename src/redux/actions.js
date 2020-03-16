@@ -125,8 +125,12 @@ function newEvent(formDetails, profile, date){
         }).then(res => res.json()).then(data => console.log("back from the back end:",data))
 
     }
-
     // return {type: "SUBMIT_FORM", payload: formDetails}
 }
 
-export {fetchingMeetups, fetchingGames, login, addToCollection, calendarDateSelect, dispatchTodaysDate, newEvent };
+function detailedMeetup(info){
+    return {type: "DETAILED_MEETUP", info}
+}
+
+
+export {fetchingMeetups, fetchingGames, login, addToCollection, calendarDateSelect, dispatchTodaysDate, newEvent, detailedMeetup };

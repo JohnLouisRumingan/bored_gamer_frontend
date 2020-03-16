@@ -6,7 +6,8 @@ let initialState = {
     gamesInCollection: [],
     meetups: [],
     dateSelected: null,
-    todaysDate: null
+    todaysDate: null,
+    detailedMeetup: null,
 }
 
 const profileReducer = (state = initialState.profile, action) => {
@@ -30,7 +31,7 @@ const gamesReducer = (state=initialState.games, action) => {
 const meetupReducer = (state=initialState.meetups, action) => {
     switch(action.type){
         case "FETCHED_MEETUPS":
-            return action.payload
+            return action.payload;
         default:
             return state;
     }
@@ -70,6 +71,7 @@ const rootReducer = combineReducers({
     dateSelected: dateReducer,
     todaysDate: currentDateReducer,
     meetups: meetupReducer,
+    
 })
 
 

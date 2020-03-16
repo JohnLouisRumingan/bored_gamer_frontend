@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Card } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 
 const MeetupDetail = (props) => {
@@ -17,7 +19,14 @@ const MeetupDetail = (props) => {
             let {meetup_details:{title, date, location, other_games_allowed}, host:{username, name, bio, avatar}, participants, collection} = props.detailedMeetup
             
             return (
-                <div>Meetup info will go here</div>
+                <div>
+                    <Card>
+                    {title}
+                    {date}
+                    Location: {location}
+                    </Card>
+                    <Link to='/meetups'>Close details</Link>
+                </div>
             )
         }
     }

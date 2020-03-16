@@ -18,7 +18,7 @@ const MeetupContainer = (props) => {
             {props.profile? <Route exact path='/meetups' render={() => <Link to='/meetups/new'>Create a new event!</Link>}></Route> : null}
             
             {/* Remove below once testing complete. Don't want to have to keep logging in while creating the form */}
-            <Link to='/meetups/new'>Create a new event!</Link> 
+            {/* <Link to='/meetups/new'>Create a new event!</Link>  */}
             <MeetupList />
             <Calendar />
         </div>

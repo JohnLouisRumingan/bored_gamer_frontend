@@ -17,6 +17,20 @@ function fetchingGames(){
     }
 }
 
+function fetchedMeetups(meetups) {
+    return {type: "FETCHED_MEETUPS", payload: meetups}
+}
+
+function fetchingMeetups(){
+    return (dispatch) => {
+        fetch(URL+"meetups/detailed")
+        .then(res => res.json())
+        .then(meetups => {
+            dispatch(fetchedMeetups(meetups))
+        })
+    }
+}
+
 function loginSuccessful(profile){
     return {type: "LOAD_PROFILE", payload: profile}
 }
@@ -114,4 +128,4 @@ function newEvent(formDetails, profile, date){
     // return {type: "SUBMIT_FORM", payload: formDetails}
 }
 
-export { fetchingGames, login, addToCollection, calendarDateSelect, dispatchTodaysDate, newEvent };
+export {fetchingMeetups, fetchingGames, login, addToCollection, calendarDateSelect, dispatchTodaysDate, newEvent };

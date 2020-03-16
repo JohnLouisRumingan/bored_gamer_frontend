@@ -8,7 +8,7 @@ import Login from './Components/Login.js'
 import LandingPage from './Components/LandingPage.js'
 import GameContainer from './Containers/GameContainer'
 import ProfileContainer from './Containers/ProfileContainer'
-import {fetchingGames, dispatchTodaysDate} from './redux/actions.js'
+import {fetchingGames, dispatchTodaysDate, fetchingMeetups} from './redux/actions.js'
 import MeetupContainer from './Containers/MeetupContainer';
 
 class App extends Component {
@@ -16,6 +16,8 @@ class App extends Component {
   componentDidMount(){
     // this.props.fetchingGames() 
     //Add this back later so app isn't constantly fetching from API while in development 
+
+    this.props.fetchingMeetups()
 
     this.props.todaysDate(new Date())
   }
@@ -56,8 +58,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchingGames: ()=>{dispatch (fetchingGames())},
-    todaysDate: (currentDate) => dispatch(dispatchTodaysDate(currentDate))
+    fetchingGames: ()=> dispatch(fetchingGames()),
+    todaysDate: (currentDate) => dispatch(dispatchTodaysDate(currentDate)),
+    fetchingMeetups: () => dispatch(fetchingMeetups())
   }
 }
 

@@ -27,6 +27,15 @@ const gamesReducer = (state=initialState.games, action) => {
     }
 }
 
+const meetupReducer = (state=initialState.meetups, action) => {
+    switch(action.type){
+        case "FETCHED_MEETUPS":
+            return action.payload
+        default:
+            return state;
+    }
+}
+
 const collectionReducer = (state=initialState.gamesInCollection, action) => {
     switch(action.type){
         case "UPDATE_COLLECTION":
@@ -60,6 +69,7 @@ const rootReducer = combineReducers({
     gamesInCollection: collectionReducer,
     dateSelected: dateReducer,
     todaysDate: currentDateReducer,
+    meetups: meetupReducer,
 })
 
 

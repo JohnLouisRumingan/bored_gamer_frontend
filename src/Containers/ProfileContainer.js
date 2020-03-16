@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import GameList from '../Components/GameList'
-import {Segment, Divider, Grid, Container} from 'semantic-ui-react'
+import {Segment, Divider, Grid, Container, Card} from 'semantic-ui-react'
+import './css/profile-container.css'
 
 
 const Profile = (props) => {
@@ -21,15 +22,19 @@ const Profile = (props) => {
                 <p>
                 Bio: {bio}
                 </p>
-                <br></br>
                 <img src={avatar} alt={username + bio }/>
                 <br></br>
+                <p>
+                  Games owned: {props.games.length}
+                </p>
               </Grid.Column>
-              <Grid.Column>
-                Your games:
-                <Container>
-                  <GameList source={"/profile"}/>
-                </Container>
+              <Grid.Column >
+                <div className='profile-games'>
+                  Your games:
+                  <Container>
+                    <GameList source={"/profile"}/>
+                  </Container>
+                </div>
               </Grid.Column>
             </Grid>
             <Divider vertical>Games</Divider>

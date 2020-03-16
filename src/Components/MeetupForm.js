@@ -12,7 +12,7 @@ class MeetupForm extends React.Component {
             event: "",
             description: "",
             location: "",
-            date: new Date(),
+            // date: new Date(),
             chosenGames: [],
         }
     }
@@ -38,7 +38,7 @@ class MeetupForm extends React.Component {
     
     render() {
         
-        const { value, chosen, allowed } = this.state 
+        const { allowed } = this.state 
         const {date, profile} = this.props
         const gameOptions = [...this.props.gamesInCollection]
         // const cloneOptions = Object.assign({}, ...gameOptions.map(game => ({ key: game.game_id, text: game.name, value: game.game_id })));
@@ -52,10 +52,10 @@ class MeetupForm extends React.Component {
             cloneOptions.push(obj)
         })
 
-        console.log("game options form:", cloneOptions)
+        // console.log("game options form:", cloneOptions)
         return (
             <div className="meetup-form">
-                <Form onSubmit={() => this.props.newEvent(this.state, profile) /*console.log(this.state, date, profile)*/}>
+                <Form onSubmit={() => this.props.newEvent(this.state, profile, date? date : new Date()) /*console.log(this.state, date, profile)*/}>
                     <Form.Field>
                         <label>Event Name</label>
                         <input placeholder='Event Name' value={this.state.event} onChange={(e) => {this.handleChange(e, "event")}}/>
@@ -76,7 +76,6 @@ class MeetupForm extends React.Component {
                     <Form.Field>
                     <label>Games you're bringing:</label>
                     <Dropdown placeholder='Games' fluid multiple selection options={cloneOptions} 
-                        // value={this.state.chosenGames}
                         onChange={this.handleDropdown}
                     />
                     </Form.Field>
@@ -110,13 +109,14 @@ const mapStateToProps = (state) => {
     return {
         profile: state.profile,
         date: state.dateSelected,
-        gamesInCollection: state.gamesInCollection
+        gamesInCollection: state.gamesInCollection.filter(game => game.owned === true ),
+        //filters only games that user owns. User cannot bring games they do not own.
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        newEvent: (formDetails, profile) => {dispatch(newEvent(formDetails, profile))}
+        newEvent: (formDetails, profile, date) => {dispatch(newEvent(formDetails, profile,date))}
     }
 }
 

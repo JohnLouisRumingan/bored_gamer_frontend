@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Card, Segment, Header, Icon } from 'semantic-ui-react'
+import { Card, Segment, Header, Icon, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import GameList from '../Components/GameList'
+import {joinEvent} from '../redux/actions'
 
 
 const MeetupDetail = (props) => {
@@ -17,7 +18,7 @@ const MeetupDetail = (props) => {
     const meetupInfo = (details) => {
 
         if(details){
-            let {meetup_details:{title, date, location, /*other_games_allowed*/}, host:{name, /*username, bio, avatar*/}, participants, collection} = props.detailedMeetup
+            let {meetup_details:{id, title, date, location, /*other_games_allowed*/}, host:{name, /*username, bio, avatar*/}, participants, collection} = props.detailedMeetup
             
             return (
                 <div>
@@ -33,7 +34,9 @@ const MeetupDetail = (props) => {
                     <p>
                         {participants.map(participant => participant.name )}
                         <br></br>
-                        {props.profile? <div><Icon name="add user"/>Join this event </div> : null}
+                        {props.profile? 
+                            <Button onClick={() => props.joinEvent(id, props.profile)} icon labelPosition='left'><Icon name="add user"/>Join this event
+                            </Button> : null}
                     </p>
                     <br></br>
                     Games in this event:
@@ -62,4 +65,10 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps)(MeetupDetail)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        joinEvent: (meetupId, profile) => {dispatch(joinEvent(meetupId, profile))}
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MeetupDetail)

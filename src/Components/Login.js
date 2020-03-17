@@ -41,14 +41,14 @@ class Login extends React.Component {
           <br></br><br></br>
            <form onSubmit={(e) => this.login(e)}>
             <div>
-              <input type="text" name="username" placeholder="Username" value={this.state.username}  onChange={e => this.changeField(e)}/>
-              <br></br>
               <label htmlFor="username">Username</label>
+              <br></br>
+              <input type="text" name="username" placeholder="Username" value={this.state.username}  onChange={e => this.changeField(e)}/>
             </div>
             <div>
-              <input type="text" name="password" placeholder="Password" value={this.state.password} onChange={e => this.changeField(e)}/>
-              <br></br>
               <label htmlFor="password">Password</label>
+              <br></br>
+              <input type="text" name="password" placeholder="Password" value={this.state.password} onChange={e => this.changeField(e)}/>
             </div>
             <input type="submit" value="Login" />
            </form>

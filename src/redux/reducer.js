@@ -46,6 +46,8 @@ const meetupReducer = (state=initialState.meetups, action) => {
     switch(action.type){
         case "FETCHED_MEETUPS":
             return action.payload;
+        case "JOINED_MEETUPS":
+            return state;
         default:
             return state;
     }

@@ -51,7 +51,6 @@ function login(username, password){
     // that can be used for something else 
 
     // return {type: "LOGIN_SUCCESSFUL", payload: profile}
-    console.log("Inside of action login:", username, password)
     return (dispatch) => {
         fetch(URL+"login", {
             method: 'POST', //syntactic sugar: {user: {username, password}} instead 
@@ -140,6 +139,19 @@ function backdropClick(){
     return {type: "CLOSE_DRAWER"}
 }
 
+function joinEvent(meetupId, profile){
+
+    fetch(URL+`meetups/join`, {
+        method: 'POST', 
+        body: JSON.stringify({user: profile.id, meetup: meetupId}),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res => res.json()).then(data => console.log(data))
+    return {type: "JOINED_MEETUPS"}
+}
+
 // function detailedMeetup(info){
 //     return {type: "UPDATE_DETAILED_MEETUP", info}
 // }
@@ -148,4 +160,5 @@ function backdropClick(){
 export {fetchingMeetups, fetchingGames, 
     login, logout, addToCollection, calendarDateSelect, dispatchTodaysDate, 
     newEvent, 
-    drawerClickHandler, backdropClick, /*detailedMeetup*/ };
+    drawerClickHandler, backdropClick, 
+    joinEvent, /*detailedMeetup*/ };

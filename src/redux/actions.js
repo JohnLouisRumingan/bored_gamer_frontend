@@ -73,7 +73,7 @@ function login(username, password){
 }
 
 function updateCollection(collection){
-    console.log(collection)
+    // console.log(collection)
     return {type: "UPDATE_COLLECTION", payload: collection}
 }
 

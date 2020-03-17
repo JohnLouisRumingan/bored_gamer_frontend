@@ -12,14 +12,14 @@ const MeetupDetail = (props) => {
     // console.log("router prop test:", props.routerProps.match.params.meetupId)
     // console.log("router meetups test:", props.meetups[1])
     // debugger
-
+    console.log(props.profile)
     console.log(props.detailedMeetup)
 
     const meetupInfo = (details) => {
 
         if(details){
             let {meetup_details:{id, title, date, location, /*other_games_allowed*/}, host:{name, /*username, bio, avatar*/}, participants, collection} = props.detailedMeetup
-            
+
             return (
                 <div>
                     <Segment>
@@ -34,10 +34,10 @@ const MeetupDetail = (props) => {
                     <p>
                         {participants.map(participant => participant.name )}
                         <br></br>
-                        {props.profile? 
-                            participants.includes(props.profile)?
-                            <Button onClick={() => props.joinEvent(id, props.profile)} icon labelPosition='left'><Icon name="add user"/>Join this event</Button> 
-                            : <Button onClick={() => props.joinEvent(id, props.profile)} icon labelPosition='left'><Icon name="remove user"/>Leave this event</Button>
+                        {(props.profile && participants.some( participant => participant.id === props.profile.id))?
+                            <Button onClick={() => props.joinEvent(id, props.profile)} icon labelPosition='left'><Icon name="remove user"/>Leave this event</Button> 
+                            : (props.profile) ?
+                        <Button onClick={() => props.joinEvent(id, props.profile)} icon labelPosition='left'><Icon name="add user"/>Join this event</Button> 
                             : null}
                     </p>
                     <br></br>

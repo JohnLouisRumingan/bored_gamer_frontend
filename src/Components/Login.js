@@ -38,6 +38,7 @@ class Login extends React.Component {
   render(){
     return (
         <div>
+          <br></br><br></br>
            <form onSubmit={(e) => this.login(e)}>
             <div>
               <input type="text" name="username" placeholder="Username" value={this.state.username}  onChange={e => this.changeField(e)}/>

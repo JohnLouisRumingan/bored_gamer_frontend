@@ -22,7 +22,7 @@ class GameContainer extends React.Component {
                         render={(props) => <GameDetail routerProps={props}/>}
                     />
                 </Switch>
-                <div className="ui narrow container segment">
+                <div>
                     <GameList source={"/games"}/>
                 </div>
             </div>

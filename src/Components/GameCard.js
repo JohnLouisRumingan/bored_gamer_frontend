@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux'
 import {addToCollection} from '../redux/actions.js';
-
+import {} from 'semantic-ui-react'
 
 const GameCard = (props) => {
 
@@ -27,7 +27,7 @@ const GameCard = (props) => {
                         {favorite? <i className="red heart icon"></i> : null}
                         <br></br>
                         <button onClick={() => props.favoriteGame(props.game, props.profile)}>Favorite this game!</button>
-                        <button onClick={()=> props.ownGame(props.game, props.profile)}>I own this game!</button>
+                        <button onClick={()=> props.ownGame(props.game, props.profile)}>Add game to library</button>
                     </div>
                     :null
                 }

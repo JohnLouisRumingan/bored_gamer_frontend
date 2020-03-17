@@ -32,14 +32,13 @@ const Profile = (props) => {
               </Grid.Column>
               <Grid.Column >
                 <div className='profile-games'>
-                  Your games:
                   <Container>
                     <GameList source={"/profile"}/>
                   </Container>
                 </div>
               </Grid.Column>
             </Grid>
-            <Divider vertical>Games</Divider>
+            <Divider vertical>Shelf</Divider>
           </Segment>
         </div>
     )

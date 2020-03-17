@@ -15,8 +15,21 @@ const MeetupContainer = (props) => {
         <div className="meetup-container">
             <Container>
                 <Segment basic textAlign='center'>
+                    <Switch>
+                        <Route path="/meetups/new" render={() => 
+                            <div>
+                                <MeetupForm />
+                                <Calendar />
+                            </div>
+                        }/>
+                    </Switch>
+                    {props.profile? <Route exact path='/meetups' render={() => <Link to='/meetups/new'>Create a new event!</Link>}></Route> : "Create an account to make an event!"}
+                    {/* Add below for testing. Don't want to have to keep logging in while creating the form */}
+                    {/* <Link to='/meetups/new'>Create a new event!</Link>  */}
+                    <Divider horizontal>Featured Events</Divider>
 
                     Featured Events will go here under a filtered meetup list 
+                    <Divider horizontal>Upcoming Events </Divider>
                     <Switch>
                         <Route 
                             path="/meetups/:meetupId"
@@ -31,18 +44,6 @@ const MeetupContainer = (props) => {
                     <br></br><br></br>
                     <MeetupList />
 
-                <Divider horizontal>Or</Divider>
-                    <Switch>
-                        <Route path="/meetups/new" render={() => 
-                            <div>
-                                <Calendar />
-                                <MeetupForm />
-                            </div>
-                        }/>
-                    </Switch>
-                    {props.profile? <Route exact path='/meetups' render={() => <Link to='/meetups/new'>Create a new event!</Link>}></Route> : "Create an account to make an event!"}
-                    {/* Add below for testing. Don't want to have to keep logging in while creating the form */}
-                    {/* <Link to='/meetups/new'>Create a new event!</Link>  */}
                 </Segment>
 
             </Container>

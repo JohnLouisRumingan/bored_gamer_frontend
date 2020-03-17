@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Card, Segment, Header } from 'semantic-ui-react'
+import { Card, Segment, Header, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import GameList from '../Components/GameList'
 
@@ -32,6 +32,7 @@ const MeetupDetail = (props) => {
                     Participants:
                     <p>
                         {participants.map(participant => participant.name)}
+                        <Icon name="add user"/>Invite others
                     </p>
                     <br></br>
                     Games in this event:

@@ -141,15 +141,18 @@ function backdropClick(){
 
 function joinEvent(meetupId, profile){
 
-    fetch(URL+`meetups/join`, {
+   return (dispatch) => {fetch(URL+`meetups/join`, {
         method: 'POST', 
         body: JSON.stringify({user: profile.id, meetup: meetupId}),
         headers: {
             'Content-Type': 'application/json'
         }
-    })
-    .then(res => res.json()).then(data => console.log(data))
-    return {type: "JOINED_MEETUPS"}
+        })
+        .then(res => res.json())
+        .then(meetups => {
+            dispatch(fetchedMeetups(meetups))
+        })
+   }
 }
 
 // function detailedMeetup(info){

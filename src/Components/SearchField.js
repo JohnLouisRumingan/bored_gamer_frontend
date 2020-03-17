@@ -5,7 +5,9 @@ import {connect} from 'react-redux'
 class SearchField extends React.Component{
 
     state={
-
+        search: "",
+        kickstarter: false,
+        
     }
 
     render(){
@@ -16,11 +18,11 @@ class SearchField extends React.Component{
     }
 }
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
 
     return {
-        
+
     }
 }
 
-export default connect(mapDispatchToProps)(SearchField)
+export default connect(null, mapDispatchToProps)(SearchField)

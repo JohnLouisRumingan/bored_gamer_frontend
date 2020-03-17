@@ -14,6 +14,14 @@ const GameList = (props) => {
                         game={game}
                     />
                 )) : null }
+                {(props.collection)? props.collection.map( collection => (
+                    <GameCard 
+                        key={collection.game.game_id}
+                        game={collection.game}
+                        owner={collection.owner}
+                    />
+                ))
+                : null}
             </div>
         </div>
     )

@@ -43,7 +43,7 @@ const MeetupDetail = (props) => {
                     <br></br>
                     Games in this event:
                     <br></br>
-                    <GameList source={"/meetups"} games={collection.map(game => game.game)}/>
+                    <GameList source={"/meetups"} /*games={collection.map(game => game.game)}*/ collection={collection}/>
                     <br></br>
                     <Link to='/meetups'>Close details and view Calendar</Link>
                     </Segment>

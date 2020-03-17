@@ -6,7 +6,7 @@ import {} from 'semantic-ui-react'
 
 const GameCard = (props) => {
 
-    let {id, name, designers, image_url, favorite, owned, game_id } = props.game
+    let {id, name, designers, image_url, favorite, owned, game_id} = props.game
 
     //need to come back to this later and fix the dual-use nature of displaying in game page and displaying in profile page
     // will likely need to assign two sets of game info props and just make two sets of logic 
@@ -20,7 +20,7 @@ const GameCard = (props) => {
                     {/* <img src={image_url}></img>  */}
                     {/* Uncomment above to show images once I've made smaller, standardized card containers for them. Some images are gigantic */}
                 </em>
-
+                {props.owner? <div>Owned by: {props.owner.name}</div>: null}
                 {props.profile? 
                     <div>
                         {owned? "Game owned" : null}

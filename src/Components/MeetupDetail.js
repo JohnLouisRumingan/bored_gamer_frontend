@@ -17,7 +17,7 @@ const MeetupDetail = (props) => {
     const meetupInfo = (details) => {
 
         if(details){
-            let {meetup_details:{title, date, location, other_games_allowed}, host:{username, name, bio, avatar}, participants, collection} = props.detailedMeetup
+            let {meetup_details:{title, date, location, /*other_games_allowed*/}, host:{name, /*username, bio, avatar*/}, participants, collection} = props.detailedMeetup
             
             return (
                 <div>

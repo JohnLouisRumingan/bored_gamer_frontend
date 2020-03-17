@@ -27,8 +27,7 @@ const MeetupDetail = (props) => {
                     <br></br>
                     Location: {location}
                     <p>
-                    Host: 
-                        {name}
+                    Host: {name}
                     </p>
                     Participants:
                     <p>

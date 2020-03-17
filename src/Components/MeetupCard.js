@@ -16,7 +16,7 @@ const MeetupCard = (props) => {
             <Card>
                 <Card.Content>
                     <Card.Header>{title}</Card.Header>
-                    <Card.Meta>Host: {username}{name? ` - ${name}` : null}</Card.Meta>
+                    <Card.Meta>Host: {/*username*/}{name? ` - ${name}` : null}</Card.Meta>
                     <Card.Meta>Location: {location}</Card.Meta>
                     <Card.Meta>{date}</Card.Meta>
                     <br></br>

@@ -1,4 +1,4 @@
-import {combineReducers, bindActionCreators } from 'redux';
+import {combineReducers, /*bindActionCreators*/ } from 'redux';
 
 let initialState = {
     profile: null,
@@ -7,7 +7,19 @@ let initialState = {
     meetups: [],
     dateSelected: null,
     todaysDate: null,
+    sideDrawerOpen: false,
     // detailedMeetup: null,
+}
+
+const drawerReducer = (state=initialState.sideDrawerOpen, action) => {
+    switch(action.type){
+        case "SWITCH_DRAWER":
+            return !state;
+        case "CLOSE_DRAWER":
+            return false;
+        default:
+            return state;
+    }
 }
 
 const profileReducer = (state = initialState.profile, action) => {
@@ -82,6 +94,7 @@ const rootReducer = combineReducers({
     dateSelected: dateReducer,
     todaysDate: currentDateReducer,
     meetups: meetupReducer,
+    sideDrawerOpen: drawerReducer,
     // detailedMeetup: detailedMeetupReducer,
     
 })

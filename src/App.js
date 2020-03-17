@@ -10,6 +10,8 @@ import GameContainer from './Containers/GameContainer'
 import ProfileContainer from './Containers/ProfileContainer'
 import {fetchingGames, dispatchTodaysDate, fetchingMeetups} from './redux/actions.js'
 import MeetupContainer from './Containers/MeetupContainer';
+import SideDrawer from './Components/SideDrawer/SideDrawer'
+import Backdrop from './Components/Backdrop/Backdrop'
 
 class App extends Component {
 
@@ -24,28 +26,36 @@ class App extends Component {
   }
 
   render(){
+
+    let backdrop;
+    if (this.props.sideDrawerOpen){
+      backdrop = <Backdrop />
+    }
+
     return (
       <div className="App" style={{height: '100%'}}>
         <NavBar />
+        <SideDrawer />
+        {backdrop}
+        <main style={{marginTop: '64px'}}>
+          <Switch>
+            <Route exact path='/profile' render={() => {
+              return this.props.profile? 
+                <ProfileContainer /> :
+                <Redirect to ='/login' />
+            }}/>
 
-        <Switch>
-          <Route exact path='/profile' render={() => {
-            return this.props.profile? 
-              <ProfileContainer /> :
-              <Redirect to ='/login' />
-          }}/>
-
-          <Route exact path ='/login' render={() => {
-            return this.props.profile?
-              <Redirect to='/profile' /> :
-              <Login />
-          }}/>
-          <Route path='/meetups' component={MeetupContainer}/>
-          <Route path='/games' component={GameContainer} />
-          <Route exact path='/about' component={About}/>
-          <Route exact path='/' component={LandingPage} />
-        </Switch>
-    
+            <Route exact path ='/login' render={() => {
+              return this.props.profile?
+                <Redirect to='/profile' /> :
+                <Login />
+            }}/>
+            <Route path='/meetups' component={MeetupContainer}/>
+            <Route path='/games' component={GameContainer} />
+            <Route exact path='/about' component={About}/>
+            <Route exact path='/' component={LandingPage} />
+          </Switch>
+        </main>
       </div>
     );
   }
@@ -53,7 +63,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    profile: state.profile
+    profile: state.profile,
+    sideDrawerOpen: state.sideDrawerOpen
   }
 }
 

@@ -1,16 +1,17 @@
 import React from 'react'
-// import '../css/Navbar.css'
+import './css/Navbar.css'
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux'
 import {logout} from '../redux/actions'
+import DrawerToggleButton from './SideDrawer/DrawerToggleButton'
 
 class NavBar extends React.Component{
 
     render(){
     return(
-        <header>
-            <nav>
-                <div>Drawer Toggle button goes here </div>
+        <header className="toolbar">
+            <nav className="toolbar_navigation">
+                <div><DrawerToggleButton /*click={this.props.drawerClickHandler}*/ /> </div>
                 <div className="spacer"></div>
                 <div className="toolbar_logo"><Link to='/'>BGmer</Link></div>
                 <div className="toolbar_navigation_items">
@@ -35,7 +36,7 @@ const mapStateToProps = (state) => {
   }
 const mapDispatchToProps = (dispatch) => {
     return {
-        logout: () => dispatch(logout())
+        logout: () => dispatch(logout()),
     }
 }
 

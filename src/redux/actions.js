@@ -132,9 +132,17 @@ function newEvent(formDetails, profile, date){
     // return {type: "SUBMIT_FORM", payload: formDetails}
 }
 
+function drawerClickHandler(){
+    return{type:"SWITCH_DRAWER"}
+}
+
+function backdropClick(){
+    return {type: "CLOSE_DRAWER"}
+}
+
 // function detailedMeetup(info){
 //     return {type: "UPDATE_DETAILED_MEETUP", info}
 // }
 
 
-export {fetchingMeetups, fetchingGames, login, logout, addToCollection, calendarDateSelect, dispatchTodaysDate, newEvent, /*detailedMeetup*/ };
+export {fetchingMeetups, fetchingGames, login, logout, addToCollection, calendarDateSelect, dispatchTodaysDate, newEvent, drawerClickHandler, backdropClick, /*detailedMeetup*/ };

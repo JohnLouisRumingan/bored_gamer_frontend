@@ -1,0 +1,47 @@
+.toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 56px;
+    width: 100%;
+    background-color: blueviolet;
+}
+
+.toolbar_logo {
+    margin-left: 1rem;
+}
+
+.toolbar_logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.toolbar_navigation {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 1rem;
+}
+
+.toolbar_navigation_items a:hover,
+.toolbar_navigation_items a:active {
+    color: rgb(231, 144, 13);
+}
+
+/* This is to remove the old style hyperlink looks */
+.toolbar_navigation_items a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.toolbar_navigation_items ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.toolbar_navigation_items li {
+    padding: 5rem;
+}

@@ -145,4 +145,7 @@ function backdropClick(){
 // }
 
 
-export {fetchingMeetups, fetchingGames, login, logout, addToCollection, calendarDateSelect, dispatchTodaysDate, newEvent, drawerClickHandler, backdropClick, /*detailedMeetup*/ };
+export {fetchingMeetups, fetchingGames, 
+    login, logout, addToCollection, calendarDateSelect, dispatchTodaysDate, 
+    newEvent, 
+    drawerClickHandler, backdropClick, /*detailedMeetup*/ };

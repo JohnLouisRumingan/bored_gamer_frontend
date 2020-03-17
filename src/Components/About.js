@@ -11,6 +11,7 @@ const About = () => {
             <p>
                 This app allows you to create a collection, favorite games, and join game nights. 
                 It allows you to see what games are being played on game nights.
+                TODO:
                 It will soon allow you to invite others to join game nights. 
                 It will soon allow you to vote for games in those game nights.
             </p>

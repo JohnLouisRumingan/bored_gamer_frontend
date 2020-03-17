@@ -31,8 +31,9 @@ const MeetupDetail = (props) => {
                     </p>
                     Participants:
                     <p>
-                        {participants.map(participant => participant.name)}
-                        <Icon name="add user"/>Invite others
+                        {participants.map(participant => participant.name )}
+                        <br></br>
+                        {props.profile? <div><Icon name="add user"/>Join this event </div> : null}
                     </p>
                     <br></br>
                     Games in this event:
@@ -55,6 +56,7 @@ const MeetupDetail = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
     return {
+        profile: state.profile,
         detailedMeetup: state.meetups.find(meetup => meetup.meetup_details.id === parseInt(ownProps.routerProps.match.params.meetupId))
         // meetupDetails: state.detailedMeetup
     }

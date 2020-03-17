@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import GameList from '../Components/GameList'
-import {Segment, Divider, Grid, Container, Card} from 'semantic-ui-react'
+import {Segment, Divider, Grid, Container, Card, Image} from 'semantic-ui-react'
 import './css/profile-container.css'
 
 
@@ -22,7 +22,7 @@ const Profile = (props) => {
                 <p>
                 Bio: {bio}
                 </p>
-                <img src={avatar} alt={username + bio }/>
+                {avatar? <Image src={avatar} alt={username + bio } size='medium'/> : null }
                 <br></br>
                 <p>
                   Games owned: {props.games.filter(game => game.owned===true).length}

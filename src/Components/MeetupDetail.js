@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Card } from 'semantic-ui-react'
+import { Card, Segment, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import GameList from '../Components/GameList'
 
 
 const MeetupDetail = (props) => {
@@ -20,19 +21,33 @@ const MeetupDetail = (props) => {
             
             return (
                 <div>
-                    <Card>
-                    {title}
+                    <Segment>
+                    <Header>{title}</Header>
                     {date}
+                    <br></br>
                     Location: {location}
-                    </Card>
+                    <p>
+                    Host: 
+                        {name}
+                    </p>
+                    Participants:
+                    <p>
+                        {participants.map(participant => participant.name)}
+                    </p>
+                    <br></br>
+                    Games in this event:
+                    <br></br>
+                    <GameList source={"/meetups"} games={collection.map(game => game.game)}/>
+                    <br></br>
                     <Link to='/meetups'>Close details and view Calendar</Link>
+                    </Segment>
                 </div>
             )
         }
     }
 
     return (
-        <div>Meetup details go here
+        <div>
             {props.detailedMeetup? meetupInfo(props.detailedMeetup) : null }
         </div>
     )

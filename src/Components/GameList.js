@@ -31,6 +31,11 @@ const mapStateToProps = (state, ownProps) => {
             games: state.gamesInCollection
         }
     }
+    else if(ownProps.source==="/meetups"){
+        return {
+            games: ownProps.games
+        }
+    }
 }
 
 export default connect(mapStateToProps)(GameList)

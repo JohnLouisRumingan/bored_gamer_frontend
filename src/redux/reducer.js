@@ -8,6 +8,7 @@ let initialState = {
     dateSelected: null,
     todaysDate: null,
     sideDrawerOpen: false,
+    search: [],
     // detailedMeetup: null,
 }
 

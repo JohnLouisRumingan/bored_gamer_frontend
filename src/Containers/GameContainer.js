@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux'
 import GameList from '../Components/GameList'
 import GameDetail from '../Components/GameDetail'
+import SearchField from '../Components/SearchField'
 
 
 class GameContainer extends React.Component {
@@ -22,6 +23,17 @@ class GameContainer extends React.Component {
                         render={(props) => <GameDetail routerProps={props}/>}
                     />
                 </Switch>
+
+                Search for games
+                Kickstarter
+                Designer
+                Publisher
+                Min_Players
+                Max_Players
+                Year Published
+                Alphabetical
+                <SearchField />
+
                 <div>
                     <GameList source={"/games"}/>
                 </div>

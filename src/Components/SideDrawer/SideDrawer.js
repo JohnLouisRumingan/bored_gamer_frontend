@@ -18,7 +18,7 @@ const SideDrawer = (props) => {
                     <li><Link to='/login'>Login</Link></li> :
                     <li><Link to='/profile'>Profile</Link></li>
                 }
-                <li><Link to="/meetups">Meetups</Link></li>
+                <li><Link to="/meetups">Events</Link></li>
                 <li><Link to='/games'>Games</Link></li>
                 {props.profile? <li><Link to='/' onClick={props.logoutHandler}>Logout</Link></li> : null }
                 <li><Link to="/about">About</Link></li>

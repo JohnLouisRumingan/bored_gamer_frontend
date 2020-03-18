@@ -162,6 +162,16 @@ function joinEvent(meetupId, profile){
 function addGamesToEvent(userID,meetupID, chosenGames){
 
     console.log('AddGamesToEventHandlerProp', userID, meetupID, chosenGames)
+
+    fetch(URL+'meetups/addgame', {
+        method: 'POST',
+        body: JSON.stringify({userID, meetupID, chosenGames}),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(res => res.json())
+    .then(data => console.log(data))
+
     return {type: "NOTHING"}
 }
 

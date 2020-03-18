@@ -1,10 +1,17 @@
 .App {
   text-align: center;
-  background-image: url("/public/images/pexels-photo-278918.jpeg");
+  /* background-image: url("/public/images/pexels-photo-278918.jpeg"); */
 }
 
 .landing {
-  background-image: url("/public/images/pexels-photo-278918.jpeg");
+  background-image: url(./images/pexels-photo-278918.jpeg);
+}
+
+body {
+  padding-top: 75px;
+  padding-bottom: 55px;
+  height: 100%;
+  background-image: url(./images/pexels-photo-278918.jpeg) no-repeat center/cover fixed;
 }
 
 /* .App-logo {

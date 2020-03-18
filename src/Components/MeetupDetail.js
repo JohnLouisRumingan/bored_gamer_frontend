@@ -38,7 +38,10 @@ const MeetupDetail = (props) => {
                             <Button onClick={() => props.joinEvent(id, props.profile)} icon labelPosition='left'><Icon name="remove user"/>Leave this event</Button> 
                             : (props.profile) ?
                         <Button onClick={() => props.joinEvent(id, props.profile)} icon labelPosition='left'><Icon name="add user"/>Join this event</Button> 
-                            : null}
+                            : null
+                        }
+                    
+                    
                     </p>
                     <br></br>
                     Games in this event:

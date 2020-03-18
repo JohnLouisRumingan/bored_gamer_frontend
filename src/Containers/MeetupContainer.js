@@ -43,7 +43,9 @@ const MeetupContainer = (props) => {
                 <br></br>
                 All meetups will go here under a meetups/all route 
                 <br></br><br></br>
-                <MeetupList />
+                <Container>
+                    <MeetupList />
+                </Container>
 
             </Segment>
 

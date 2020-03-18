@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Card } from 'semantic-ui-react'
+import { Button, Card, Label, Icon } from 'semantic-ui-react'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { detailedMeetup } from '../redux/actions'
@@ -7,18 +7,23 @@ import { detailedMeetup } from '../redux/actions'
 
 const MeetupCard = (props) => {
 
-    // console.log("meetup card info:", props.info)
+    console.log("meetup card info:", props.info)
     let {meetup_details:{title, location, other_games_allowed, date, id}} = props.info 
     let {host: {username, name,}} = props.info
+    let {participants} = props.info
     
     return (
         <div className="meetup-card">
             <Card>
                 <Card.Content>
                     <Card.Header>{title}</Card.Header>
-                    <Card.Meta>Host: {/*username*/}{name? ` - ${name}` : null}</Card.Meta>
+                    <Card.Meta>Host: {name? ` - ${name}` : null}</Card.Meta>
                     <Card.Meta>Location: {location}</Card.Meta>
                     <Card.Meta>{date}</Card.Meta>
+                    <br></br>
+                    <Label>
+                        <Icon name="group"/>{participants.length}
+                    </Label>
                     <br></br>
                     <Card.Content extra>
                         {other_games_allowed? <Button color='green' disabled compact>Other games allowed</Button> : 

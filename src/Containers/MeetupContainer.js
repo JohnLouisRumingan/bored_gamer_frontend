@@ -6,7 +6,7 @@ import MeetupForm from '../Components/MeetupForm'
 import Calendar from '../Components/Calendar/Calendar'
 import MeetupDetail from '../Components/MeetupDetail'
 import './css/meetup-container.css'
-import {Container, Button, Divider, Segment } from 'semantic-ui-react'
+import {Container, Divider, Segment } from 'semantic-ui-react'
 
 
 const MeetupContainer = (props) => {

@@ -1,20 +1,50 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Button, Form, Dropdown } from 'semantic-ui-react'
 
 
-const GameAddForm = (props) => {
+class GameAddForm extends React.Component {
 
+    handleDropdown = (e, {value}) => {
+        
+        //note: {value} is used with semantic react components. Allows the use of arrays 
+        this.setState({
+            chosenGames: value  
+        })
+    }
 
-    return (
-        <div>
-            Add game form 
-        </div>
-    )
+    
+    render(){
+        
+        const gameOptions = [...this.props.gamesInCollection]
+        const cloneOptions = [];
+        gameOptions.forEach(game => {
+            let obj = {};
+            obj["key"] = game.game_id
+            obj["text"] = game.name
+            obj["value"] = game.id
+            cloneOptions.push(obj)
+        })
+
+        return (
+            <div>
+                <Form>
+                    <Form.Field>
+                    <label>Games you're bringing:</label>
+                    <Dropdown placeholder='Games' fluid multiple selection options={cloneOptions} 
+                        onChange={this.handleDropdown}
+                    />
+                    </Form.Field>
+                </Form>
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = (state) => {
     return {
-
+        profile: state.profile,
+        gamesInCollection: state.gamesInCollection.filter(game => game.owned === true ),
     }
 }
 

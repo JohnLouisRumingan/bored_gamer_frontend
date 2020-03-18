@@ -19,7 +19,7 @@ const MeetupDetail = (props) => {
     const meetupInfo = (details) => {
 
         if(details){
-            let {meetup_details:{id, title, date, location, /*other_games_allowed*/}, host:{name, /*username, bio, avatar*/}, participants, collection} = props.detailedMeetup
+            let {meetup_details:{id, title, date, location, other_games_allowed}, host:{name, host_id, /*username, bio, avatar*/}, participants, collection} = props.detailedMeetup
 
             return (
                 <div>
@@ -33,7 +33,7 @@ const MeetupDetail = (props) => {
                     </p>
                     Participants:
                     <p>
-                        {participants.map(participant => participant.name )}
+                        {participants.map(participant => <div>{participant.name}<br></br></div>)}
                         <br></br>
                         {(props.profile && participants.some( participant => participant.id === props.profile.id))?
                             <Button onClick={() => props.joinEvent(id, props.profile)} icon labelPosition='left'><Icon name="remove user"/>Leave this event</Button> 
@@ -45,13 +45,14 @@ const MeetupDetail = (props) => {
                     
                     </p>
                     <br></br>
+                    {other_games_allowed? <Button disabled color='green'>Bring more games!</Button>  : <Button disabled color='orange'>Only listed games</Button> }
+                    <br></br>
                     Games in this event:
                     <br></br>
                     <GameList source={"/meetups"} /*games={collection.map(game => game.game)}*/ collection={collection}/>
                     <br></br>
-                    {props.profile && participants.some( participant => participant.id === props.profile.id)?
-                    //  <Link to='/meetups/:id/new'>Add Games To This Event</Link>
-                        "Add games to this event"
+                    {((props.profile && participants.some( participant => participant.id === props.profile.id) && other_games_allowed) || (props.profile && props.profile.id=== host_id))?
+                        <GameAddForm />
                         :null
                     }
 

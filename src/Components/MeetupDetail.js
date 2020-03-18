@@ -1,9 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Card, Segment, Header, Icon, Button } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 import GameList from '../Components/GameList'
 import {joinEvent} from '../redux/actions'
+import GameAddForm from '../Components/GameAddForm'
 
 
 const MeetupDetail = (props) => {
@@ -47,6 +48,13 @@ const MeetupDetail = (props) => {
                     Games in this event:
                     <br></br>
                     <GameList source={"/meetups"} /*games={collection.map(game => game.game)}*/ collection={collection}/>
+                    <br></br>
+                    {props.profile && participants.some( participant => participant.id === props.profile.id)?
+                    //  <Link to='/meetups/:id/new'>Add Games To This Event</Link>
+                        "Add games to this event"
+                        :null
+                    }
+
                     <br></br>
                     <Link to='/meetups'>Close details and view Calendar</Link>
                     </Segment>

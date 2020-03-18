@@ -159,6 +159,12 @@ function joinEvent(meetupId, profile){
    }
 }
 
+function addGamesToEvent(userID,meetupID, chosenGames){
+
+    console.log('AddGamesToEventHandlerProp', userID, meetupID, chosenGames)
+    return {type: "NOTHING"}
+}
+
 // function detailedMeetup(info){
 //     return {type: "UPDATE_DETAILED_MEETUP", info}
 // }
@@ -168,4 +174,4 @@ export {fetchingMeetups, fetchingGames,
     login, logout, addToCollection, calendarDateSelect, dispatchTodaysDate, 
     newEvent, 
     drawerClickHandler, backdropClick, 
-    joinEvent, /*detailedMeetup*/ };
+    joinEvent, addGamesToEvent, };

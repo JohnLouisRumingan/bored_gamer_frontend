@@ -33,7 +33,7 @@ const MeetupDetail = (props) => {
                     </p>
                     Participants:
                     <p>
-                        {participants.map(participant => <div>{participant.name}<br></br></div>)}
+                        {participants.map(participant => <span key={participant.name}>{participant.name}<br></br></span>)}
                         <br></br>
                         {(props.profile && participants.some( participant => participant.id === props.profile.id))?
                             <Button onClick={() => props.joinEvent(id, props.profile)} icon labelPosition='left'><Icon name="remove user"/>Leave this event</Button> 

@@ -7,7 +7,7 @@ import { detailedMeetup } from '../redux/actions'
 
 const MeetupCard = (props) => {
 
-    console.log("meetup card info:", props.info)
+    // console.log("meetup card info:", props.info)
     let {meetup_details:{title, location, other_games_allowed, date, id}} = props.info 
     let {host: {username, name,}} = props.info
     let {participants} = props.info

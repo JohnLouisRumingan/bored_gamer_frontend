@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux'
 import {addToCollection} from '../redux/actions.js';
-import {} from 'semantic-ui-react'
+import {Card, Image} from 'semantic-ui-react'
 
 const GameCard = (props) => {
 
@@ -14,9 +14,12 @@ const GameCard = (props) => {
     return (
         
         <div className="content">
+            <Card>
             <h2>
                 <em>
-                    {name} {designers? ` - Designed by: ${designers}` : null  }
+                    <Image src={image_url} size='small'/>
+                    {name}<br></br>
+                    {designers? designers : null  }
                     {/* <img src={image_url}></img>  */}
                     {/* Uncomment above to show images once I've made smaller, standardized card containers for them. Some images are gigantic */}
                 </em>
@@ -33,6 +36,7 @@ const GameCard = (props) => {
                 }
                 <Link className="item" to={game_id? `/games/${game_id}`: `/games/${id}`}><button className="ui small button">See details</button></Link>
             </h2>
+            </Card>
         </div>
         
     )

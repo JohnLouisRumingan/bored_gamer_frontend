@@ -111,6 +111,10 @@ function dispatchTodaysDate(day){
     return {type: "TODAYS_DATE", payload: day}
 }
 
+function addNewEvent(event){
+    return {type: "ADD_NEW_EVENT", payload: event}
+}
+
 function newEvent(formDetails, profile, date){
 
     
@@ -125,7 +129,10 @@ function newEvent(formDetails, profile, date){
             headers: {
                 "Content-Type":"application/json"
             }
-        }).then(res => res.json()).then(data => console.log("back from the back end:",data))
+        }).then(res => res.json()).then(event => {
+            console.log("back from the back end:", event)
+            dispatch(addNewEvent(event))
+            })
 
     }
     // return {type: "SUBMIT_FORM", payload: formDetails}

@@ -35,6 +35,7 @@ class GameAddForm extends React.Component {
                         onChange={this.handleDropdown}
                     />
                     </Form.Field>
+                    
                 </Form>
             </div>
         )

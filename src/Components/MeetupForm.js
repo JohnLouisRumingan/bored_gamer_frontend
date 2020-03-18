@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import './css/meetup-form.css'
 import { newEvent } from '../redux/actions'
 import { Button, Form, Dropdown } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 class MeetupForm extends React.Component {
 
@@ -15,11 +15,19 @@ class MeetupForm extends React.Component {
             location: "",
             // date: new Date(),
             chosenGames: [],
+            redirect: false,
         }
     }
 
-    
+    setRedirect = () => {
+        this.setState({redirect: true})
+    }
 
+    renderRedirect = () => {
+        if(this.state.redirect){
+            return <Redirect to='/meetups' />
+        }
+    }
     
     handleChange = (e, key) => {
         let returnObj = {}
@@ -56,7 +64,11 @@ class MeetupForm extends React.Component {
         // console.log("game options form:", cloneOptions)
         return (
             <div className="meetup-form">
-                <Form onSubmit={() => this.props.newEvent(this.state, profile, date? date : new Date()) /*console.log(this.state, date, profile)*/}>
+                {this.renderRedirect()}
+                <Form onSubmit={() => {
+                    this.props.newEvent(this.state, profile, date? date : new Date());
+                    this.setRedirect();
+                }}>
                     <Form.Field>
                         <label>Event Name</label>
                         <input placeholder='Event Name' value={this.state.event} onChange={(e) => {this.handleChange(e, "event")}}/>

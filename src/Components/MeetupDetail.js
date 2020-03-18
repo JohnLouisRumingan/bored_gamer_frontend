@@ -52,7 +52,7 @@ const MeetupDetail = (props) => {
                     <GameList source={"/meetups"} /*games={collection.map(game => game.game)}*/ collection={collection}/>
                     <br></br>
                     {((props.profile && participants.some( participant => participant.id === props.profile.id) && other_games_allowed) || (props.profile && props.profile.id=== host_id))?
-                        <GameAddForm />
+                        <GameAddForm meetup_id={id}/>
                         :null
                     }
 

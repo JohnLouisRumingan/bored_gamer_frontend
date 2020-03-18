@@ -116,12 +116,9 @@ function addNewEvent(event){
 }
 
 function newEvent(formDetails, profile, date){
-
     
     let submitObj = {form: formDetails, profile, date}
-    console.log("new event submitted!", submitObj)
 
-    
     return (dispatch) => {
         fetch(URL+'meetups', {
             method: 'POST',

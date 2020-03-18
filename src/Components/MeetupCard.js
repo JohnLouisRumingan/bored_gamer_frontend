@@ -22,7 +22,7 @@ const MeetupCard = (props) => {
                     <Card.Meta>{date}</Card.Meta>
                     <br></br>
                     <Label>
-                        <Icon name="group"/>{participants.length}
+                        <Icon name="group" color='pink'/>{participants.length}
                     </Label>
                     <br></br>
                     <Card.Content extra>

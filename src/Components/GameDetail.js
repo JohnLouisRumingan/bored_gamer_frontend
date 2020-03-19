@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import {showGameDetails} from '../redux/actions'
+import {getGameDetails, /*showGameDetails*/} from '../redux/actions'
 
 class GameDetail extends React.Component{
 
@@ -11,7 +11,12 @@ class GameDetail extends React.Component{
 
     componentDidMount(){
 
-        showGameDetails(this.props.routerProps)
+        getGameDetails(this.props.routerProps.match.params.gameId)
+    }
+
+    componentDidUpdate(){
+        getGameDetails(this.props.routerProps.match.params.gameId)
+        // showGameDetails(this.props.routerProps)
     }
 
     render(){
@@ -48,7 +53,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
 
     return {
-        showGameDetails: (ownProps) => {dispatch(showGameDetails(ownProps))}
+        getGameDetails: (gameID) => {dispatch(getGameDetails(gameID))},
+        // showGameDetails: (gameID) => {dispatch(showGameDetails(gameID))}
     }
 }
 

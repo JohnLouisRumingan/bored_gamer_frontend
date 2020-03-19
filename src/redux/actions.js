@@ -127,7 +127,7 @@ function newEvent(formDetails, profile, date){
                 "Content-Type":"application/json"
             }
         }).then(res => res.json()).then(event => {
-            console.log("back from the back end:", event)
+            // console.log("back from the back end:", event)
             dispatch(addNewEvent(event))
             })
 
@@ -165,7 +165,7 @@ function updateMeetup(meetupInfo){
 
 function addGamesToEvent(userID,meetupID, chosenGames){
 
-    console.log('AddGamesToEventHandlerProp', userID, meetupID, chosenGames)
+    // console.log('AddGamesToEventHandlerProp', userID, meetupID, chosenGames)
 
     return (dispatch) => {fetch(URL+'meetups/addgame', {
         method: 'POST',
@@ -180,30 +180,35 @@ function addGamesToEvent(userID,meetupID, chosenGames){
     }
 }
 
-function showGameDetails(routerProps){
-
-    let gameID = routerProps.match.params.gameId
-    console.log("inside action show game details:", gameID)
-
-    fetch(URL+'games/search', {
-        method: 'POST',
-        body: JSON.stringify({gameID}),
-        headers: {
-            'Content-Type' : 'application/json'
-        }
-    })
-    .then(res => res.json())
-    .then(data => console.log(data))
-
-    return {type: "NOTHING"}
+function showGameDetails(gameDetails){
+    // console.log("show game details", gameDetails)
+    return {type: "UPDATE_DETAILS", payload: gameDetails}
 }
 
-// function detailedMeetup(info){
-//     return {type: "UPDATE_DETAILED_MEETUP", info}
-// }
+function getGameDetails(gameID){
+    
+    // console.log('gameID', gameID)
+    return (dispatch) => {
+        // let gameID = routerProps.match.params.gameId
+        // console.log("inside action", gameID)
+        // debugger
+        fetch(URL+'/games/search', {
+            method: 'POST',
+            body: JSON.stringify({gameID}),
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log("back from the back end:", data)
+            dispatch(showGameDetails(data));
+        })
+    }
+}
 
 
-export {fetchingMeetups, fetchingGames, showGameDetails,
+export {fetchingMeetups, fetchingGames, getGameDetails, showGameDetails,
     login, logout, addToCollection, calendarDateSelect, dispatchTodaysDate, 
     newEvent, joinEvent, addGamesToEvent, 
     drawerClickHandler, backdropClick, 

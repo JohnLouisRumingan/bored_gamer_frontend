@@ -13,14 +13,7 @@ let initialState = {
     // detailedMeetup: null,
 }
 
-const detailedGameReducer = (state=initialState.detailedGame, action) => {
-    switch(action.type){
-        case "SHOW_DETAILS_GAME":
-            return state;
-        default:
-            return state;
-    }
-}
+
 
 const drawerReducer = (state=initialState.sideDrawerOpen, action) => {
     switch(action.type){
@@ -97,6 +90,16 @@ const currentDateReducer = (state=initialState.todaysDate, action) => {
 const dateReducer = (state=initialState.dateSelected, action) => {
     switch(action.type){
         case "SELECT_DATE":
+            return action.payload
+        default:
+            return state;
+    }
+}
+
+const detailedGameReducer = (state=initialState.detailedGame, action) => {
+    debugger
+    switch(action.type){
+        case "UPDATE_DETAILS":
             return action.payload
         default:
             return state;

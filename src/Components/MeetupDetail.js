@@ -47,14 +47,17 @@ const MeetupDetail = (props) => {
                     <br></br>
                     {other_games_allowed? <Button disabled color='green'>Bring more games!</Button>  : <Button disabled color='orange'>Only listed games</Button> }
                     <br></br>
+                    {((props.profile && participants.some( participant => participant.id === props.profile.id) && other_games_allowed) || (props.profile && props.profile.id=== host_id))?
+                        <div>
+                            Add or remove your games:
+                            <GameAddForm meetup_id={id}/>
+                        </div>
+                        :null
+                    }
+                    <br></br>
                     Games in this event:
                     <br></br>
                     <GameList source={"/meetups"} /*games={collection.map(game => game.game)}*/ collection={collection}/>
-                    <br></br>
-                    {((props.profile && participants.some( participant => participant.id === props.profile.id) && other_games_allowed) || (props.profile && props.profile.id=== host_id))?
-                        <GameAddForm meetup_id={id}/>
-                        :null
-                    }
 
                     <br></br>
                     <Link to='/meetups'>Close details and view Calendar</Link>

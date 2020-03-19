@@ -13,8 +13,8 @@ const MeetupDetail = (props) => {
     // console.log("router prop test:", props.routerProps.match.params.meetupId)
     // console.log("router meetups test:", props.meetups[1])
     // debugger
-    console.log(props.profile)
-    console.log(props.detailedMeetup)
+    // console.log(props.profile)
+    // console.log(props.detailedMeetup)
 
     const meetupInfo = (details) => {
 
@@ -74,7 +74,8 @@ const MeetupDetail = (props) => {
 const mapStateToProps = (state, ownProps) => {
     return {
         profile: state.profile,
-        detailedMeetup: state.meetups.find(meetup => meetup.meetup_details.id === parseInt(ownProps.routerProps.match.params.meetupId))
+        detailedMeetup: state.meetups.find(meetup => meetup.meetup_details.id === parseInt(ownProps.routerProps.match.params.meetupId)),
+        allMeetups: state.meetups
         // meetupDetails: state.detailedMeetup
     }
 }

@@ -54,7 +54,7 @@ const meetupReducer = (state=initialState.meetups, action) => {
             let newState = [...state]
             newState.forEach((meetup, index) => {
                 if(meetup.meetup_details.id === action.payload.meetup_details.id){
-                    state[index] = action.payload
+                    newState[index] = action.payload
                 }
             })
             return newState;

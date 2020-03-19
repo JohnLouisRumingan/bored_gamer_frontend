@@ -176,7 +176,7 @@ function addGamesToEvent(userID,meetupID, chosenGames){
         }).then(res => res.json())
         .then(updatedMeetup => {
             dispatch(updateMeetup(updatedMeetup));
-            console.log(updatedMeetup);
+            // console.log(updatedMeetup);
         })
     }
 }

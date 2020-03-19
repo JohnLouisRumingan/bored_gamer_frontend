@@ -159,20 +159,26 @@ function joinEvent(meetupId, profile){
    }
 }
 
+function updateMeetup(meetupInfo){
+    return{type: "MODIFY_MEETUP", payload: meetupInfo}
+}
+
 function addGamesToEvent(userID,meetupID, chosenGames){
 
     console.log('AddGamesToEventHandlerProp', userID, meetupID, chosenGames)
 
-    fetch(URL+'meetups/addgame', {
+    return (dispatch) => {fetch(URL+'meetups/addgame', {
         method: 'POST',
         body: JSON.stringify({userID, meetupID, chosenGames}),
         headers: {
             'Content-Type': 'application/json'
         }
-    }).then(res => res.json())
-    .then(data => console.log(data))
-
-    return {type: "NOTHING"}
+        }).then(res => res.json())
+        .then(updatedMeetup => {
+            dispatch(updateMeetup(updatedMeetup));
+            console.log(updatedMeetup);
+        })
+    }
 }
 
 // function detailedMeetup(info){

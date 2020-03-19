@@ -50,6 +50,14 @@ const meetupReducer = (state=initialState.meetups, action) => {
         // below currently not used, gets the entire set of meetups again 
         // case "JOINED_MEETUPS":
         //     return state;
+        case "MODIFY_MEETUP":
+            let newState = [...state]
+            newState.forEach((meetup, index) => {
+                if(meetup.meetup_details.id === action.payload.meetup_details.id){
+                    state[index] = action.payload
+                }
+            })
+            return newState;
         case "ADD_NEW_EVENT":
             let newEvent = [...state, action.payload]
             return newEvent;

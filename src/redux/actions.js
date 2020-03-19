@@ -187,7 +187,7 @@ function showGameDetails(gameDetails){
 
 function getGameDetails(gameID){
     
-    // console.log('gameID', gameID)
+    console.log('gameID', gameID)
     return (dispatch) => {
         // let gameID = routerProps.match.params.gameId
         // console.log("inside action", gameID)

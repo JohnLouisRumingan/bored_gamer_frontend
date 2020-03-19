@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux'
-import {addToCollection} from '../redux/actions.js';
+import {addToCollection, getGameDetails} from '../redux/actions.js';
 import {Card, Image} from 'semantic-ui-react'
 
 const GameCard = (props) => {
@@ -34,7 +34,10 @@ const GameCard = (props) => {
                     </div>
                     :null
                 }
-                <Link className="item" to={game_id? `/games/${game_id}`: `/games/${id}`}><button className="ui small button">See details</button></Link>
+                <Link className="item" to={game_id? `/games/${game_id}`: `/games/${id}`}>
+                    <button className="ui small button" onClick={()=> 
+                        props.game_id? props.getGameDetails(game_id) : props.getGameDetails(id)}>See details</button>
+                </Link>
             </h2>
             </Card>
         </div>
@@ -53,7 +56,8 @@ const mapDispatchToProps = (dispatch) => {
 
     return {
         favoriteGame: (game, profile) => { dispatch(addToCollection(game, profile, "favorite"))},
-        ownGame: (game, profile) => {dispatch(addToCollection(game, profile, "owned"))}
+        ownGame: (game, profile) => {dispatch(addToCollection(game, profile, "owned"))},
+        getGameDetails: (gameID) => {dispatch(getGameDetails(gameID))}
     }
 }
 

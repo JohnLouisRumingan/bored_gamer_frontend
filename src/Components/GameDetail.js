@@ -15,7 +15,7 @@ class GameDetail extends React.Component{
     }
 
     componentDidUpdate(){
-        getGameDetails(this.props.routerProps.match.params.gameId)
+        // getGameDetails(this.props.routerProps.match.params.gameId)
         // showGameDetails(this.props.routerProps)
     }
 
@@ -45,8 +45,8 @@ class GameDetail extends React.Component{
 const mapStateToProps = (state, ownProps) => {
 
     return {
-      detailedGame: state.games.find(game => game.id === ownProps.routerProps.match.params.gameId)
-
+    //   detailedGame: state.games.find(game => game.id === ownProps.routerProps.match.params.gameId)
+        detailedGame: state.detailedGame
     }
 }
 

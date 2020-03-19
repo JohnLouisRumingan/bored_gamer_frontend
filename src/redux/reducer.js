@@ -100,7 +100,7 @@ const detailedGameReducer = (state=initialState.detailedGame, action) => {
     debugger
     switch(action.type){
         case "UPDATE_DETAILS":
-            return action.payload
+            return action.payload.result[0]
         default:
             return state;
     }

@@ -185,6 +185,16 @@ function showGameDetails(routerProps){
     let gameID = routerProps.match.params.gameId
     console.log("inside action show game details:", gameID)
 
+    fetch(URL+'games/search', {
+        method: 'POST',
+        body: JSON.stringify({gameID}),
+        headers: {
+            'Content-Type' : 'application/json'
+        }
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+
     return {type: "NOTHING"}
 }
 

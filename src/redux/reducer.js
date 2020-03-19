@@ -9,7 +9,17 @@ let initialState = {
     todaysDate: null,
     sideDrawerOpen: false,
     search: [],
+    detailedGame: null,
     // detailedMeetup: null,
+}
+
+const detailedGameReducer = (state=initialState.detailedGame, action) => {
+    switch(action.type){
+        case "SHOW_DETAILS_GAME":
+            return state;
+        default:
+            return state;
+    }
 }
 
 const drawerReducer = (state=initialState.sideDrawerOpen, action) => {
@@ -66,15 +76,6 @@ const meetupReducer = (state=initialState.meetups, action) => {
     }
 }
 
-// const detailedMeetupReducer = (state=initialState.detailedMeetup, action) => {
-//     switch(action.type){
-//         case "UPDATE_DETAILED_MEETUP":
-//             return action.payload;
-//         default:
-//             return state;
-//     }
-// }
-
 const collectionReducer = (state=initialState.gamesInCollection, action) => {
     switch(action.type){
         case "UPDATE_COLLECTION":
@@ -110,6 +111,7 @@ const rootReducer = combineReducers({
     todaysDate: currentDateReducer,
     meetups: meetupReducer,
     sideDrawerOpen: drawerReducer,
+    detailedGame: detailedGameReducer,
     // detailedMeetup: detailedMeetupReducer,
     
 })

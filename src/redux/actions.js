@@ -176,9 +176,16 @@ function addGamesToEvent(userID,meetupID, chosenGames){
         }).then(res => res.json())
         .then(updatedMeetup => {
             dispatch(updateMeetup(updatedMeetup));
-            // console.log(updatedMeetup);
         })
     }
+}
+
+function showGameDetails(routerProps){
+
+    let gameID = routerProps.match.params.gameId
+    console.log("inside action show game details:", gameID)
+
+    return {type: "NOTHING"}
 }
 
 // function detailedMeetup(info){
@@ -186,8 +193,8 @@ function addGamesToEvent(userID,meetupID, chosenGames){
 // }
 
 
-export {fetchingMeetups, fetchingGames, 
+export {fetchingMeetups, fetchingGames, showGameDetails,
     login, logout, addToCollection, calendarDateSelect, dispatchTodaysDate, 
-    newEvent, 
+    newEvent, joinEvent, addGamesToEvent, 
     drawerClickHandler, backdropClick, 
-    joinEvent, addGamesToEvent, };
+    };

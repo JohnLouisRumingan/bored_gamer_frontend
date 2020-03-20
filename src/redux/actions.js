@@ -207,9 +207,17 @@ function getGameDetails(gameID){
     }
 }
 
+function submitSearchForm(searchParams){
+
+    console.log("submit search form:", searchParams)
+
+    return{type: "NOTHING"}
+}
+
 
 export {fetchingMeetups, fetchingGames, getGameDetails, showGameDetails,
     login, logout, addToCollection, calendarDateSelect, dispatchTodaysDate, 
     newEvent, joinEvent, addGamesToEvent, 
     drawerClickHandler, backdropClick, 
+    submitSearchForm,
     };

@@ -15,6 +15,14 @@ class SearchField extends React.Component{
         publisher: null,
     }
 
+    changeForm = (e, key) => {
+
+        let formObj = {};
+        formObj[key] = e.target.value;
+
+        // console.log(formObj)
+        this.setState(formObj)
+    }
 
 
     render(){
@@ -24,8 +32,10 @@ class SearchField extends React.Component{
                 Search form here
                 <Form>
                     <Form.Group widths='equal'>
-                        <Form.Input fluid label='Title' placeholder='search for title'/>
-                        <Form.Input fluid label='Designer' placeholder='search for designer'/>
+                        <Form.Input fluid label='Title' placeholder='search for title' 
+                            value={this.state.title} onChange={(e) => {this.changeForm(e, "title")}}/>
+                        <Form.Input fluid label='Designer' placeholder='search for designer'
+                            value={this.state.designer} onChange={(e) => {this.changeForm(e, "designer")}}/>
                         <Form.Input fluid label='Publisher' placeholder='search for publisher'/>
                     </Form.Group>
                     <Form.Group align='left'>

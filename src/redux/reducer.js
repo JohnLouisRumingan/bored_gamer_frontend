@@ -97,7 +97,6 @@ const dateReducer = (state=initialState.dateSelected, action) => {
 }
 
 const detailedGameReducer = (state=initialState.detailedGame, action) => {
-    debugger
     switch(action.type){
         case "UPDATE_DETAILS":
             return action.payload.result[0]

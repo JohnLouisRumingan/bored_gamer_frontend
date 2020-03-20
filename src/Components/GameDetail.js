@@ -15,8 +15,6 @@ class GameDetail extends React.Component{
     }
 
     componentDidUpdate(){
-        // getGameDetails(this.props.routerProps.match.params.gameId)
-        // showGameDetails(this.props.routerProps)
     }
 
     render(){

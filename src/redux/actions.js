@@ -187,7 +187,7 @@ function showGameDetails(gameDetails){
 
 function getGameDetails(gameID){
     
-    console.log('gameID', gameID)
+    // console.log('gameID', gameID)
     return (dispatch) => {
         // let gameID = routerProps.match.params.gameId
         // console.log("inside action", gameID)
@@ -201,10 +201,14 @@ function getGameDetails(gameID){
         })
         .then(res => res.json())
         .then(data => {
-            console.log("back from the back end:", data)
+            // console.log("back from the back end:", data)
             dispatch(showGameDetails(data));
         })
     }
+}
+
+function randomGame(game){
+    return {type: "RANDOM_GAME", payload: game}
 }
 
 function submitSearchForm(searchParams){
@@ -221,7 +225,12 @@ function submitSearchForm(searchParams){
         .then(res => res.json())
         .then(data => {
             console.log("back from back end:", data)
-            dispatch(fetchedGames(data.result))
+            if(data.random){
+                dispatch(randomGame(data.random))
+            }
+            else{
+                dispatch(fetchedGames(data.result))
+            }
         })
 
 

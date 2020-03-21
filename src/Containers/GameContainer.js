@@ -23,15 +23,7 @@ class GameContainer extends React.Component {
                         render={(props) => <GameDetail routerProps={props}/>}
                     />
                 </Switch>
-
-                Search for games
-                Kickstarter
-                Designer
-                Publisher
-                Min_Players
-                Max_Players
-                Year Published
-                Alphabetical
+                
                 <SearchField />
 
                 <div>

@@ -64,13 +64,24 @@ class SearchField extends React.Component{
                     <Form.Group align='right'>
                         <Form.Button onClick={() => {
                             this.props.submit(this.state)
-                            this.resetState()}}>
+                            this.resetState()
+                        }}>
                             Submit
+                        </Form.Button>
+                        <Form.Button onClick={() => {
+                            this.resetState()
+                        }}>
+                            Reset Form
                         </Form.Button>
                         <Form.Button onClick={() => {
                             this.props.fetch100()
                         }}>
                             See 100 games
+                        </Form.Button>
+                        <Form.Button onClick={() => {
+                            this.props.submit({random: true})
+                        }}>
+                            Find a random game 
                         </Form.Button>
                     </Form.Group>
                 </Form>

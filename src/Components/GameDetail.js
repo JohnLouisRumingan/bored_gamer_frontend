@@ -39,6 +39,8 @@ class GameDetail extends React.Component{
                     </div>
                     : null 
                 }
+                Game details:
+                Min_player, max_player, playtime, other info
                 <Link to='/games'><button className="ui small button">Close Details</button>
                 </Link>
             </div>

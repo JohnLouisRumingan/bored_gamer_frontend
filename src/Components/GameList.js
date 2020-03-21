@@ -6,8 +6,8 @@ import { connect } from 'react-redux'
 const GameList = (props) => {
 
     return (
-        <div className="ui container">
-            <div className="ui celled selection list">
+        <div /*className="ui container"*/>
+            <div /*className="ui celled selection list"*/>
                 {(props.games) ? props.games.map(game => (
                     <GameCard 
                         key={game.game_id? game.game_id : game.id}

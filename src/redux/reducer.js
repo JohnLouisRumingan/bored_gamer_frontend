@@ -41,6 +41,9 @@ const gamesReducer = (state=initialState.games, action) => {
     switch(action.type){
         case "FETCHED_GAMES":
             return action.payload;
+        case "RANDOM_GAME":
+            //random games are returned as a single large hash 
+            return [action.payload]
         default:
             return state;
     }

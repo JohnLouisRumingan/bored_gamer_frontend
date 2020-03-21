@@ -209,9 +209,24 @@ function getGameDetails(gameID){
 
 function submitSearchForm(searchParams){
 
-    console.log("submit search form:", searchParams)
+    return (dispatch) => {
 
-    return{type: "NOTHING"}
+        fetch(URL+'/games/search', {
+            method: 'POST',
+            body: JSON.stringify(searchParams), 
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log("back from back end:", data)
+            dispatch(fetchedGames(data.result))
+        })
+
+
+        
+    }
 }
 
 

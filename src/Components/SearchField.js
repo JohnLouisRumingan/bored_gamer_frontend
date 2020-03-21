@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { Form } from 'semantic-ui-react'
-import { submitSearchForm} from '../redux/actions'
+import { submitSearchForm, fetchingGames } from '../redux/actions'
 
 
 class SearchField extends React.Component{
@@ -24,6 +24,18 @@ class SearchField extends React.Component{
         // console.log(formObj)
         this.setState(formObj)
     }
+
+    resetState = () => {
+        this.setState({
+        title: "",
+        kickstarter: false,
+        designer: "",
+        min_players: "",
+        max_players: "",
+        year_published: "",
+        publisher: "",
+        })
+    }
     
     render(){
 
@@ -44,10 +56,23 @@ class SearchField extends React.Component{
                         <Form.Input fluid label='Maximum Players' placeholder='maximum players' type="number"
                             value={this.state.max_players} onChange={(e)=> this.changeForm(e, "max_players")}/>
                     </Form.Group>
-                    <Form.Group inline>
-                        <Form.Checkbox label='Kickstarter' value={this.state.kickstarter} onChange={() => this.setState({kickstarter: !this.state.kickstarter})}/>
+                    <Form.Group>
+                        <Form.Checkbox label='Kickstarter' value={this.state.kickstarter} 
+                        onChange={() => this.setState({kickstarter: !this.state.kickstarter})}>
+                        </Form.Checkbox>
                     </Form.Group>
-                    <Form.Button onClick={() => this.props.submit(this.state)}>Submit</Form.Button>
+                    <Form.Group align='right'>
+                        <Form.Button onClick={() => {
+                            this.props.submit(this.state)
+                            this.resetState()}}>
+                            Submit
+                        </Form.Button>
+                        <Form.Button onClick={() => {
+                            this.props.fetch100()
+                        }}>
+                            See 100 games
+                        </Form.Button>
+                    </Form.Group>
                 </Form>
             </div>
         )
@@ -57,7 +82,8 @@ class SearchField extends React.Component{
 const mapDispatchToProps = (dispatch) => {
 
     return {
-        submit: (searchParams) => dispatch(submitSearchForm(searchParams))
+        submit: (searchParams) => dispatch(submitSearchForm(searchParams)),
+        fetch100: () => dispatch(fetchingGames())
     }
 }
 

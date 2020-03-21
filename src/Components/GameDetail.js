@@ -18,6 +18,13 @@ class GameDetail extends React.Component{
     }
 
     render(){
+
+        if(this.props.detailedGame){
+
+            let { } = this.props.detailedGame 
+        
+        }
+
         return (
             <div>
                 Game Details<br></br>

@@ -51,7 +51,11 @@ class App extends Component {
                 <Redirect to='/profile' /> :
                 <Login />
             }}/>
-            <Route exact path='/signup' component={Signup} />
+            <Route exact path='/signup' render={() => {
+              return this.props.profile?
+                <Redirect to='/profile' /> :
+                <Signup />
+            }} />
             <Route path='/meetups' component={MeetupContainer}/>
             <Route path='/games' component={GameContainer} />
             <Route exact path='/about' component={About}/>

@@ -44,7 +44,7 @@ const MeetupContainer = (props) => {
                 All meetups will go here under a meetups/all route 
                 <br></br><br></br>
                 <Container>
-                    <MeetupList />
+                    <MeetupList meetups={props.meetups}/>
                 </Container>
 
             </Segment>
@@ -58,7 +58,8 @@ const MeetupContainer = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        profile: state.profile
+        profile: state.profile,
+        meetups: state.meetups
     }
 }
 

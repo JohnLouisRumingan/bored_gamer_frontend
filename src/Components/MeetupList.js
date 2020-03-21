@@ -1,7 +1,7 @@
 import React from 'react'
 import MeetupCard from './MeetupCard'
-import {connect} from 'react-redux'
 import {Card} from 'semantic-ui-react'
+// import {connect} from 'react-redux'
 
 
 const MeetupList = (props) => {
@@ -15,10 +15,12 @@ const MeetupList = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        meetups: state.meetups
-    }
-}
+// const mapStateToProps = (state) => {
+//     return {
+//         meetups: state.meetups
+//     }
+// }
 
-export default connect(mapStateToProps)(MeetupList)
+// export default connect(mapStateToProps)(MeetupList)
+
+export default MeetupList

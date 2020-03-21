@@ -238,10 +238,20 @@ function submitSearchForm(searchParams){
     }
 }
 
+function createAccount(accountDetails){
+
+
+    return(dispatch) => {
+        console.log("Account details from createAccount Action:", accountDetails)
+        dispatch({type: "NOTHING"})
+    }
+}
+
 
 export {fetchingMeetups, fetchingGames, getGameDetails, showGameDetails,
-    login, logout, addToCollection, calendarDateSelect, dispatchTodaysDate, 
+    login, logout, addToCollection, createAccount,
+    calendarDateSelect, dispatchTodaysDate, 
     newEvent, joinEvent, addGamesToEvent, 
     drawerClickHandler, backdropClick, 
-    submitSearchForm,
+    submitSearchForm, 
     };

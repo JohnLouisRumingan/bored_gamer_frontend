@@ -14,6 +14,8 @@ class SearchField extends React.Component{
         max_players: "",
         year_published: "",
         publisher: "",
+        fuzzy_match: false,
+
     }
 
     changeForm = (e, key) => {
@@ -59,6 +61,9 @@ class SearchField extends React.Component{
                     <Form.Group>
                         <Form.Checkbox label='Kickstarter' value={this.state.kickstarter} 
                         onChange={() => this.setState({kickstarter: !this.state.kickstarter})}>
+                        </Form.Checkbox>
+                        <Form.Checkbox label='Fuzzy Match for Title Search' value={this.state.fuzzy_match} 
+                        onChange={() => this.setState({fuzzy_match: !this.state.fuzzy_match})}>
                         </Form.Checkbox>
                     </Form.Group>
                     <Form.Group align='right'>

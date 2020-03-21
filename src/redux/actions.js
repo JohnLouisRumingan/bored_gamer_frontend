@@ -187,11 +187,7 @@ function showGameDetails(gameDetails){
 
 function getGameDetails(gameID){
     
-    // console.log('gameID', gameID)
     return (dispatch) => {
-        // let gameID = routerProps.match.params.gameId
-        // console.log("inside action", gameID)
-        // debugger
         fetch(URL+'/games/search', {
             method: 'POST',
             body: JSON.stringify({gameID}),
@@ -201,7 +197,7 @@ function getGameDetails(gameID){
         })
         .then(res => res.json())
         .then(data => {
-            // console.log("back from the back end:", data)
+            console.log("back from the back end:", data)
             dispatch(showGameDetails(data));
         })
     }
@@ -214,7 +210,6 @@ function randomGame(game){
 function submitSearchForm(searchParams){
 
     return (dispatch) => {
-
         fetch(URL+'/games/search', {
             method: 'POST',
             body: JSON.stringify(searchParams), 
@@ -240,18 +235,27 @@ function submitSearchForm(searchParams){
 
 function createAccount(accountDetails){
 
+    return (dispatch) => {
 
-    return(dispatch) => {
-        console.log("Account details from createAccount Action:", accountDetails)
-        dispatch({type: "NOTHING"})
+        fetch(URL+'users', {
+            type: "POST",
+            body: JSON.stringify({user: accountDetails}),
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        }).then(res => res.json())
+        .then(data => {
+            console.log(data)
+            dispatch({type: "NOTHING"})
+        })
     }
 }
 
 
 export {fetchingMeetups, fetchingGames, getGameDetails, showGameDetails,
-    login, logout, addToCollection, createAccount,
+    login, logout, addToCollection,
     calendarDateSelect, dispatchTodaysDate, 
     newEvent, joinEvent, addGamesToEvent, 
     drawerClickHandler, backdropClick, 
-    submitSearchForm, 
+    submitSearchForm, createAccount
     };

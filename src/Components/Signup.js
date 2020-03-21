@@ -12,9 +12,10 @@ class Signup extends React.Component {
         password2: "",
         bio: "",
         avatar: "",
+        name: "",
         passwordError: "",
         passwordType: true,
-        password2Type: "password",
+        password2Type: true,
         
     }
 
@@ -31,6 +32,7 @@ class Signup extends React.Component {
             password2: "",
             bio: "",
             avatar: "",
+            name: "",
         })
     }
 
@@ -42,6 +44,9 @@ class Signup extends React.Component {
                     <Form.Group widths='equal'>
                         <Form.Input fluid label='Username' placeholder='Enter a username'
                             value={this.state.username} onChange={(e) => this.changeHandler(e, "username")}
+                        />
+                        <Form.Input fluid label='Name' placeholder='Enter your name'
+                            value={this.state.name} onChange={(e) => this.changeHandler(e, "name")}
                         />
                         <Form.Input fluid label='Password' placeholder='Enter a password'
                             value={this.state.password} onChange={(e) => this.changeHandler(e, "password")}
@@ -89,8 +94,15 @@ class Signup extends React.Component {
                         Create Account
                     </Form.Button>
                 </Form>
+                {this.props.error? <Button disabled color="red">{this.props.error}</Button> : null }
             </div>
         )
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        error: state.error
     }
 }
 
@@ -101,4 +113,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Signup)
+export default connect(mapStateToProps, mapDispatchToProps)(Signup)

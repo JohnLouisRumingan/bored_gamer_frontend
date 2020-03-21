@@ -236,9 +236,8 @@ function submitSearchForm(searchParams){
 function createAccount(accountDetails){
 
     return (dispatch) => {
-
         fetch(URL+'users', {
-            type: "POST",
+            type: 'POST',
             body: JSON.stringify({user: accountDetails}),
             headers: {
                 'Content-Type' : 'application/json'

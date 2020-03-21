@@ -59,11 +59,9 @@ Code available as open source under the terms of the [MIT License](https://opens
 
 
 Current TODO:
-- Ability to add games from participating users to event 
-- Ability to remove owned (user-restricted) games from event from participating members?
+- Creating a new user. Action.js function thinks it's a GET request??
 
 Future TODO:
-- Search features for more games. (Must also change method of info source of detailed game rendering)
 - Invite other users to your event
 - Display all events on clicked date
 - Calendar date changes color based on events 

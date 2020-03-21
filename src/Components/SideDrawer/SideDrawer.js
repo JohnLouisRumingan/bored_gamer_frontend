@@ -18,6 +18,10 @@ const SideDrawer = (props) => {
                     <li><Link to='/login'>Login</Link></li> :
                     <li><Link to='/profile'>Profile</Link></li>
                 }
+                {!props.profile?
+                    <li><Link to='/signup'>Signup</Link></li>
+                    : null 
+                }
                 <li><Link to='/games'>Games</Link></li>
                 <li><Link to="/meetups">Events</Link></li>
                 <li><Link to="/about">About</Link></li>

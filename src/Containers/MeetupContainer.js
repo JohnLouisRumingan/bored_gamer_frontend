@@ -6,7 +6,7 @@ import MeetupForm from '../Components/MeetupForm'
 import Calendar from '../Components/Calendar/Calendar'
 import MeetupDetail from '../Components/MeetupDetail'
 import './css/meetup-container.css'
-import {Container, Divider, Segment } from 'semantic-ui-react'
+import {Divider, Segment } from 'semantic-ui-react'
 
 
 const MeetupContainer = (props) => {
@@ -28,8 +28,9 @@ const MeetupContainer = (props) => {
                 {/* Add below for testing. Don't want to have to keep logging in while creating the form */}
                 {/* <Link to='/meetups/new'>Create a new event!</Link>  */}
                 <Divider horizontal>Featured Events</Divider>
-
-                Featured Events will go here under a filtered meetup list 
+                    <br></br>
+                    <MeetupList meetups={props.meetups.filter(meetup => meetup.participants.length > 2 )}/>
+                    <br></br>
                 <Divider horizontal>Upcoming Events </Divider>
                 <Switch>
                     <Route 
@@ -38,15 +39,12 @@ const MeetupContainer = (props) => {
                     />
                     <Route exact path='/meetups'component={Calendar}/>  
                 </Switch>
-            
-                Events here will show upcoming week by default. Add Buttons that allow you to see events by clicked date 
+                    
                 <br></br>
-                All meetups will go here under a meetups/all route 
                 <br></br><br></br>
-                <Container>
-                    <MeetupList meetups={props.meetups}/>
-                </Container>
-
+                <Divider horizontal>All Events</Divider>
+                <br></br><br></br>
+                <MeetupList meetups={props.meetups}/>
             </Segment>
 
             
@@ -59,7 +57,15 @@ const MeetupContainer = (props) => {
 const mapStateToProps = (state) => {
     return {
         profile: state.profile,
-        meetups: state.meetups
+        meetups: state.meetups.sort((a,b)=>{
+            if(a.meetup_details.date < b.meetup_details.date){
+                return -1;
+            }
+            if(a.meetup_details.date > b.meetup_details.date){
+                return 1;
+            }
+            return 0;
+        }),
     }
 }
 

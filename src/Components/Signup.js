@@ -39,7 +39,10 @@ class Signup extends React.Component {
     render(){
 
         return(
-            <div> Signup form 
+            <div> 
+                ERROR MESSAGES GO HERE 
+                {this.props.error? this.props.error : null }
+                
                 <Form>
                     <Form.Group widths='equal'>
                         <Form.Input fluid label='Username' placeholder='Enter a username'
@@ -102,7 +105,7 @@ class Signup extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        error: state.error
+        error: state.errorMessage
     }
 }
 

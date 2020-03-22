@@ -5,12 +5,11 @@ Welcome to Bored Gamer, where you can explore a selection of board games, save y
  - Use username: tester2 and password mamamia to see all features
 
 ## Available features:
-Users can browse games and events without an account.
-Users can create unique accounts.
+- Users can browse games and events without an account.
 ### Navigation:
-Users can navigate around the website using the navigation bar.
-Users can use the side drawer navigation bar for smaller devices.
-Users can view more details about a specific game.
+- Users can navigate around the website using the navigation bar.
+- Users can use the side drawer navigation bar for smaller devices.
+- Users can view more details about a specific game.
     - Information displayed shows picture, description, designer, number of players, and other information.
 ### User Collection:
 - Users can add and remove games from their favorites list.
@@ -20,7 +19,7 @@ Users can view more details about a specific game.
 - Users can join and leave events as well as add their games to an event.
 - Users can see the number of participants at an event.
 - Users can decide to allow other users to bring games to an event.
-
+- Users can add games they own to an event.
 
 # Installation
 Fork and clone this repo and the [backend repo](https://github.com/jmr-1/bored_gamer_backend)
@@ -39,10 +38,10 @@ After the backend server is running, ```cd``` to the bored-gamer frontend reposi
 - Coming Soon
 
 # Frameworks and Libraries Used
-- Front-end: JavaScript and React.js with Redux.js
+- Front-end: JavaScript ES6+ and React.js with Redux.js
 - Back-end: Ruby on Rails
-- Testing: native ruby and JS testing
-- Semantic UI React
+- Testing: JEST, 
+- Styling: Semantic UI React, CSS
 - Auth: JWT & bcrypt
 
 # Author

@@ -9,17 +9,17 @@ import GameAddForm from '../Components/GameAddForm'
 
 const MeetupDetail = (props) => {
     
-    // console.log("meetup detail props.meetups:", props.meetups)
-    // console.log("router prop test:", props.routerProps.match.params.meetupId)
+    console.log("meetup detail props.meetups:", props.meetups)
+    console.log("router prop test:", props.routerProps.match.params.meetupId)
     // console.log("router meetups test:", props.meetups[1])
     // debugger
-    // console.log(props.profile)
-    // console.log(props.detailedMeetup)
+    console.log(props.profile)
+    console.log(props.detailedMeetup)
 
     const meetupInfo = (details) => {
 
         if(details){
-            let {meetup_details:{id, title, date, location, other_games_allowed}, host:{name, host_id, /*username, bio, avatar*/}, participants, collection} = props.detailedMeetup
+            let {meetup_details:{id, title, date, location, other_games_allowed}, host:{name, host_id, /*username, bio, avatar*/}, participants, collection} = details //props.detailedMeetup
 
             return (
                 <div>
@@ -65,6 +65,9 @@ const MeetupDetail = (props) => {
                 </div>
             )
         }
+        // return(
+        //     <div> details </div>
+        // )
     }
 
     return (

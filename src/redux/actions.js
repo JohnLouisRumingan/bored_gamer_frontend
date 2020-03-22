@@ -13,7 +13,7 @@ function fetchingGames(){
         .then(res => res.json())
         .then( games => {
             dispatch(fetchedGames(games))
-            // fetchingMeetups()
+            fetchingMeetups()
         })
     }
 }

@@ -5,9 +5,10 @@ import { connect } from 'react-redux'
 
 const GameList = (props) => {
 
+    console.log("game list", props)
     return (
-        <div /*className="ui container"*/>
-            <div /*className="ui celled selection list"*/>
+        <div className="ui container">
+            <div className="ui celled selection list">
 
                 {(props.games) ? props.games.map(game => (
                     <GameCard 
@@ -15,16 +16,17 @@ const GameList = (props) => {
                         game={game}
                     />
                 )) : null }
-                {(props.games.length === 0 )? "No Results" : null}
 
                 {(props.collection)? props.collection.map( collection => (
                     <GameCard 
-                        key={collection.game.game_id}
-                        game={collection.game}
-                        owner={collection.owner}
+                    key={collection.game.game_id}
+                    game={collection.game}
+                    owner={collection.owner}
                     />
-                ))
-                : null}
+                    ))
+                    : null}
+
+                {/* {(props.games.length === 0 )? "No Results" : null} */}
             </div>
         </div>
     )
@@ -42,11 +44,16 @@ const mapStateToProps = (state, ownProps) => {
             games: state.gamesInCollection
         }
     }
-    else if(ownProps.source==="/meetups"){
-        return {
-            games: ownProps.games
+    else {
+        return{
+            games: []
         }
     }
+    // else if(ownProps.source==="/meetups"){
+    //     return {
+    //         games: ownProps.games
+    //     }
+    // }
 }
 
 export default connect(mapStateToProps)(GameList)

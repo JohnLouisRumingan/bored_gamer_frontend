@@ -45,6 +45,7 @@ const MeetupContainer = (props) => {
                 <Divider horizontal>All Events</Divider>
                 <br></br><br></br>
                 <MeetupList meetups={props.meetups}/>
+                {/* <MeetupList /> */}
             </Segment>
 
             

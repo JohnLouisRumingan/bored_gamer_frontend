@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {login } from '../redux/actions'
+import { Button } from 'semantic-ui-react'
 
 class Login extends React.Component {
 
@@ -52,8 +53,16 @@ class Login extends React.Component {
             </div>
             <input type="submit" value="Login" />
            </form>
+
+           {this.props.error? <Button disabled color="red">{this.props.error}</Button> : null}
         </div>
     )
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    error: state.errorMessage
   }
 }
 
@@ -62,4 +71,4 @@ const mapDispatchToProps = dispatch => ({
   login: (username, password) => {dispatch(login(username, password))}
 })
  
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

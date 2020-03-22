@@ -66,6 +66,7 @@ function login(username, password){
             if(reply.user){
                 dispatch(loginSuccessful(reply.user))
                 dispatch(updateCollection(reply.user_collection))
+                dispatch(noError())
             }
             else{dispatch(loginFailed())}
         })
@@ -237,19 +238,27 @@ function createAccount(accountDetails){
 
     return (dispatch) => {
         fetch(URL+'users', {
-            type: 'POST',
+            method: 'POST',
             body: JSON.stringify({user: accountDetails}),
             headers: {
                 'Content-Type' : 'application/json'
             }
         }).then(res => res.json())
-        .then(data => {
-            console.log(data)
-            dispatch({type: "NOTHING"})
+        .then(result => {
+            console.log(result)
+            if (result.error){
+                dispatch({type: "NEW_ERROR", payload: result.error})
+            }
+            if (result.user){
+                dispatch(loginSuccessful(result.user))
+            }
         })
     }
 }
 
+function noError(){
+    return {type: "NO_ERRORS"}
+}
 
 export {fetchingMeetups, fetchingGames, getGameDetails, showGameDetails,
     login, logout, addToCollection,

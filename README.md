@@ -23,7 +23,7 @@ Welcome to Bored Gamer, where you can explore a selection of board games, save y
 
 # Installation
 Fork and clone this repo and the [backend repo](https://github.com/jmr-1/bored_gamer_backend)
-This app uses [PostgreSQL](https://www.postgresql.org/). Install 
+This app uses [PostgreSQL](https://www.postgresql.org/). 
 Go to the directory of the bored-gamer backend repository:
     - Run ``` rails db:create ```
     - Run ```rails db:migrate```

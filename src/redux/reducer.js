@@ -109,9 +109,14 @@ const detailedGameReducer = (state=initialState.detailedGame, action) => {
     }
 }
 
-const errorReducer = (state=initialState.error, action) => {
+const errorReducer = (state=initialState.errorMessage, action) => {
     switch(action.type){
-
+        case "NEW_ERROR":
+            return action.payload;
+        case "LOGIN_FAILED":
+            return "Incorrect Username or Password";
+        case "NO_ERRORS":
+            return null;
         default:
             return state;
     }

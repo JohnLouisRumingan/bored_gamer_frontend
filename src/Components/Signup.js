@@ -40,9 +40,11 @@ class Signup extends React.Component {
 
         return(
             <div> 
-                ERROR MESSAGES GO HERE 
-                {this.props.error? this.props.error : null }
                 
+                {this.props.error? <Button disabled color="red">{this.props.error}</Button> : null }
+                
+                New User Sign-Up form!
+
                 <Form>
                     <Form.Group widths='equal'>
                         <Form.Input fluid label='Username' placeholder='Enter a username'
@@ -97,7 +99,7 @@ class Signup extends React.Component {
                         Create Account
                     </Form.Button>
                 </Form>
-                {this.props.error? <Button disabled color="red">{this.props.error}</Button> : null }
+                
             </div>
         )
     }

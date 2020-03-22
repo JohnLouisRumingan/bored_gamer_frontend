@@ -37,10 +37,18 @@ const MeetupContainer = (props) => {
                         path="/meetups/:meetupId"
                         render={(props) => <MeetupDetail routerProps={props}/>}
                     />
-                    <Route exact path='/meetups'component={Calendar}/>  
+                    <Route exact path='/meetups'render={ () => 
+                        <div>
+                            <Calendar />
+                            <MeetupList meetups={props.meetups.filter(meetup => Date.parse(meetup.meetup_details.date) > Date.parse(new Date()))}/>
+                        </div>
+                    }/>  
                 </Switch>
                     
                 <br></br>
+                <Divider horizontal>Past Events</Divider>
+                <br></br>
+                <MeetupList meetups={props.meetups.filter(meetup => Date.parse(meetup.meetup_details.date) < Date.parse(new Date()))}/>
                 <br></br><br></br>
                 <Divider horizontal>All Events</Divider>
                 <br></br><br></br>

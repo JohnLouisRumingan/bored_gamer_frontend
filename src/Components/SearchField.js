@@ -36,6 +36,7 @@ class SearchField extends React.Component{
         max_players: "",
         year_published: "",
         publisher: "",
+        fuzzy_match: false,
         })
     }
     

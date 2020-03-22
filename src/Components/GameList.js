@@ -26,7 +26,7 @@ const GameList = (props) => {
                     ))
                     : null}
 
-                {/* {(props.games.length === 0 )? "No Results" : null} */}
+                {(props.games.length === 0 )? "No Results" : null}
             </div>
         </div>
     )

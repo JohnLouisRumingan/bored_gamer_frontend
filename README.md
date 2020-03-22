@@ -58,9 +58,8 @@ Code available as open source under the terms of the [MIT License](https://opens
 
 
 Current TODO:
-- Creating a new user. Action.js function thinks it's a GET request??
+- Invite other users to your event
 
 Future TODO:
-- Invite other users to your event
 - Display all events on clicked date
 - Calendar date changes color based on events 

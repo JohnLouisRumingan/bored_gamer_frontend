@@ -251,6 +251,7 @@ function createAccount(accountDetails){
             }
             if (result.user){
                 dispatch(loginSuccessful(result.user))
+                dispatch(noError())
             }
         })
     }

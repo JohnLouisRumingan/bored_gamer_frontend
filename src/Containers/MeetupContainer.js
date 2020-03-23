@@ -24,7 +24,7 @@ const MeetupContainer = (props) => {
                         </div>
                     }/>
                 </Switch>
-                {props.profile? <Route exact path='/meetups' render={() => <Link to='/meetups/new'>Create a new event!</Link>}></Route> : "Create an account to make an event!"}
+                {props.profile? <Route /*exact*/ path='/meetups' render={() => <Link to='/meetups/new'>Create a new event!</Link>}></Route> : "Create an account to make an event!"}
                 {/* Add below for testing. Don't want to have to keep logging in while creating the form */}
                 {/* <Link to='/meetups/new'>Create a new event!</Link>  */}
                 <Divider horizontal>Featured Events</Divider>

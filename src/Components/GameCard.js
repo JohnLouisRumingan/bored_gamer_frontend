@@ -20,8 +20,6 @@ const GameCard = (props) => {
                     <Image src={image_url} size='small'/>
                     {name}<br></br>
                     {designers? designers : null  }
-                    {/* <img src={image_url}></img>  */}
-                    {/* Uncomment above to show images once I've made smaller, standardized card containers for them. Some images are gigantic */}
                 </em>
                 {props.owner? <div>Owned by: {props.owner.name}</div>: null}
                 {props.profile? 
@@ -29,14 +27,14 @@ const GameCard = (props) => {
                         {owned? "Game owned" : null}
                         {favorite? <i className="red heart icon"></i> : null}
                         <br></br>
-                        <button onClick={() => props.favoriteGame(props.game, props.profile)}>Fvavorite or unfavorite this game!</button>
+                        <button onClick={() => props.favoriteGame(props.game, props.profile)}>Favorite or unfavorite this game!</button>
                         <button onClick={()=> props.ownGame(props.game, props.profile)}>Add or remove game from library</button>
                     </div>
                     :null
                 }
                 <Link className="item" to={game_id? `/games/${game_id}`: `/games/${id}`}>
                     <button className="ui small button" onClick={()=> 
-                        props.game_id? props.getGameDetails(game_id) : props.getGameDetails(id)}>See details</button>
+                        game_id? props.getGameDetails(game_id) : props.getGameDetails(id)}>See details</button>
                 </Link>
             </h2>
             </Card>

@@ -187,9 +187,11 @@ function showGameDetails(gameDetails){
 }
 
 function getGameDetails(gameID){
+
+    console.log('getGameDetails', gameID, "url:", URL+'games/search')
     
     return (dispatch) => {
-        fetch(URL+'/games/search', {
+        fetch(URL+'games/search', {
             method: 'POST',
             body: JSON.stringify({gameID}),
             headers: {
@@ -211,7 +213,7 @@ function randomGame(game){
 function submitSearchForm(searchParams){
 
     return (dispatch) => {
-        fetch(URL+'/games/search', {
+        fetch(URL+'games/search', {
             method: 'POST',
             body: JSON.stringify(searchParams), 
             headers: {

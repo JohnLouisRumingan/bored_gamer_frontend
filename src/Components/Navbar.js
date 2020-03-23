@@ -22,6 +22,7 @@ class NavBar extends React.Component{
                         {this.props.profile? null 
                             : <li><Link to='/signup'><Icon name="signup"/><br></br>Signup</Link></li>}
                         {this.props.profile? <li><Link to='/upcoming'><Icon name="group"/><br></br>Your Events</Link></li> : null }
+                        {this.props.profile? <li><Link to='/invites'><Icon name="mail"/><br></br>Invites</Link></li> : null }
                         <li><Link to='/games'><Icon name="chess"/><br></br>Games</Link></li>
                         <li><Link to='/meetups'><Icon name="unordered list" /><br></br>Upcoming Events</Link></li>
                         <li><Link to='/about'><Icon name="help" /><br></br>About</Link></li>
@@ -36,7 +37,8 @@ class NavBar extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-      profile: state.profile
+      profile: state.profile,
+      yourMeetups: state.meetups,
     }
   }
 const mapDispatchToProps = (dispatch) => {

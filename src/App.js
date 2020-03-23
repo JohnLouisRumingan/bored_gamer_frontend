@@ -14,6 +14,7 @@ import SideDrawer from './Components/SideDrawer/SideDrawer'
 import Backdrop from './Components/Backdrop/Backdrop'
 import Signup from './Components/Signup'
 import Upcoming from './Components/Upcoming'
+import InvitationContainer from './Containers/InvitationContainer'
 
 class App extends Component {
 
@@ -60,6 +61,11 @@ class App extends Component {
             <Route exact path='/upcoming' render={() => {
               return this.props.profile?
               <Upcoming /> :
+              <Redirect to='/meetups' />
+            }}/>
+            <Route exact path='/invites' render={() => {
+              return this.props.profile?
+              <InvitationContainer /> :
               <Redirect to='/meetups' />
             }}/>
             <Route path='/meetups' component={MeetupContainer}/>

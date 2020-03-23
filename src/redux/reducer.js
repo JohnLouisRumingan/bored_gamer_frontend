@@ -53,7 +53,17 @@ const gamesReducer = (state=initialState.games, action) => {
 const meetupReducer = (state=initialState.meetups, action) => {
     switch(action.type){
         case "FETCHED_MEETUPS":
-            return action.payload;
+            let meetups = action.payload;
+            meetups.sort((a,b)=>{
+                if(a.meetup_details.date < b.meetup_details.date){
+                    return -1;
+                }
+                if(a.meetup_details.date > b.meetup_details.date){
+                    return 1;
+                }
+                return 0;
+            })
+            return meetups;
         // below currently not used, gets the entire set of meetups again 
         // case "JOINED_MEETUPS":
         //     return state;

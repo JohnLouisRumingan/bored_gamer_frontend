@@ -41,7 +41,7 @@ const mapStateToProps = (state, ownProps) => {
     }
     else if(ownProps.source==="/profile"){
         return {
-            games: state.gamesInCollection
+            games: state.gamesInCollection.filter(game => game.favorite === true || game.owned === true)
         }
     }
     else {

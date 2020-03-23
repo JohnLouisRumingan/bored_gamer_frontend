@@ -29,8 +29,8 @@ const GameCard = (props) => {
                         {owned? "Game owned" : null}
                         {favorite? <i className="red heart icon"></i> : null}
                         <br></br>
-                        <button onClick={() => props.favoriteGame(props.game, props.profile)}>Favorite this game!</button>
-                        <button onClick={()=> props.ownGame(props.game, props.profile)}>Add game to library</button>
+                        <button onClick={() => props.favoriteGame(props.game, props.profile)}>Fvavorite or unfavorite this game!</button>
+                        <button onClick={()=> props.ownGame(props.game, props.profile)}>Add or remove game from library</button>
                     </div>
                     :null
                 }

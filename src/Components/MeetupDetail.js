@@ -3,8 +3,9 @@ import { connect } from 'react-redux'
 import { Segment, Header, Icon, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import GameList from '../Components/GameList'
-import {joinEvent} from '../redux/actions'
+import {joinEvent, inviteToggleHandler} from '../redux/actions'
 import GameAddForm from '../Components/GameAddForm'
+import InviteForm from '../Components/InviteForm'
 
 
 const MeetupDetail = (props) => {
@@ -32,7 +33,8 @@ const MeetupDetail = (props) => {
                             <div>
                                 <Button onClick={() => props.joinEvent(id, props.profile)} icon labelPosition='left'><Icon name="remove user"/>Leave this event</Button> 
                                 <br></br>
-                                <Button><Icon name='users'/>Invite another user</Button>
+                                <Button><Icon name='users' onClick={() => props.inviteToggle()}/>Invite another user</Button>
+                                {props.inviteToggle? <InviteForm /> : null }
                                 {/* add result here depending on if user found or not found  */}
                                 {props.error? <Button disabled color='red'>{props.error}</Button> : null }
                             </div>
@@ -77,14 +79,17 @@ const mapStateToProps = (state, ownProps) => {
         profile: state.profile,
         detailedMeetup: state.meetups.find(meetup => meetup.meetup_details.id === parseInt(ownProps.routerProps.match.params.meetupId)),
         allMeetups: state.meetups,
-        error: state.errorMessage
+        error: state.errorMessage,
+        inviteToggle: state.inviteToggle,
+
         // meetupDetails: state.detailedMeetup
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        joinEvent: (meetupId, profile) => {dispatch(joinEvent(meetupId, profile))}
+        joinEvent: (meetupId, profile) => {dispatch(joinEvent(meetupId, profile))},
+        inviteToggle: () => dispatch(inviteToggleHandler())
     }
 }
 

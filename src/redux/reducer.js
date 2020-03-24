@@ -12,6 +12,7 @@ let initialState = {
     detailedGame: null,
     errorMessage: null,
     invites: [],
+    inviteToggle: null,
 
     // detailedMeetup: null,
 }
@@ -142,6 +143,16 @@ const inviteReducer = (state = initialState.invites, action) => {
     }
 }
 
+const inviteToggleReducer = (state = initialState.inviteToggle, action) => {
+
+    switch(action.type){
+        case "INVITE_TOGGLE":
+            return 
+        default:
+            return state;
+    }
+}
+
 const rootReducer = combineReducers({
     profile: profileReducer,
     games: gamesReducer,
@@ -153,6 +164,8 @@ const rootReducer = combineReducers({
     detailedGame: detailedGameReducer,
     errorMessage: errorReducer,
     invites: inviteReducer,
+    inviteToggle: inviteToggleReducer,
+
     // detailedMeetup: detailedMeetupReducer,
     
 })

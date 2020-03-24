@@ -263,10 +263,15 @@ function noError(){
     return {type: "NO_ERRORS"}
 }
 
+function inviteToggleHandler(){
+    return {type: "INVITE_TOGGLE"}
+}
+
 export {fetchingMeetups, fetchingGames, getGameDetails, showGameDetails,
     login, logout, addToCollection,
     calendarDateSelect, dispatchTodaysDate, 
     newEvent, joinEvent, addGamesToEvent, 
     drawerClickHandler, backdropClick, 
-    submitSearchForm, createAccount
+    submitSearchForm, createAccount,
+    inviteToggleHandler,
     };

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux'
 import {logout} from '../redux/actions'
 import DrawerToggleButton from './SideDrawer/DrawerToggleButton'
-import {Icon} from 'semantic-ui-react'
+import {Icon, Label } from 'semantic-ui-react'
 
 class NavBar extends React.Component{
 
@@ -21,8 +21,11 @@ class NavBar extends React.Component{
                             : <li><Link to='/login'><Icon name="sign in"/><br></br>Login</Link></li>}
                         {this.props.profile? null 
                             : <li><Link to='/signup'><Icon name="signup"/><br></br>Signup</Link></li>}
+                        {this.props.profile? <li><Link to='/invites'>
+                            <Label><Icon name="mail"/>{this.props.invites.count}
+                            </Label></Link></li> 
+                            : null }
                         {this.props.profile? <li><Link to='/upcoming'><Icon name="group"/><br></br>Your Events</Link></li> : null }
-                        {this.props.profile? <li><Link to='/invites'><Icon name="mail"/><br></br>Invites</Link></li> : null }
                         <li><Link to='/games'><Icon name="chess"/><br></br>Games</Link></li>
                         <li><Link to='/meetups'><Icon name="unordered list" /><br></br>Upcoming Events</Link></li>
                         <li><Link to='/about'><Icon name="help" /><br></br>About</Link></li>
@@ -39,6 +42,7 @@ const mapStateToProps = (state) => {
     return {
       profile: state.profile,
       yourMeetups: state.meetups,
+      invites: state.invites,
     }
   }
 const mapDispatchToProps = (dispatch) => {

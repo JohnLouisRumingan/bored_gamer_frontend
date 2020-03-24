@@ -8,13 +8,6 @@ import GameAddForm from '../Components/GameAddForm'
 
 
 const MeetupDetail = (props) => {
-    
-    console.log("meetup detail props.meetups:", props.meetups)
-    console.log("router prop test:", props.routerProps.match.params.meetupId)
-    // console.log("router meetups test:", props.meetups[1])
-    // debugger
-    console.log(props.profile)
-    console.log(props.detailedMeetup)
 
     const meetupInfo = (details) => {
 
@@ -36,12 +29,17 @@ const MeetupDetail = (props) => {
                         {participants.map(participant => <span key={participant.name}>{participant.name}<br></br></span>)}
                         <br></br>
                         {(props.profile && participants.some( participant => participant.id === props.profile.id))?
-                            <Button onClick={() => props.joinEvent(id, props.profile)} icon labelPosition='left'><Icon name="remove user"/>Leave this event</Button> 
+                            <div>
+                                <Button onClick={() => props.joinEvent(id, props.profile)} icon labelPosition='left'><Icon name="remove user"/>Leave this event</Button> 
+                                <br></br>
+                                <Button><Icon name='users'/>Invite another user</Button>
+                                {/* add result here depending on if user found or not found  */}
+                                {props.error? <Button disabled color='red'>{props.error}</Button> : null }
+                            </div>
                             : (props.profile) ?
                         <Button onClick={() => props.joinEvent(id, props.profile)} icon labelPosition='left'><Icon name="add user"/>Join this event</Button> 
                             : null
                         }
-                    
                     
                     </p>
                     <br></br>
@@ -65,9 +63,6 @@ const MeetupDetail = (props) => {
                 </div>
             )
         }
-        // return(
-        //     <div> details </div>
-        // )
     }
 
     return (
@@ -81,7 +76,8 @@ const mapStateToProps = (state, ownProps) => {
     return {
         profile: state.profile,
         detailedMeetup: state.meetups.find(meetup => meetup.meetup_details.id === parseInt(ownProps.routerProps.match.params.meetupId)),
-        allMeetups: state.meetups
+        allMeetups: state.meetups,
+        error: state.errorMessage
         // meetupDetails: state.detailedMeetup
     }
 }

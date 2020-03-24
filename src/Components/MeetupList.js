@@ -1,7 +1,7 @@
 import React from 'react'
 import MeetupCard from './MeetupCard'
 import {Card} from 'semantic-ui-react'
-import {connect} from 'react-redux'
+// import {connect} from 'react-redux'
 
 
 const MeetupList = (props) => {

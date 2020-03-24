@@ -206,6 +206,19 @@ function getGameDetails(gameID){
     }
 }
 
+function getGameDetailsGetVersion(gameID){
+    // console.log("inside action creator", gameID)
+    return dispatch => {
+        // console.log("inside return")
+        fetch(URL+`games/search/get/${gameID}`)
+        .then(res => res.json())
+        .then( (data) => {
+            // console.log("inside get game details get version", data)
+            dispatch(showGameDetails(data))
+        })
+    }
+}
+
 function randomGame(game){
     return {type: "RANDOM_GAME", payload: game}
 }
@@ -269,13 +282,12 @@ function updateAllUsers(users){
 
 function fetchAllUsers(){
 
+    console.log ("fetching all users")
     return (dispatch) => {
-        fetch(URL+"users")
+        console.log("inside fetch")
+        fetch(URL+'users')
         .then(res => res.json())
-        .then( users => {
-            console.log("back from the back end:", users)
-            dispatch(updateAllUsers(users))
-        })
+        .then(users => dispatch(updateAllUsers(users)))
     }
 }
 
@@ -284,7 +296,7 @@ function inviteToggleHandler(){
     return {type: "INVITE_TOGGLE"}
 }
 
-export {fetchingMeetups, fetchingGames, getGameDetails, showGameDetails,
+export {fetchingMeetups, fetchingGames, getGameDetails, showGameDetails, getGameDetailsGetVersion,
     login, logout, addToCollection,
     calendarDateSelect, dispatchTodaysDate, 
     newEvent, joinEvent, addGamesToEvent, 

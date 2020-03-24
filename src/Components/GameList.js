@@ -4,8 +4,7 @@ import { connect } from 'react-redux'
 
 
 const GameList = (props) => {
-
-    // console.log("game list", props)
+    
     return (
         <div className="ui container">
             <div className="ui celled selection list">

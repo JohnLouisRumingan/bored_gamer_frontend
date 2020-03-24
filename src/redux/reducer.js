@@ -11,6 +11,8 @@ let initialState = {
     search: [],
     detailedGame: null,
     errorMessage: null,
+    invites: [],
+
     // detailedMeetup: null,
 }
 
@@ -132,6 +134,14 @@ const errorReducer = (state=initialState.errorMessage, action) => {
     }
 }
 
+const inviteReducer = (state = initialState.invites, action) => {
+
+    switch(action.type){
+        default:
+            return state;
+    }
+}
+
 const rootReducer = combineReducers({
     profile: profileReducer,
     games: gamesReducer,
@@ -142,6 +152,7 @@ const rootReducer = combineReducers({
     sideDrawerOpen: drawerReducer,
     detailedGame: detailedGameReducer,
     errorMessage: errorReducer,
+    invites: inviteReducer,
     // detailedMeetup: detailedMeetupReducer,
     
 })

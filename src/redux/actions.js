@@ -188,7 +188,7 @@ function showGameDetails(gameDetails){
 
 function getGameDetails(gameID){
 
-    console.log('getGameDetails', gameID, "url:", URL+'games/search')
+    // console.log('getGameDetails', gameID, "url:", URL+'games/search')
     
     return (dispatch) => {
         fetch(URL+'games/search', {

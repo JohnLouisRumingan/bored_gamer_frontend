@@ -10,7 +10,6 @@ class GameDetail extends React.Component{
     }
 
     componentDidMount(){
-        getGameDetailsGetVersion(this.props.routerProps.match.params.gameId)
     }
 
     render(){
@@ -21,10 +20,11 @@ class GameDetail extends React.Component{
         
         // }
 
+
+
         return (
             <div>
                 Game Details<br></br>
-
                 {this.props.detailedGame? 
                     <div>
                     {this.props.detailedGame.name}
@@ -33,7 +33,7 @@ class GameDetail extends React.Component{
                     <br></br>
                     {this.props.detailedGame.description}
                     </div>
-                    : null 
+                    : this.props.getGameDetails(this.props.routerProps.match.params.gameId) 
                 }
                 Game details:
                 Min_player, max_player, playtime, other info
@@ -57,7 +57,6 @@ const mapDispatchToProps = (dispatch) => {
 
     return {
         getGameDetails: (gameID) => {dispatch(getGameDetails(gameID))},
-        getGameDetailsGetVersion: (gameID) => {dispatch(getGameDetailsGetVersion(gameID))}
     }
 }
 

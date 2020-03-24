@@ -206,19 +206,6 @@ function getGameDetails(gameID){
     }
 }
 
-function getGameDetailsGetVersion(gameID){
-    // console.log("inside action creator", gameID)
-    return dispatch => {
-        // console.log("inside return")
-        fetch(URL+`games/search/get/${gameID}`)
-        .then(res => res.json())
-        .then( (data) => {
-            // console.log("inside get game details get version", data)
-            dispatch(showGameDetails(data))
-        })
-    }
-}
-
 function randomGame(game){
     return {type: "RANDOM_GAME", payload: game}
 }
@@ -296,7 +283,7 @@ function inviteToggleHandler(){
     return {type: "INVITE_TOGGLE"}
 }
 
-export {fetchingMeetups, fetchingGames, getGameDetails, showGameDetails, getGameDetailsGetVersion,
+export {fetchingMeetups, fetchingGames, getGameDetails, showGameDetails,
     login, logout, addToCollection,
     calendarDateSelect, dispatchTodaysDate, 
     newEvent, joinEvent, addGamesToEvent, 

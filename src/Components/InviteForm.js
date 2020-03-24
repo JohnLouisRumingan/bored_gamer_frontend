@@ -1,14 +1,21 @@
 import React from 'react'
+import { Form } from 'semantic-ui-react'
 
 
 
-const InviteForm = () => {
+class InviteForm extends React.Component {
 
-    return (
-        <div>
-            Invite Form
-        </div>
-    )
+    state ={
+        invited: "",
+    }
+
+    render(){
+        return (
+            <div>
+                Invite Form
+            </div>
+        )
+    }
 }
 
 

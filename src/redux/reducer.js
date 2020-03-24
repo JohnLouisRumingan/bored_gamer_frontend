@@ -12,7 +12,8 @@ let initialState = {
     detailedGame: null,
     errorMessage: null,
     invites: [],
-    inviteToggle: null,
+    inviteToggle: false,
+    users: [],
 
     // detailedMeetup: null,
 }
@@ -147,7 +148,17 @@ const inviteToggleReducer = (state = initialState.inviteToggle, action) => {
 
     switch(action.type){
         case "INVITE_TOGGLE":
-            return 
+            let newState = state;
+            return !newState;
+        default:
+            return state;
+    }
+}
+
+const usersReducer = (state = initialState.users, action) => {
+    switch(action.type){
+        case "UPDATE_ALL_USERS":
+            return action.payload;
         default:
             return state;
     }
@@ -165,7 +176,7 @@ const rootReducer = combineReducers({
     errorMessage: errorReducer,
     invites: inviteReducer,
     inviteToggle: inviteToggleReducer,
-
+    users: usersReducer,
     // detailedMeetup: detailedMeetupReducer,
     
 })

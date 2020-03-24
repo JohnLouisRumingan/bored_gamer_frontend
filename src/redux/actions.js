@@ -263,7 +263,24 @@ function noError(){
     return {type: "NO_ERRORS"}
 }
 
+function updateAllUsers(users){
+    return {type: "UPDATE_ALL_USERS", payload: users}
+}
+
+function fetchAllUsers(){
+
+    return (dispatch) => {
+        fetch(URL+"users")
+        .then(res => res.json())
+        .then( users => {
+            console.log("back from the back end:", users)
+            dispatch(updateAllUsers(users))
+        })
+    }
+}
+
 function inviteToggleHandler(){
+    fetchAllUsers()
     return {type: "INVITE_TOGGLE"}
 }
 

@@ -26,14 +26,16 @@ const MeetupDetail = (props) => {
                     Host: {name}
                     </p>
                     Participants:
-                    <p>
+                    <div>
+                        <p>
                         {participants.map(participant => <span key={participant.name}>{participant.name}<br></br></span>)}
+                        </p>
                         <br></br>
                         {(props.profile && participants.some( participant => participant.id === props.profile.id))?
                             <div>
                                 <Button onClick={() => props.joinEvent(id, props.profile)} icon labelPosition='left'><Icon name="remove user"/>Leave this event</Button> 
                                 <br></br>
-                                <Button><Icon name='users' onClick={() => props.inviteToggle()}/>Invite another user</Button>
+                                <Button onClick={() => props.inviteToggleHandler()} icon labelPosition='left'><Icon name='users' />Invite another user</Button>
                                 {props.inviteToggle? <InviteForm /> : null }
                                 {/* add result here depending on if user found or not found  */}
                                 {props.error? <Button disabled color='red'>{props.error}</Button> : null }
@@ -43,7 +45,7 @@ const MeetupDetail = (props) => {
                             : null
                         }
                     
-                    </p>
+                    </div>
                     <br></br>
                     {other_games_allowed? <Button disabled color='green'>Bring more games!</Button>  : <Button disabled color='orange'>Only listed games</Button> }
                     <br></br>
@@ -89,7 +91,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         joinEvent: (meetupId, profile) => {dispatch(joinEvent(meetupId, profile))},
-        inviteToggle: () => dispatch(inviteToggleHandler())
+        inviteToggleHandler: () => {dispatch(inviteToggleHandler())}
     }
 }
 

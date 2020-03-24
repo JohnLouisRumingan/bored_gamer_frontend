@@ -19,11 +19,11 @@ class GameDetail extends React.Component{
 
     render(){
 
-        if(this.props.detailedGame){
+        // if(this.props.detailedGame){
 
-            let { } = this.props.detailedGame 
+        //     let { } = this.props.detailedGame 
         
-        }
+        // }
 
         return (
             <div>

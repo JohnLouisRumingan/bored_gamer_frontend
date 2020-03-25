@@ -277,10 +277,22 @@ function inviteToggleHandler(){
     return {type: "INVITE_TOGGLE"}
 }
 
-function sendInvites(inviteForm, profile){
+function sendInvites(inviteForm, meetupDetails, profile){
 
     return(dispatch) => {
-        console.log("sending form..", inviteForm, profile)
+        console.log("sending form..", inviteForm, meetupDetails, profile)
+
+        fetch(URL+'invites/create', {
+            method: 'POST',
+            body: JSON.stringify({description: inviteForm.description, inviteList: inviteForm.invited, meetup: meetupDetails, profile }),
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        }).then(res => res.json())
+        .then(data => console.log(data))
+
+
+
         dispatch({type: "NOTHING"})
     }
 }

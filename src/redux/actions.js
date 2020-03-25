@@ -266,10 +266,7 @@ function updateAllUsers(users){
 }
 
 function fetchAllUsers(){
-
-    console.log ("fetching all users")
     return (dispatch) => {
-        console.log("inside fetch")
         fetch(URL+'users')
         .then(res => res.json())
         .then(users => dispatch(updateAllUsers(users)))

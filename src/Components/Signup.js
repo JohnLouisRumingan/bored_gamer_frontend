@@ -47,32 +47,32 @@ class Signup extends React.Component {
 
                 <Form>
                     <Form.Group widths='equal'>
-                        <Form.Input fluid label='Username' placeholder='Enter a username'
+                        <Form.Input fluid label='Username' placeholder='Enter a username' required
                             value={this.state.username} onChange={(e) => this.changeHandler(e, "username")}
                         />
-                        <Form.Input fluid label='Name' placeholder='Enter your name'
+                        <Form.Input fluid label='Name' placeholder='Enter your name' required
                             value={this.state.name} onChange={(e) => this.changeHandler(e, "name")}
                         />
-                        <Form.Input fluid label='Password' placeholder='Enter a password'
+                        <Form.Input fluid label='Password' placeholder='Enter a password' required
                             value={this.state.password} onChange={(e) => this.changeHandler(e, "password")}
                             type={this.state.passwordType? 'password' : 'text'}
                         />
                         <Button onClick={() => this.setState({passwordType: !this.state.passwordType})}><Icon name='eye'/></Button>
                         {this.state.passwordError? 
-                            <Form.Input fluid label='Password Re-enter' placeholder='Re-enter Password'
+                            <Form.Input fluid label='Password Re-enter' placeholder='Re-enter Password' required
                             value={this.state.password2} onChange={(e) => this.changeHandler(e, "password2")}
                             error={this.state.passwordError}
                             type={this.state.password2Type? 'password' : 'text'}
                             /> 
                         : 
-                            <Form.Input fluid label='Password Re-enter' placeholder='Re-enter Password'
+                            <Form.Input fluid label='Password Re-enter' placeholder='Re-enter Password' required
                             value={this.state.password2} onChange={(e) => this.changeHandler(e, "password2")}
                             type={this.state.password2Type? 'password' : 'text'}
                             />
                         }
                         <Button onClick={() => this.setState({password2Type: !this.state.password2Type})}><Icon name='eye'/></Button>
                     </Form.Group>
-                    <Form.TextArea label='About' placeholder='Tell us more about you...' 
+                    <Form.TextArea label='About' placeholder='Tell us more about you...' required
                         value={this.state.bio} onChange={(e)=> {this.changeHandler(e, "bio")}}
                     />
                     <Form.Input fluid label="Avatar" placeholder='Enter url of a picture for your profile'

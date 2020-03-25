@@ -72,7 +72,7 @@ class SearchField extends React.Component{
                             this.props.submit(this.state)
                             this.resetState()
                         }}>
-                            Submit
+                            Search
                         </Form.Button>
                         <Form.Button onClick={() => {
                             this.resetState()

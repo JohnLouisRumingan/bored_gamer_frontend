@@ -6,13 +6,21 @@ import { fetchAllUsers, sendInvites } from '../redux/actions'
 
 class InviteForm extends React.Component {
 
-    state ={
-        invited: [],
+    state = {
+        description: "",
     }
 
     componentDidMount(){
         this.props.getUsers()
         console.log("already attending participants:", this.props.alreadyAttending)
+    }
+
+    handleDropdown = (e, {value}) => {
+        
+        //note: {value} is used with semantic react components. Allows the use of arrays 
+        this.setState({
+            invited: value  
+        })
     }
 
     inviteForm = () => {
@@ -27,8 +35,6 @@ class InviteForm extends React.Component {
                 return attendee.id === user.id
             })
         })
-
-        console.log("filtered users:",filteredUsers)
 
         filteredUsers.forEach(user => {
             let obj = {};
@@ -45,10 +51,15 @@ class InviteForm extends React.Component {
                         placeholder='Select Users to Invite'
                         fluid
                         search
+                        multiple
                         selection
                         options={cloneUsers}
+                        onChange={this.handleDropdown}
                     />
-                    <Form.Button onClick={() => {this.props.sendForm("form details", this.props.allUsers)}}>Send Invitations!</Form.Button>
+                    <Form.Field>
+                        <Form.TextArea inline label='Message' placeholder='Enter your message here' value={this.state.description} onChange={(e) => {this.setState({description: e.target.value})}}/>
+                    </Form.Field>
+                    <Form.Button onClick={() => {this.props.sendForm(this.state, this.props.meetupDetails, this.props.profile)}}>Send Invitations!</Form.Button>
                 </Form>
             </div>
         )
@@ -69,13 +80,14 @@ const mapStateToProps = (state) => {
 
     return {
         allUsers: state.users,
+        profile: state.profile,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         getUsers: () => dispatch(fetchAllUsers()),
-        sendForm: (formDetails, users) => dispatch(sendInvites(formDetails, users))
+        sendForm: (inviteForm, meetupDetails, profile) => dispatch(sendInvites(inviteForm, meetupDetails, profile))
     }
 }
 

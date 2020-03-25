@@ -277,10 +277,10 @@ function inviteToggleHandler(){
     return {type: "INVITE_TOGGLE"}
 }
 
-function sendInvites(formDetails, users){
+function sendInvites(inviteForm, profile){
 
     return(dispatch) => {
-        console.log("sending form..", formDetails, users)
+        console.log("sending form..", inviteForm, profile)
         dispatch({type: "NOTHING"})
     }
 }

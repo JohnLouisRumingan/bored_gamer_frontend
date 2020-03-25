@@ -37,7 +37,7 @@ const MeetupDetail = (props) => {
                                 <br></br>
                         <Button onClick={() => props.inviteToggleHandler()} icon labelPosition='left'>
                             <Icon name='users' />{props.inviteToggle? "Close invite form" : "Invite another user"}</Button>
-                                {props.inviteToggle? <InviteForm alreadyAttending={participants}/> : null }
+                                {props.inviteToggle? <InviteForm alreadyAttending={participants} meetupDetails={props.detailedMeetup}/> : null }
                                 {/* add result here depending on if user found or not found  */}
                                 {props.error? <Button disabled color='red'>{props.error}</Button> : null }
                             </div>

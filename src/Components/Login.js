@@ -15,7 +15,7 @@ class Login extends React.Component {
 
   login = (e) => {
     e.preventDefault()
-    console.log("Logging in...", this.state.username, this.state.password)
+    
     this.props.login(this.state.username, this.state.password)
   }
 

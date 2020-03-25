@@ -62,7 +62,6 @@ function login(username, password){
         .then(res => res.json())
         .then(reply => {
             //if-else here. If login not found, send a message and kick back to login page
-            console.log("reply from login: ", reply)
             if(reply.user){
                 dispatch(loginSuccessful(reply.user))
                 dispatch(updateCollection(reply.user_collection))
@@ -200,7 +199,6 @@ function getGameDetails(gameID){
         })
         .then(res => res.json())
         .then(data => {
-            console.log("back from the back end:", data)
             dispatch(showGameDetails(data));
         })
     }
@@ -279,8 +277,15 @@ function fetchAllUsers(){
 }
 
 function inviteToggleHandler(){
-    fetchAllUsers()
     return {type: "INVITE_TOGGLE"}
+}
+
+function sendInvites(formDetails, users){
+
+    return(dispatch) => {
+        console.log("sending form..", formDetails, users)
+        dispatch({type: "NOTHING"})
+    }
 }
 
 export {fetchingMeetups, fetchingGames, getGameDetails, showGameDetails,
@@ -289,5 +294,5 @@ export {fetchingMeetups, fetchingGames, getGameDetails, showGameDetails,
     newEvent, joinEvent, addGamesToEvent, 
     drawerClickHandler, backdropClick, 
     submitSearchForm, createAccount,
-    inviteToggleHandler,
+    inviteToggleHandler, fetchAllUsers, sendInvites
     };

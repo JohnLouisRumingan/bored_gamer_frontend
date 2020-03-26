@@ -59,7 +59,13 @@ class InviteForm extends React.Component {
                     <Form.Field>
                         <Form.TextArea inline label='Message' placeholder='Enter your message here' value={this.state.description} onChange={(e) => {this.setState({description: e.target.value})}}/>
                     </Form.Field>
-                    <Form.Button onClick={() => {this.props.sendForm(this.state, this.props.meetupDetails, this.props.profile)}}>Send Invitations!</Form.Button>
+                    <Form.Button onClick={() => {
+                        this.props.sendForm(this.state, this.props.meetupDetails, this.props.profile)
+                        this.setState({
+                            invited: [],
+                            description: ""
+                        })
+                    }}>Send Invitations!</Form.Button>
                 </Form>
             </div>
         )

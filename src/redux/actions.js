@@ -65,6 +65,7 @@ function login(username, password){
             if(reply.user){
                 dispatch(loginSuccessful(reply.user))
                 dispatch(updateCollection(reply.user_collection))
+                dispatch(getInvites(reply.user))
                 dispatch(noError())
             }
             else{dispatch(loginFailed())}
@@ -298,11 +299,26 @@ function sendInvites(inviteForm, meetupDetails, profile){
     }
 }
 
+function getInvites(profile){
+
+    let profileID = profile.id
+
+    return (dispatch) => {
+        fetch(URL+`invites/user/${profileID}`)
+        .then(res=> res.json())
+        .then(data => {
+            console.log(data)
+            dispatch({type: "LOGIN_USER_INVITES", allInvites: data.users_invites})
+        })
+    }
+}
+
 export {fetchingMeetups, fetchingGames, getGameDetails, showGameDetails,
     login, logout, addToCollection,
     calendarDateSelect, dispatchTodaysDate, 
     newEvent, joinEvent, addGamesToEvent, 
     drawerClickHandler, backdropClick, 
     submitSearchForm, createAccount,
-    inviteToggleHandler, fetchAllUsers, sendInvites
+    inviteToggleHandler, fetchAllUsers, sendInvites,
+    getInvites
     };

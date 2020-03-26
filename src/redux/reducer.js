@@ -139,8 +139,9 @@ const errorReducer = (state=initialState.errorMessage, action) => {
 const inviteReducer = (state = initialState.invites, action) => {
 
     switch(action.type){
+        case "LOGIN_USER_INVITES":
+            return action.allInvites;
         case "NEW_INVITES":
-
             let newArray = action.newInvites 
             let newState = [...state, ...newArray]
             return newState;

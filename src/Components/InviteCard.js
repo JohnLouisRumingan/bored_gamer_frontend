@@ -10,7 +10,7 @@ class InviteCard extends React.Component {
     }
 
     render(){
-        let {invite_details:{description, status}, receiver:{username: receiverUsername, name: receiverName, id: receiverID}, 
+        let {invite_details:{description, status, id: inviteID}, receiver:{username: receiverUsername, name: receiverName, id: receiverID}, 
             inviter:{username: inviterUsername, name: inviterName}, 
             meetup:{id: meetupID, title, date, location, description: meetupDescription}} = this.props.info
     
@@ -32,8 +32,8 @@ class InviteCard extends React.Component {
                         Location: {location}
                         {receiverID === this.props.profile.id && status === 1 ? 
                             <div>
-                                <Button color='green' onClick={() => this.props.accept(meetupID, this.props.profile.id)}>Accept Invite</Button>
-                                <Button color='red' onClick={() => this.props.deny(meetupID, this.props.profile.id)}>Decline Invite</Button>
+                                <Button color='green' onClick={() => this.props.accept(meetupID, this.props.profile.id, inviteID)}>Accept Invite</Button>
+                                <Button color='red' onClick={() => this.props.deny(meetupID, this.props.profile.id, inviteID)}>Decline Invite</Button>
                             </div>
                         : null }
                     </div> 
@@ -53,8 +53,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        accept: (meetupID, profileID) => dispatch(respondToInvite(meetupID, profileID, "accept")), 
-        deny: (meetupID, profileID) => dispatch(respondToInvite(meetupID, profileID, "deny")),
+        accept: (meetupID, profileID, inviteID) => dispatch(respondToInvite(meetupID, profileID, inviteID, "accept")), 
+        deny: (meetupID, profileID, inviteID) => dispatch(respondToInvite(meetupID, profileID, inviteID, "deny")),
     }
 }
 

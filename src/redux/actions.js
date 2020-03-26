@@ -313,12 +313,27 @@ function getInvites(profile){
     }
 }
 
-function respondToInvite(meetupID, profileID, response){
+function updateInvite(inviteInfo){
+    return {type: "MODIFY_INVITE", payload: inviteInfo}
+}
+
+function respondToInvite(meetupID, profileID, inviteID, response){
 
     return (dispatch) => {
-        console.log("response to invite:", meetupID, profileID, response)
+        console.log("response to invite:", meetupID, profileID, inviteID, response)
 
-        dispatch({type: "NOTHING"})
+        fetch(URL+'invites/reply', {
+            method: 'POST',
+            body: JSON.stringify({meetupID, profileID, inviteID, response}),
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        }).then(res => res.json())
+        .then(data => {
+            console.log(data)
+            dispatch(updateMeetup(data.meetup[0]))
+            dispatch(updateInvite(data.invite[0]))
+        })
     }
 }
 

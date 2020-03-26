@@ -313,6 +313,15 @@ function getInvites(profile){
     }
 }
 
+function respondToInvite(meetupID, profileID, response){
+
+    return (dispatch) => {
+        console.log("response to invite:", meetupID, profileID, response)
+
+        dispatch({type: "NOTHING"})
+    }
+}
+
 export {fetchingMeetups, fetchingGames, getGameDetails, showGameDetails,
     login, logout, addToCollection,
     calendarDateSelect, dispatchTodaysDate, 
@@ -320,5 +329,5 @@ export {fetchingMeetups, fetchingGames, getGameDetails, showGameDetails,
     drawerClickHandler, backdropClick, 
     submitSearchForm, createAccount,
     inviteToggleHandler, fetchAllUsers, sendInvites,
-    getInvites
+    getInvites, respondToInvite,
     };

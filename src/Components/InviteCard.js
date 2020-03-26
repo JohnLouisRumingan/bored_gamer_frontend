@@ -1,6 +1,7 @@
 import React from 'react'
 import {Button} from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import { respondToInvite } from '../redux/actions'
 
 class InviteCard extends React.Component {
 
@@ -21,7 +22,7 @@ class InviteCard extends React.Component {
                     onClick={()=>{this.setState({detailed: !this.state.detailed})}}
                     size='small'
                 >
-                    See details
+                    {this.state.detailed? "Close Details" : "See Details"}
                 </Button>
                 <br></br>
                 {this.state.detailed? 
@@ -31,8 +32,8 @@ class InviteCard extends React.Component {
                         Location: {location}
                         {receiverID === this.props.profile.id && status === 1 ? 
                             <div>
-                                <Button color='green'>Accept Invite</Button>
-                                <Button color='red'>Decline Invite</Button>
+                                <Button color='green' onClick={() => this.props.accept(meetupID, this.props.profile.id)}>Accept Invite</Button>
+                                <Button color='red' onClick={() => this.props.deny(meetupID, this.props.profile.id)}>Decline Invite</Button>
                             </div>
                         : null }
                     </div> 
@@ -50,4 +51,11 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(InviteCard)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        accept: (meetupID, profileID) => dispatch(respondToInvite(meetupID, profileID, "accept")), 
+        deny: (meetupID, profileID) => dispatch(respondToInvite(meetupID, profileID, "deny")),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(InviteCard)

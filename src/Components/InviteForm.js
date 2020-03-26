@@ -39,7 +39,7 @@ class InviteForm extends React.Component {
         filteredUsers.forEach(user => {
             let obj = {};
             obj["key"] = user.username
-            obj["text"] = user.name
+            obj["text"] = user.username + " - " + user.name
             obj["value"] = user.id
             cloneUsers.push(obj)
         })

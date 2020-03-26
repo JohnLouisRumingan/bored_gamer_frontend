@@ -25,7 +25,7 @@ class NavBar extends React.Component{
                             <Label><Icon name="mail"/>{this.props.invites.count}
                             </Label></Link></li> 
                             : null }
-                        {this.props.profile? <li><Link to='/upcoming'><Icon name="group"/><br></br>Your Events</Link></li> : null }
+                        {/* {this.props.profile? <li><Link to='/upcoming'><Icon name="group"/><br></br>Your Events</Link></li> : null } */}
                         <li><Link to='/games'><Icon name="chess"/><br></br>Games</Link></li>
                         <li><Link to='/meetups'><Icon name="unordered list" /><br></br>Upcoming Events</Link></li>
                         <li><Link to='/about'><Icon name="help" /><br></br>About</Link></li>

@@ -6,7 +6,6 @@ const InviteList = (props) => {
 
     return (
         <div>
-            Invite list:
             {props.invites.map(invite => <InviteCard  info={invite} key={invite}/> )}
         </div>
     )

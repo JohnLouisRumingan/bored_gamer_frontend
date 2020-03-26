@@ -6,8 +6,6 @@ const InvitationContainer = () => {
 
     return (
         <div>
-            Your invitations!
-
             <InviteList />
         </div>
     )

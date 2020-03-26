@@ -1,13 +1,13 @@
 import React from 'react'
 import GameCard from './GameCard'
 import { connect } from 'react-redux'
-
+import './css/scrollable-list.css'
 
 const GameList = (props) => {
     
     return (
-        <div className="ui container">
-            <div className="ui celled selection list">
+        <div className='scrollable-list'>
+            <div>
 
                 {(props.games) ? props.games.map(game => (
                     <GameCard 

@@ -1,6 +1,12 @@
 .profile-games {
-    background-color: rosybrown;
-    width: 75%;
+    
+    width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.profile-page {
+    justify-content: left;
+    text-align: left;
+    background-color: rgb(0, 0, 0);
 }

@@ -5,9 +5,10 @@ const LandingPage = () => {
 
     return (
         <div className='landing'>
+            <br></br><br></br>
             Welcome to Bored Gamer!
             <br></br>
-            Landing page 
+             
             
         </div>
     )

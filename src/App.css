@@ -1,5 +1,5 @@
 .App {
-  padding-top: 2px;
+  padding-top: 1px;
   text-align: center;
   background: url("./images/pexels-photo-278918.jpeg") no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -9,8 +9,10 @@
   height: 100%;
   width: 100%;
   min-height: 100%;
+  position: absolute;
+  top: 5px;
+  bottom: 0;
 }
-
 
 body {
   padding-top: 10px;

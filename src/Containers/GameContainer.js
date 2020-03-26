@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import GameList from '../Components/GameList'
 import GameDetail from '../Components/GameDetail'
 import SearchField from '../Components/SearchField'
+import './css/game-container.css'
 
 
 class GameContainer extends React.Component {
@@ -15,7 +16,7 @@ class GameContainer extends React.Component {
     render(){
         
         return(
-            <div>
+            <div className='game-container'>
                 <Switch>
 
                     <Route 
@@ -23,8 +24,10 @@ class GameContainer extends React.Component {
                         render={(props) => <GameDetail routerProps={props}/>}
                     />
                 </Switch>
-                
+                <div>
+                <br></br>
                 <SearchField />
+                </div>
 
                 <div>
                     <GameList source={"/games"}/>

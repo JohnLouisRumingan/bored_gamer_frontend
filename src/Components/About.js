@@ -1,9 +1,11 @@
 import React from 'react'
+import './css/about.css'
 
 const About = () => {
 
     return (
-        <div>
+        <div className='about'>
+            <br></br>
             <p>
             Hi, I'm John-Louis Rumingan. I made this app while discussing with my friends one day how wonderful
             it would be if we could store the games in our collection somewhere and make events with our collection.

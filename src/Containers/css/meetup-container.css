@@ -1,5 +1,5 @@
 .meetup-container {
     max-width: 100%;
     margin: auto;
-    border: 3px solid #73AD21;
+    border: 3px solid rgb(145, 150, 139, 0.2);
 }

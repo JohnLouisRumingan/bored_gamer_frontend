@@ -280,7 +280,7 @@ function inviteToggleHandler(){
 function sendInvites(inviteForm, meetupDetails, profile){
 
     return(dispatch) => {
-        console.log("sending form..", inviteForm, meetupDetails, profile)
+        // console.log("sending form..", inviteForm, meetupDetails, profile)
 
         fetch(URL+'invites/create', {
             method: 'POST',
@@ -289,11 +289,12 @@ function sendInvites(inviteForm, meetupDetails, profile){
                 'Content-Type' : 'application/json'
             }
         }).then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            dispatch({type: "NEW_INVITES", newInvites: data.invites_sent})
+        })
 
 
 
-        dispatch({type: "NOTHING"})
     }
 }
 

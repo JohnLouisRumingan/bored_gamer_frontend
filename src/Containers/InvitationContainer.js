@@ -1,18 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import InviteList from '../Components/InviteList'
 
 const InvitationContainer = () => {
 
     return (
         <div>
-            Invitations container
+            Your invitations!
+
+            <InviteList />
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        invites: state.invites,
     }
 }
 

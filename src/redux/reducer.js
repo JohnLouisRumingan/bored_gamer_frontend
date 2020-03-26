@@ -139,6 +139,11 @@ const errorReducer = (state=initialState.errorMessage, action) => {
 const inviteReducer = (state = initialState.invites, action) => {
 
     switch(action.type){
+        case "NEW_INVITES":
+
+            let newArray = action.newInvites 
+            let newState = [...state, ...newArray]
+            return newState;
         default:
             return state;
     }

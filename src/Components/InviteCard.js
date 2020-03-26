@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const InviteCard = () => {
+const InviteCard = (props) => {
 
 
     return (

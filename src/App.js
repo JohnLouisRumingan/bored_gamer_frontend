@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import './index.css';
 import {Route, Switch, Redirect, withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
 import NavBar from './Components/Navbar.js'
@@ -36,11 +37,11 @@ class App extends Component {
     }
 
     return (
-      <div className="App" style={{height: '100%'}}>
+      <div className="App" style={{height: '100%'}} >
         <NavBar />
         <SideDrawer />
         {backdrop}
-        <main style={{marginTop: '64px'}}>
+        <main style={{marginTop: '50px'}}>
           <Switch>
             <Route exact path='/profile' render={() => {
               return this.props.profile? 

@@ -1,17 +1,22 @@
 .App {
+  padding-top: 2px;
   text-align: center;
-  /* background-image: url("/public/images/pexels-photo-278918.jpeg"); */
+  background: url("./images/pexels-photo-278918.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
 }
 
-.landing {
-  background-image: url(./images/pexels-photo-278918.jpeg);
-}
 
 body {
-  padding-top: 75px;
+  padding-top: 10px;
   padding-bottom: 55px;
   height: 100%;
-  background-image: url(./images/pexels-photo-278918.jpeg) no-repeat center/cover fixed;
+  min-height: 100%;
 }
 
 /* .App-logo {

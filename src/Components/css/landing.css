@@ -1,4 +1,8 @@
 .landing {
-    font-size: xx-large;
-    color: antiquewhite;
+    font-size: 12vh;
+    color: rgb(12, 12, 12);
+}
+
+.landing p {
+    font-size: large;
 }

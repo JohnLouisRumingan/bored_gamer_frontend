@@ -1,0 +1,27 @@
+.background-general {
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+    min-width: 75%;
+    position: absolute;
+    top: 5px;
+    bottom: 0;
+    left: 0px;
+    align-content: center;
+    background-color: rgb(0, 0, 0, 0.2);
+}
+
+.signup-form {
+    position: relative;
+    width: 50%;
+    text-align: center;
+    left: 25%;
+    top: 25%;
+    color: whitesmoke;
+    font-size: large;
+}
+
+label {
+    color: whitesmoke;
+    display: block;
+}

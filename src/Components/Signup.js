@@ -2,6 +2,7 @@ import React from 'react'
 import { Form, Button, Icon  } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { createAccount } from '../redux/actions'
+import './css/general.css'
 
 
 class Signup extends React.Component {
@@ -39,12 +40,9 @@ class Signup extends React.Component {
     render(){
 
         return(
-            <div> 
-                
+            <div className='background-general'>
+            <div className='signup-form'> 
                 {this.props.error? <Button disabled color="red">{this.props.error}</Button> : null }
-                
-                New User Sign-Up form!
-
                 <Form>
                     <Form.Group widths='equal'>
                         <Form.Input fluid label='Username' placeholder='Enter a username' required
@@ -93,13 +91,11 @@ class Signup extends React.Component {
                                 this.props.submit(this.state)
                                 this.resetState()
                             }
-
-
                     }}>
                         Create Account
                     </Form.Button>
                 </Form>
-                
+            </div>
             </div>
         )
     }

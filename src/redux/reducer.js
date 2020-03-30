@@ -146,14 +146,12 @@ const inviteReducer = (state = initialState.invites, action) => {
             let newState = [...state, ...newArray]
             return newState;
         case "MODIFY_INVITE":
-
             let updateInviteState = [...state]
             updateInviteState.forEach((invite, index) => {
                 if(invite.invite_details.id === action.payload.invite_details.id){
                     updateInviteState[index] = action.payload
                 }
             })
-
             return updateInviteState;
         default:
             return state;

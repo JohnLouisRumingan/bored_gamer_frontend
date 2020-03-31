@@ -20,21 +20,29 @@ class GameContainer extends React.Component {
             <div className='background-general' >
                 <div className='game-container'>
 
+                    {/* Game Details page shows on top of the list. 
+                        Maybe change it to separate page?
+                    */}
                     <Switch>
-
                         <Route 
                             path="/games/:gameId"
                             render={(props) => <GameDetail routerProps={props}/>}
                         />
+                        <Route 
+                            exact path="/games"
+                            render={() => (
+                                <div>
+                                    <div className='search-form'>
+                                    <SearchField />
+                                    </div>
+                                    <br></br>
+                                    <GameList source={"/games"}/>
+                                </div>
+                            )}
+                        />
                     </Switch>
-                    <div>
-                    <br></br>
-                        <SearchField />
-                    </div>
+                        
 
-                    <div>
-                        <GameList source={"/games"}/>
-                    </div>
                 </div>
             </div>
         )

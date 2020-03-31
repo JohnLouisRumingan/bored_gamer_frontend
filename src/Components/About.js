@@ -7,7 +7,6 @@ const About = () => {
     return (
         <div className='about'>
             <div className='about-content'>
-                <center>
 
                 <br></br><br></br>
                 <p>
@@ -21,7 +20,7 @@ const About = () => {
                 </p>
                 <p>
                     Created with Ruby on Rails framework for the back-end and JavaScript with React.js and Redux library
-                    on the front-end. CSS used alongside with Semantic-UI-React.
+                    on the front-end. CSS used alongside with Semantic-UI-React for style.
                 </p>
                 <p>
                     <center><br></br>
@@ -45,7 +44,6 @@ const About = () => {
                     </Button.Group>
                     </center>
                 </p>
-                </center>
             </div>
         </div>
     )

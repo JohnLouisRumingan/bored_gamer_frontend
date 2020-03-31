@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import {getGameDetails, getGameDetailsGetVersion} from '../redux/actions'
+import { Button } from 'semantic-ui-react'
+import './css/general.css'
 
 class GameDetail extends React.Component{
 
@@ -14,15 +16,8 @@ class GameDetail extends React.Component{
 
     render(){
 
-        // if(this.props.detailedGame){
-
-        //     let { } = this.props.detailedGame 
-        
-        // }
-
-
-
         return (
+        <div>
             <div>
                 Game Details<br></br>
                 {this.props.detailedGame? 
@@ -37,9 +32,11 @@ class GameDetail extends React.Component{
                 }
                 Game details:
                 Min_player, max_player, playtime, other info
-                <Link to='/games'><button className="ui small button">Close Details</button>
+                <br></br>
+                <Link to='/games'><Button >Close Details</Button>
                 </Link>
             </div>
+        </div>
         )
     }
 }

@@ -11,6 +11,16 @@
     background-color: rgb(0, 0, 0, 0.2);
 }
 
+.general-content{
+    position: relative;
+    width: 50%;
+    text-align: left;
+    left: 25%;
+    top: 5%;
+    color: whitesmoke;
+    font-size: large;
+}
+
 .signup-form {
     position: relative;
     width: 50%;

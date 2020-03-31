@@ -109,6 +109,8 @@ const dateReducer = (state=initialState.dateSelected, action) => {
     switch(action.type){
         case "SELECT_DATE":
             return action.payload
+
+        // make another reducer here for the week. Need this to be able to filter events weekly
         default:
             return state;
     }

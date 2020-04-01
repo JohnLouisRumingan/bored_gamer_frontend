@@ -7,14 +7,11 @@ import './css/general.css'
 
 class GameDetail extends React.Component{
 
-    state={
-
-    }
-
-    componentDidMount(){
-    }
-
     render(){
+
+        let {name, image_url, description, year_published, min_players, max_players, 
+            min_playtime, max_playtime, publisher, price, min_age
+        } = this.props.detailedGame
 
         return (
         <div>
@@ -22,18 +19,19 @@ class GameDetail extends React.Component{
                 Game Details<br></br>
                 {this.props.detailedGame? 
                     <div>
-                    {this.props.detailedGame.name}
-                    <br></br>
-                    <img src={this.props.detailedGame.image_url} alt={this.props.detailedGame.name}/>
-                    <br></br>
-                    {this.props.detailedGame.description}
+                        {this.props.detailedGame.name}
+                        <br></br>
+                        <img src={this.props.detailedGame.image_url} alt={this.props.detailedGame.name}/>
+                        <br></br>
+                        {this.props.detailedGame.description}
+                        Game details:
+                        Min_player, max_player, playtime, other info
                     </div>
+
                     : this.props.getGameDetails(this.props.routerProps.match.params.gameId) 
                 }
-                Game details:
-                Min_player, max_player, playtime, other info
                 <br></br>
-                <Link to='/games'><Button >Close Details</Button>
+                <Link to='/games'><Button >Go Back To Games</Button>
                 </Link>
             </div>
         </div>

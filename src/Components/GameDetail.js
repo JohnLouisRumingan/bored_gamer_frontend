@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import {getGameDetails, getGameDetailsGetVersion} from '../redux/actions'
 import { Button } from 'semantic-ui-react'
 import './css/general.css'
+import './css/games.css'
 
 class GameDetail extends React.Component{
 
@@ -14,11 +15,10 @@ class GameDetail extends React.Component{
             } = detailedGame
         
         return (
-            <div>
+            <div className='general-content'>
                 <div className='game-image'>
                     <img src={image_url} alt={name}/>
                 </div>
-                <br></br>
                 {name}
                 <br></br>
                 <div className='game-description'

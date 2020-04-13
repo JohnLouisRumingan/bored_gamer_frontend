@@ -21,8 +21,9 @@ class GameDetail extends React.Component{
                 <br></br>
                 {name}
                 <br></br>
-                <div>
-                    {description}
+                <div className='game-description'
+                 dangerouslySetInnerHTML={{__html: description}}>
+                    {/* {description} */}
                 </div>
                 Game details:
                 <br></br>

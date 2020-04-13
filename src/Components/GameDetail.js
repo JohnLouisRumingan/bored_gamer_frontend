@@ -7,27 +7,44 @@ import './css/general.css'
 
 class GameDetail extends React.Component{
 
-    render(){
+    gameInfo(detailedGame){
 
         let {name, image_url, description, year_published, min_players, max_players, 
-            min_playtime, max_playtime, publisher, price, min_age
-        } = this.props.detailedGame
+            min_playtime, max_playtime, publisher,
+            } = detailedGame
+        
+        return (
+            <div>
+                <div className='game-image'>
+                    <img src={image_url} alt={name}/>
+                </div>
+                <br></br>
+                {name}
+                <br></br>
+                <div>
+                    {description}
+                </div>
+                Game details:
+                <br></br>
+                {publisher? "Published by": null }{publisher? publisher : null }
+                {year_published ? year_published : null}
+                <br></br>
+                {min_players} - {max_players} players 
+                <br></br>
+                {min_playtime} - {max_playtime} minutes 
+            </div>
+        )
+    }
+
+    render(){
+
 
         return (
         <div>
             <div>
-                Game Details<br></br>
+                
                 {this.props.detailedGame? 
-                    <div>
-                        {this.props.detailedGame.name}
-                        <br></br>
-                        <img src={this.props.detailedGame.image_url} alt={this.props.detailedGame.name}/>
-                        <br></br>
-                        {this.props.detailedGame.description}
-                        Game details:
-                        Min_player, max_player, playtime, other info
-                    </div>
-
+                    this.gameInfo(this.props.detailedGame)
                     : this.props.getGameDetails(this.props.routerProps.match.params.gameId) 
                 }
                 <br></br>

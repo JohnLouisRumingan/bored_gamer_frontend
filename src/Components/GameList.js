@@ -1,31 +1,34 @@
 import React from 'react'
 import GameCard from './GameCard'
 import { connect } from 'react-redux'
+import { Card } from 'semantic-ui-react'
 import './css/scrollable-list.css'
+import '../Containers/css/game-container.css'
 
 const GameList = (props) => {
     
     return (
         <div className='scrollable-list'>
-            <div>
+            <div className='game-list'>
+                <Card.Group>
+                    {(props.games) ? props.games.map(game => (
+                        <GameCard 
+                            key={game.game_id? game.game_id : game.id}
+                            game={game}
+                        />
+                    )) : null }
 
-                {(props.games) ? props.games.map(game => (
-                    <GameCard 
-                        key={game.game_id? game.game_id : game.id}
-                        game={game}
-                    />
-                )) : null }
+                    {(props.collection)? props.collection.map( collection => (
+                        <GameCard 
+                        key={collection.game.game_id}
+                        game={collection.game}
+                        owner={collection.owner}
+                        />
+                        ))
+                        : null}
 
-                {(props.collection)? props.collection.map( collection => (
-                    <GameCard 
-                    key={collection.game.game_id}
-                    game={collection.game}
-                    owner={collection.owner}
-                    />
-                    ))
-                    : null}
-
-                {(props.games.length === 0 )? "No Results" : null}
+                    {(props.games.length === 0 )? "No Results" : null}
+                </Card.Group>
             </div>
         </div>
     )

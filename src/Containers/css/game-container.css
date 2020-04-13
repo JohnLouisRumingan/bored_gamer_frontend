@@ -7,7 +7,13 @@
     align-content: center;
 }
 
-.search-form label{
-    color: whitesmoke;
+.search-form {
+}
 
+.game-list {
+    padding: 30px;
+}
+
+.ui-card {
+    padding: 5px;
 }

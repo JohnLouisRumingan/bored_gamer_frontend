@@ -32,7 +32,9 @@ class GameContainer extends React.Component {
                                     <SearchField />
                                     </div>
                                     <br></br>
-                                    <GameList source={"/games"}/>
+                                    <div >
+                                        <GameList source={"/games"}/>
+                                    </div>
                                 </div>
                             )}
                         />

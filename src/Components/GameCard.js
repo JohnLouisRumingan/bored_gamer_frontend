@@ -2,7 +2,8 @@ import React from 'react'
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux'
 import {addToCollection, getGameDetails} from '../redux/actions.js';
-import {Card, Image} from 'semantic-ui-react'
+import {Card, Image } from 'semantic-ui-react'
+import '../Containers/css/game-container.css'
 
 const GameCard = (props) => {
 
@@ -13,13 +14,13 @@ const GameCard = (props) => {
 
     return (
         
-        <div className="content">
+        // <div className="content">
             <Card>
             <h2>
                 <em>
                     <Image src={image_url} size='small'/>
                     {name}<br></br>
-                    {designers? designers : null  }
+                    {/* {designers? designers : null  } */}
                 </em>
                 {props.owner? <div>Owned by: {props.owner.name}</div>: null}
                 {props.profile? 
@@ -38,7 +39,7 @@ const GameCard = (props) => {
                 </Link>
             </h2>
             </Card>
-        </div>
+        // </div>
         
     )
 }

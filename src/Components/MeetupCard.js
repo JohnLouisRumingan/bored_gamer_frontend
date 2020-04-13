@@ -13,30 +13,28 @@ const MeetupCard = (props) => {
     let {participants} = props.info
     
     return (
-        <div className="meetup-card">
-            <Card>
-                <Card.Content>
-                    <Card.Header>{title}</Card.Header>
-                    <Card.Meta>Host: {name? ` - ${name}` : null}</Card.Meta>
-                    <Card.Meta>Location: {location}</Card.Meta>
-                    <Card.Meta>{date}</Card.Meta>
-                    <br></br>
-                    <Label>
-                        <Icon name="group" color='pink'/>{participants.length}
-                    </Label>
-                    <br></br>
-                    <Card.Content extra>
-                        {other_games_allowed? <Button color='green' disabled compact>Other games allowed</Button> : 
-                        <Button color='orange' disabled compact>Listed games only</Button>}
-                    </Card.Content>
-                    <Card.Content extra>
-                        <Link to={`/meetups/${id}`}>
-                            <Button size="mini" /*onClick={props.detailedMeetup(props.info)}*/ >More Details</Button>
-                        </Link>
-                    </Card.Content>
+        <Card>
+            <Card.Content>
+                <Card.Header>{title}</Card.Header>
+                <Card.Meta>Host: {name? ` - ${name}` : null}</Card.Meta>
+                <Card.Meta>Location: {location}</Card.Meta>
+                <Card.Meta>{date}</Card.Meta>
+                <br></br>
+                <Label>
+                    <Icon name="group" color='pink'/>{participants.length}
+                </Label>
+                <br></br>
+                <Card.Content extra>
+                    {other_games_allowed? <Button color='green' disabled compact>Other games allowed</Button> : 
+                    <Button color='orange' disabled compact>Listed games only</Button>}
                 </Card.Content>
-            </Card>
-        </div>
+                <Card.Content extra>
+                    <Link to={`/meetups/${id}`}>
+                        <Button size="mini" /*onClick={props.detailedMeetup(props.info)}*/ >More Details</Button>
+                    </Link>
+                </Card.Content>
+            </Card.Content>
+        </Card>
     )
 }
 

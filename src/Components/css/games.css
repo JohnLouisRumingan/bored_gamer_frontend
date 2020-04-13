@@ -1,12 +1,30 @@
+.game-block {
+    /* width: 80%;
+    height: 300px;
+    margin: auto;
+    padding: 10px; */
+    display: flex;
+}
+
 .game-image {
-    width: 300px;
-    height: 200px;
+    /* width: 40%;
+    height: 300px; */
+    flex: 0.2 0 25%;
+    height: 400px;
 }
 
 .game-image img {
     max-width: 100%;
     max-height: 100%;
 }
+
+.game-details {
+    /* width: 40%; */
+    /* margin-left: 45%;
+    height: 300px; */
+    flex: 1;
+}
+
 
 .game-description {
 

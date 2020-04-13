@@ -16,23 +16,26 @@ class GameDetail extends React.Component{
         
         return (
             <div className='general-content'>
-                <div className='game-image'>
-                    <img src={image_url} alt={name}/>
+                <div className='game-block'>
+                    <div className='game-image'>
+                        <img src={image_url} alt={name}/>
+                    </div>
+                    <div className='game-details'>
+                        {name}<br></br>
+                        Game details:
+                        <br></br>
+                        {publisher? "Published by": null }{publisher? publisher : null }
+                        {year_published ? year_published : null}
+                        <br></br>
+                        {min_players} - {max_players} players 
+                        <br></br>
+                        {min_playtime} - {max_playtime} minutes 
+                    </div>
                 </div>
-                {name}
                 <br></br>
                 <div className='game-description'
                  dangerouslySetInnerHTML={{__html: description}}>
-                    {/* {description} */}
                 </div>
-                Game details:
-                <br></br>
-                {publisher? "Published by": null }{publisher? publisher : null }
-                {year_published ? year_published : null}
-                <br></br>
-                {min_players} - {max_players} players 
-                <br></br>
-                {min_playtime} - {max_playtime} minutes 
             </div>
         )
     }

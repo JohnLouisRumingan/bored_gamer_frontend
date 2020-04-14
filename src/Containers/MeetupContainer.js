@@ -37,7 +37,7 @@ const MeetupContainer = (props) => {
                         <Route 
                             path="/meetups/:meetupId"
                             render={(props) => (
-                                <div>
+                                <div className='meetup-details'>
                                     <Divider horizontal inverted> Meetup Details: </Divider>
                                     <MeetupDetail routerProps={props}/>
                                 </div>

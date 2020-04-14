@@ -20,6 +20,7 @@ let initialState = {
         calendar: false,
         upcomingEvents: false,
         featuredEvents: true,
+        meetupsOnDate: false,
     },
 }
 
@@ -114,8 +115,9 @@ const dateReducer = (state=initialState.dateSelected, action) => {
     switch(action.type){
         case "SELECT_DATE":
             return action.payload
-
         // make another reducer here for the week. Need this to be able to filter events weekly
+        case "NULL_DATE":
+            return null;
         default:
             return state;
     }

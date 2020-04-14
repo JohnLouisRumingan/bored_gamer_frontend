@@ -1,7 +1,7 @@
 import React from 'react'
 import './Backdrop.css'
 import { connect } from 'react-redux'
-import {backdropClick} from '../../redux/actions'
+import {backdropClick, calendarNullDate } from '../../redux/actions'
 
 const Backdrop = (props) => (
 
@@ -12,7 +12,10 @@ const Backdrop = (props) => (
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        clickHandler: () => dispatch(backdropClick())
+        clickHandler: () => {
+            dispatch(backdropClick());
+            dispatch(calendarNullDate());
+            }
     }
 }
 

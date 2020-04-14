@@ -108,6 +108,10 @@ function calendarDateSelect(day){
     return {type: "SELECT_DATE", payload: day}
 }
 
+function calendarNullDate(){
+    return {type: "NULL_DATE"}
+}
+
 function dispatchTodaysDate(day){
     return {type: "TODAYS_DATE", payload: day}
 }
@@ -343,7 +347,7 @@ function meetupEventToggler(menu){
 
 export {fetchingMeetups, fetchingGames, getGameDetails, showGameDetails,
     login, logout, addToCollection,
-    calendarDateSelect, dispatchTodaysDate, 
+    calendarDateSelect, dispatchTodaysDate, calendarNullDate,
     newEvent, joinEvent, addGamesToEvent, 
     drawerClickHandler, backdropClick, 
     submitSearchForm, createAccount,

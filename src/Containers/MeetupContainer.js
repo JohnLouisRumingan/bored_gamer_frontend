@@ -5,19 +5,32 @@ import MeetupList from '../Components/MeetupList'
 import MeetupForm from '../Components/MeetupForm'
 import Calendar from '../Components/Calendar/Calendar'
 import MeetupDetail from '../Components/MeetupDetail'
+import Backdrop from '../Components/Backdrop/Backdrop'
 import '../Components/css/general.css'
 import './css/meetup-container.css'
 import {Divider, Segment, Button } from 'semantic-ui-react'
-import { meetupEventToggler } from '../redux/actions'
+import { meetupEventToggler, calendarNullDate } from '../redux/actions'
+
 
 
 const MeetupContainer = (props) => {
 
-    let {allEvents} = props.menu
+    const dateOfMeetups = (props) => {
+
+        if(props.dateSelected){
+            return (
+                <div>
+                    <Backdrop />
+                </div>
+            )
+        }
+    }
+
 
     return (
         <div className='background-general'>
             <div className="meetup-container">
+                {dateOfMeetups(props)}
                 <Segment basic textAlign='center'>
                     <Divider horizontal inverted>Create Event</Divider>
                     <Switch>
@@ -54,7 +67,7 @@ const MeetupContainer = (props) => {
                     </Switch>
                     <br></br>
                     <Divider horizontal inverted>Past Events</Divider>
-                        <Button onClick={() => {props.menuToggle("pastEvents")}}>Show Past Events</Button>
+                        <Button onClick={() => {props.menuToggle("pastEvents")}}>{props.menu.pastEvents? "Hide" : "Show"} Past Events</Button>
                         <br></br>
                         {props.menu.pastEvents? <MeetupList meetups={props.meetups.filter(meetup => Date.parse(meetup.meetup_details.date) < Date.parse(new Date()))}/> 
                          : null }
@@ -83,12 +96,14 @@ const mapStateToProps = (state) => {
             return 0;
         }),
         menu: state.meetupMenu,
+        dateSelected: state.dateSelected,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        menuToggle: (choice) => {dispatch(meetupEventToggler(choice))}
+        menuToggle: (choice) => {dispatch(meetupEventToggler(choice))},
+        resetCalendar: () => {dispatch(calendarNullDate())}
     }
 }
 

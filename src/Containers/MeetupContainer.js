@@ -48,7 +48,7 @@ const MeetupContainer = (props) => {
                     </Switch>
                     <br></br>
                     <Divider horizontal inverted>Past Events</Divider>
-                        <Button>Show Past Events</Button>
+                        <Button onClick={() => {props.menuToggle("pastEvents")}}>Show Past Events</Button>
                         <br></br>
                         {props.menu.pastEvents? <MeetupList meetups={props.meetups.filter(meetup => Date.parse(meetup.meetup_details.date) < Date.parse(new Date()))}/> 
                          : null }

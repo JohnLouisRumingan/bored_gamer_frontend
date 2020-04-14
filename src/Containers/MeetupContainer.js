@@ -5,6 +5,7 @@ import MeetupList from '../Components/MeetupList'
 import MeetupForm from '../Components/MeetupForm'
 import Calendar from '../Components/Calendar/Calendar'
 import MeetupDetail from '../Components/MeetupDetail'
+import '../Components/css/general.css'
 import './css/meetup-container.css'
 import {Divider, Segment } from 'semantic-ui-react'
 
@@ -12,51 +13,48 @@ import {Divider, Segment } from 'semantic-ui-react'
 const MeetupContainer = (props) => {
 
     return (
-        <div className="meetup-container">
-            
-            <Segment basic textAlign='center'>
-                <Divider horizontal>Create Event</Divider>
-                <Switch>
-                    <Route path="/meetups/new" render={() => 
-                        <div>
-                            <MeetupForm />
-                            <Calendar />
-                        </div>
-                    }/>
-                </Switch>
-                {props.profile? <Route path='/meetups' render={() => <Link to='/meetups/new'>Create a new event!</Link>}></Route> : "Create an account to make an event!"}
-                {/* Add below for testing. Don't want to have to keep logging in while creating the form */}
-                {/* <Link to='/meetups/new'>Create a new event!</Link>  */}
-                <Divider horizontal>Featured Events</Divider>
+        <div className='background-general'>
+            <div className="meetup-container">
+                <Segment basic textAlign='center'>
+                    <Divider horizontal inverted>Create Event</Divider>
+                    <Switch>
+                        <Route path="/meetups/new" render={() => 
+                            <div>
+                                <MeetupForm />
+                                <Calendar />
+                            </div>
+                        }/>
+                    </Switch>
+                    {props.profile? <Route path='/meetups' render={() => <Link to='/meetups/new'>Create a new event!</Link>}></Route> : "Create an account to make an event!"}
+                    <Divider horizontal inverted>Featured Events</Divider>
+                        <br></br>
+                        <MeetupList meetups={props.meetups.filter(meetup => meetup.participants.length > 2 )}/>
+                        <br></br>
+                    <Divider horizontal inverted>Upcoming Events </Divider>
+                    <Switch>
+                        <Route 
+                            path="/meetups/:meetupId"
+                            render={(props) => <MeetupDetail routerProps={props}/>}
+                        />
+                        <Route exact path='/meetups'render={ () => 
+                            <div>
+                                <Calendar />
+                                <MeetupList meetups={props.meetups.filter(meetup => Date.parse(meetup.meetup_details.date) > Date.parse(new Date()))}/>
+                            </div>
+                        }/>  
+                    </Switch>
+                        
                     <br></br>
-                    <MeetupList meetups={props.meetups.filter(meetup => meetup.participants.length > 2 )}/>
+                    <Divider horizontal inverted>Past Events</Divider>
                     <br></br>
-                <Divider horizontal>Upcoming Events </Divider>
-                <Switch>
-                    <Route 
-                        path="/meetups/:meetupId"
-                        render={(props) => <MeetupDetail routerProps={props}/>}
-                    />
-                    <Route exact path='/meetups'render={ () => 
-                        <div>
-                            <Calendar />
-                            <MeetupList meetups={props.meetups.filter(meetup => Date.parse(meetup.meetup_details.date) > Date.parse(new Date()))}/>
-                        </div>
-                    }/>  
-                </Switch>
-                    
-                <br></br>
-                <Divider horizontal>Past Events</Divider>
-                <br></br>
-                <MeetupList meetups={props.meetups.filter(meetup => Date.parse(meetup.meetup_details.date) < Date.parse(new Date()))}/>
-                <br></br><br></br>
-                <Divider horizontal>All Events</Divider>
-                <br></br><br></br>
-                <MeetupList meetups={props.meetups}/>
-                {/* <MeetupList /> */}
-            </Segment>
-
-            
+                    <MeetupList meetups={props.meetups.filter(meetup => Date.parse(meetup.meetup_details.date) < Date.parse(new Date()))}/>
+                    <br></br><br></br>
+                    <Divider horizontal inverted>All Events</Divider>
+                    <br></br><br></br>
+                    <MeetupList meetups={props.meetups}/>
+                    {/* <MeetupList /> */}
+                </Segment>     
+            </div>
         </div>
     )
 }

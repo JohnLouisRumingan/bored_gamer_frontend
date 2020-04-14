@@ -1,8 +1,6 @@
 import React from 'react'
 import MeetupCard from './MeetupCard'
 import {Card} from 'semantic-ui-react'
-// import {connect} from 'react-redux'
-
 
 const MeetupList = (props) => {
 
@@ -14,14 +12,5 @@ const MeetupList = (props) => {
         </div>
     )
 }
-
-//comment below and use default export once bug fixed and refactored
-// const mapStateToProps = (state) => {
-//     return {
-//         meetups: state.meetups
-//     }
-// }
-
-// export default connect(mapStateToProps)(MeetupList)
 
 export default MeetupList

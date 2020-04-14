@@ -33,16 +33,22 @@ const MeetupContainer = (props) => {
                         <br></br>
                         <MeetupList meetups={props.meetups.filter(meetup => meetup.participants.length > 2 )}/>
                         <br></br>
-                    <Divider horizontal inverted>Upcoming Events </Divider>
                     <Switch>
                         <Route 
                             path="/meetups/:meetupId"
-                            render={(props) => <MeetupDetail routerProps={props}/>}
+                            render={(props) => (
+                                <div>
+                                    <Divider horizontal inverted> Meetup Details: </Divider>
+                                    <MeetupDetail routerProps={props}/>
+                                </div>
+                            )}
                         />
                         <Route exact path='/meetups'render={ () => 
                             <div>
-                                <Calendar />
-                                <MeetupList meetups={props.meetups.filter(meetup => Date.parse(meetup.meetup_details.date) > Date.parse(new Date()))}/>
+                                <Divider horizontal inverted> Calendar </Divider>
+                                    <Calendar />
+                                <Divider horizontal inverted> Upcoming Events </Divider>
+                                    <MeetupList meetups={props.meetups.filter(meetup => Date.parse(meetup.meetup_details.date) > Date.parse(new Date()))}/>
                             </div>
                         }/>  
                     </Switch>

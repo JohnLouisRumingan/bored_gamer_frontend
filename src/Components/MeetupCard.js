@@ -2,12 +2,9 @@ import React from 'react'
 import { Button, Card, Label, Icon } from 'semantic-ui-react'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { detailedMeetup } from '../redux/actions'
-
 
 const MeetupCard = (props) => {
 
-    // console.log("meetup card info:", props.info)
     let {meetup_details:{title, location, other_games_allowed, date, id}} = props.info 
     let {host: { name,}} = props.info
     let {participants} = props.info
@@ -23,14 +20,13 @@ const MeetupCard = (props) => {
                 <Label>
                     <Icon name="group" color='pink'/>{participants.length}
                 </Label>
-                <br></br>
                 <Card.Content extra>
-                    {other_games_allowed? <Button color='green' disabled compact>Other games allowed</Button> : 
-                    <Button color='orange' disabled compact>Listed games only</Button>}
+                    {other_games_allowed? <Button color='green' disabled compact size='mini'>Other games allowed</Button> : 
+                    <Button color='orange' disabled compact size='mini'>Listed games only</Button>}
                 </Card.Content>
                 <Card.Content extra>
                     <Link to={`/meetups/${id}`}>
-                        <Button size="mini" /*onClick={props.detailedMeetup(props.info)}*/ >More Details</Button>
+                        <Button size="mini">More Details</Button>
                     </Link>
                 </Card.Content>
             </Card.Content>
@@ -38,11 +34,15 @@ const MeetupCard = (props) => {
     )
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        // detailedMeetup: (info) => dispatch(detailedMeetup(info))
-    }
-}
+//formerly used detaildMeetup dispatch as a more details onClick event handler
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         // detailedMeetup: (info) => dispatch(detailedMeetup(info))
+//     }
+// }
 
 
-export default withRouter(connect(null, mapDispatchToProps)(MeetupCard))
+// export default withRouter(connect(null, mapDispatchToProps)(MeetupCard))
+
+export default MeetupCard

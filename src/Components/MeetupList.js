@@ -6,7 +6,7 @@ const MeetupList = (props) => {
 
     return (
         <div>
-            <Card.Group>
+            <Card.Group centered>
                 {props.meetups? props.meetups.map(meetup => <MeetupCard info={meetup} key={meetup.meetup_details.id}/>) : null }
             </Card.Group>
         </div>

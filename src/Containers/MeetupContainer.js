@@ -8,6 +8,7 @@ import MeetupDetail from '../Components/MeetupDetail'
 import '../Components/css/general.css'
 import './css/meetup-container.css'
 import {Divider, Segment } from 'semantic-ui-react'
+import {} from '../redux/actions'
 
 
 const MeetupContainer = (props) => {
@@ -76,4 +77,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(MeetupContainer);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        openMenu: () => {dispatch()}
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MeetupContainer);

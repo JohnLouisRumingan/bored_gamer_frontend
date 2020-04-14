@@ -14,8 +14,10 @@ let initialState = {
     invites: [],
     inviteToggle: false,
     users: [],
-
-    // detailedMeetup: null,
+    meetupMenu: {
+        pastEvents: false,
+        allEvents: false,
+    },
 }
 
 
@@ -180,6 +182,13 @@ const usersReducer = (state = initialState.users, action) => {
     }
 }
 
+const meetupMenuReducer = (state=initialState.meetupMenu, action) => {
+    switch(action.type){
+        default:
+            return state;
+    }
+}
+
 const rootReducer = combineReducers({
     profile: profileReducer,
     games: gamesReducer,
@@ -193,8 +202,7 @@ const rootReducer = combineReducers({
     invites: inviteReducer,
     inviteToggle: inviteToggleReducer,
     users: usersReducer,
-    // detailedMeetup: detailedMeetupReducer,
-    
+    meetupMenu: meetupMenuReducer,
 })
 
 

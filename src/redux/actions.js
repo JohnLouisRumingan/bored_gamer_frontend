@@ -337,6 +337,10 @@ function respondToInvite(meetupID, profileID, inviteID, response){
     }
 }
 
+function meetupEventToggler(menu){
+    return {type: "TOGGLE_MEETUP_MENU", payload: menu}
+}
+
 export {fetchingMeetups, fetchingGames, getGameDetails, showGameDetails,
     login, logout, addToCollection,
     calendarDateSelect, dispatchTodaysDate, 
@@ -344,5 +348,5 @@ export {fetchingMeetups, fetchingGames, getGameDetails, showGameDetails,
     drawerClickHandler, backdropClick, 
     submitSearchForm, createAccount,
     inviteToggleHandler, fetchAllUsers, sendInvites,
-    getInvites, respondToInvite,
+    getInvites, respondToInvite, meetupEventToggler,
     };

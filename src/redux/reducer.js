@@ -17,6 +17,9 @@ let initialState = {
     meetupMenu: {
         pastEvents: false,
         allEvents: false,
+        calendar: false,
+        upcomingEvents: false,
+        featuredEvents: true,
     },
 }
 
@@ -184,6 +187,10 @@ const usersReducer = (state = initialState.users, action) => {
 
 const meetupMenuReducer = (state=initialState.meetupMenu, action) => {
     switch(action.type){
+        case "TOGGLE_MEETUP_MENU":
+            let newState = {...state};
+            newState[action.payload] = !state[action.payload]
+            return newState;
         default:
             return state;
     }

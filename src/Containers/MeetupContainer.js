@@ -7,11 +7,13 @@ import Calendar from '../Components/Calendar/Calendar'
 import MeetupDetail from '../Components/MeetupDetail'
 import '../Components/css/general.css'
 import './css/meetup-container.css'
-import {Divider, Segment } from 'semantic-ui-react'
-import {} from '../redux/actions'
+import {Divider, Segment, Button } from 'semantic-ui-react'
+import { meetupEventToggler } from '../redux/actions'
 
 
 const MeetupContainer = (props) => {
+
+    let {allEvents} = props.menu
 
     return (
         <div className='background-general'>
@@ -44,23 +46,23 @@ const MeetupContainer = (props) => {
                             </div>
                         }/>  
                     </Switch>
-                        
                     <br></br>
                     <Divider horizontal inverted>Past Events</Divider>
-                    <br></br>
-                    <MeetupList meetups={props.meetups.filter(meetup => Date.parse(meetup.meetup_details.date) < Date.parse(new Date()))}/>
+                        <Button>Show Past Events</Button>
+                        <br></br>
+                        {props.menu.pastEvents? <MeetupList meetups={props.meetups.filter(meetup => Date.parse(meetup.meetup_details.date) < Date.parse(new Date()))}/> 
+                         : null }
+                        
                     <br></br><br></br>
                     <Divider horizontal inverted>All Events</Divider>
-                    <br></br><br></br>
-                    <MeetupList meetups={props.meetups}/>
-                    {/* <MeetupList /> */}
+                    <Button onClick={() => {props.menuToggle("allEvents")}}>{props.menu.allEvents? "Hide" : "Show "} All Events</Button>
+                        <br></br>
+                        {props.menu.allEvents? <MeetupList meetups={props.meetups}/> : null }
                 </Segment>     
             </div>
         </div>
     )
 }
-
-
 
 const mapStateToProps = (state) => {
     return {
@@ -74,12 +76,13 @@ const mapStateToProps = (state) => {
             }
             return 0;
         }),
+        menu: state.meetupMenu,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        openMenu: () => {dispatch()}
+        menuToggle: (choice) => {dispatch(meetupEventToggler(choice))}
     }
 }
 

@@ -9,7 +9,6 @@ const MeetupCard = (props) => {
     let {host: { name,}} = props.info
     let {participants} = props.info
     
-    console.log(date.toString().substring(0,10))
     return (
         <Card>
             <Card.Content>

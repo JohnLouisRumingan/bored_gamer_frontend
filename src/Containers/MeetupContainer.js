@@ -15,20 +15,25 @@ import { meetupEventToggler, calendarNullDate } from '../redux/actions'
 
 const MeetupContainer = (props) => {
 
+
+
     //event dates are stored in ISO format in db.  Date selected is using Date() so it displays Day Month DD format.
     const dateOfMeetups = (props) => {
         if(props.dateSelected){
             return (
-                <div className='selected-date-meetups'>
-                    <MeetupList meetups={props.meetups.filter(meetup => 
-                                meetup.meetup_details.date.toString().substring(0,10) === props.dateSelected.toISOString().substring(0,10)
-                    )}/>
-                    <Backdrop />
+                <div>
+                    <div className='selected-date-meetups'>
+                        <MeetupList meetups={props.meetups.filter(meetup => 
+                                    meetup.meetup_details.date.toString().substring(0,10) === props.dateSelected.toISOString().substring(0,10)
+                        )}/>
+                    </div>
+                    <div className='selected-date-backdrop'>
+                        <Backdrop />
+                    </div>
                 </div>
             )
         }
     }
-
 
     return (
         <div className='background-general'>
@@ -46,7 +51,7 @@ const MeetupContainer = (props) => {
                     {props.profile? <Route path='/meetups' render={() => <Link to='/meetups/new'>Create a new event!</Link>}></Route> : "Create an account to make an event!"}
                     <Divider horizontal inverted>Featured Events</Divider>
                         <br></br>
-                        <MeetupList meetups={props.meetups.filter(meetup => meetup.participants.length > 2 )}/>
+                        <MeetupList meetups={props.meetups.filter(meetup => meetup.participants.length > 2 && Date.parse(meetup.meetup_details.date) > Date.parse(new Date()) )}/>
                         <br></br>
                     <Switch>
                         <Route 
@@ -64,7 +69,7 @@ const MeetupContainer = (props) => {
                                 <Divider horizontal inverted> Calendar </Divider>
                                     <Calendar />
                                 <Divider horizontal inverted> Upcoming Events </Divider>
-                                    <MeetupList meetups={props.meetups.filter(meetup => Date.parse(meetup.meetup_details.date) > Date.parse(new Date()))}/>
+                                    <MeetupList meetups={props.meetups.filter(meetup => Date.parse(meetup.meetup_details.date) > Date.parse(new Date()) )}/>
                             </div>
                         }/>  
                     </Switch>

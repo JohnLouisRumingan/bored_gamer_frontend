@@ -15,11 +15,14 @@ import { meetupEventToggler, calendarNullDate } from '../redux/actions'
 
 const MeetupContainer = (props) => {
 
+    //event dates are stored in ISO format in db.  Date selected is using Date() so it displays Day Month DD format.
     const dateOfMeetups = (props) => {
-
         if(props.dateSelected){
             return (
-                <div>
+                <div className='selected-date-meetups'>
+                    <MeetupList meetups={props.meetups.filter(meetup => 
+                                meetup.meetup_details.date.toString().substring(0,10) === props.dateSelected.toISOString().substring(0,10)
+                    )}/>
                     <Backdrop />
                 </div>
             )
@@ -30,7 +33,6 @@ const MeetupContainer = (props) => {
     return (
         <div className='background-general'>
             <div className="meetup-container">
-                {dateOfMeetups(props)}
                 <Segment basic textAlign='center'>
                     <Divider horizontal inverted>Create Event</Divider>
                     <Switch>
@@ -58,6 +60,7 @@ const MeetupContainer = (props) => {
                         />
                         <Route exact path='/meetups'render={ () => 
                             <div>
+                                {dateOfMeetups(props)}
                                 <Divider horizontal inverted> Calendar </Divider>
                                     <Calendar />
                                 <Divider horizontal inverted> Upcoming Events </Divider>

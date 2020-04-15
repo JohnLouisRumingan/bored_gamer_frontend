@@ -9,13 +9,14 @@ const MeetupCard = (props) => {
     let {host: { name,}} = props.info
     let {participants} = props.info
     
+    console.log(date.toString().substring(0,10))
     return (
         <Card>
             <Card.Content>
                 <Card.Header>{title}</Card.Header>
                 <Card.Meta>Host: {name? ` - ${name}` : null}</Card.Meta>
                 <Card.Meta>Location: {location}</Card.Meta>
-                <Card.Meta>{date}</Card.Meta>
+                <Card.Meta>{date.toString().substring(0,10)}</Card.Meta>
                 <br></br>
                 <Label>
                     <Icon name="group" color='pink'/>{participants.length}

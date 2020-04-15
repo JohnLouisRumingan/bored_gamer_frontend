@@ -15,20 +15,36 @@ import { meetupEventToggler, calendarNullDate } from '../redux/actions'
 
 const MeetupContainer = (props) => {
 
+    //conditionally renders meetups on selected date. If no meetups found via filter, returns "no results"
+    const dateOfMeetupsConditional = (props) => {
 
+        let filteredMeetups = props.meetups.filter(meetup => 
+            meetup.meetup_details.date.toString().substring(0,10) === props.dateSelected.toISOString().substring(0,10))
+
+        if(filteredMeetups.length > 0){
+            return (
+                <div className='selected-date-meetups'>
+                    Meetups on {props.dateSelected.toISOString().substring(0,10)} : 
+                    <br></br>
+                    <MeetupList meetups={filteredMeetups}/> 
+                </div>
+            )
+        }
+        else{
+            return (
+                <div className='selected-date-meetups'>
+                    No meetups found for {props.dateSelected.toISOString().substring(0,10)} 
+                </div>
+            )
+        }
+    }
 
     //event dates are stored in ISO format in db.  Date selected is using Date() so it displays Day Month DD format.
     const dateOfMeetups = (props) => {
         if(props.dateSelected){
             return (
                 <div>
-                    <div className='selected-date-meetups'>
-                        Meetups on {props.dateSelected.toISOString().substring(0,10)} : 
-                        <br></br>
-                        <MeetupList meetups={props.meetups.filter(meetup => 
-                                    meetup.meetup_details.date.toString().substring(0,10) === props.dateSelected.toISOString().substring(0,10)
-                        )}/>
-                    </div>
+                    {dateOfMeetupsConditional(props)}
                     <div className='selected-date-backdrop'>
                         <Backdrop />
                     </div>

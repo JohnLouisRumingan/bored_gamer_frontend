@@ -23,6 +23,8 @@ const MeetupContainer = (props) => {
             return (
                 <div>
                     <div className='selected-date-meetups'>
+                        Meetups on {props.dateSelected.toISOString().substring(0,10)} : 
+                        <br></br>
                         <MeetupList meetups={props.meetups.filter(meetup => 
                                     meetup.meetup_details.date.toString().substring(0,10) === props.dateSelected.toISOString().substring(0,10)
                         )}/>

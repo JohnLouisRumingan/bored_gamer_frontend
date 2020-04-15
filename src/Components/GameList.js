@@ -27,7 +27,7 @@ const GameList = (props) => {
                         ))
                         : null}
 
-                    {(props.games.length === 0 )? "No Results" : null}
+                    {(props.games.length === 0 && (props.source==="/games" || props.source==='/profile') )? "No Results" : null}
                 </Card.Group>
             </div>
         </div>
@@ -38,12 +38,14 @@ const mapStateToProps = (state, ownProps) => {
 
     if(ownProps.source==="/games"){
         return {
-          games: state.games
+          games: state.games,
+          source: "/games",
         }
     }
     else if(ownProps.source==="/profile"){
         return {
-            games: state.gamesInCollection.filter(game => game.favorite === true || game.owned === true)
+            games: state.gamesInCollection.filter(game => game.favorite === true || game.owned === true),
+            source: "/profile",
         }
     }
     else {
@@ -51,11 +53,6 @@ const mapStateToProps = (state, ownProps) => {
             games: []
         }
     }
-    // else if(ownProps.source==="/meetups"){
-    //     return {
-    //         games: ownProps.games
-    //     }
-    // }
 }
 
 export default connect(mapStateToProps)(GameList)

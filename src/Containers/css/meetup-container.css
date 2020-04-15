@@ -19,9 +19,11 @@
 }
 
 .selected-date-meetups {
+    background: white;
+    color: black;
     position: fixed;
     top: 1;
-    left: 30;
+    left: 50;
     width: 50%;
     z-index: 999;
     

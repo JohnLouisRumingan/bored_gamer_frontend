@@ -10,6 +10,7 @@ const Profile = (props) => {
     let {username, name, bio, avatar} = props.profile
 
     return (
+      <div className='background-general'>
         <div className='profile-container'>
           <Segment>
             <Grid columns={2} relaxed="very">
@@ -41,6 +42,7 @@ const Profile = (props) => {
             <Divider vertical>Shelf</Divider>
           </Segment>
         </div>
+      </div>
     )
 }
 

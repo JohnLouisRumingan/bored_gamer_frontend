@@ -10,7 +10,7 @@ const Profile = (props) => {
     let {username, name, bio, avatar} = props.profile
 
     return (
-        <div className='profile-page'>
+        <div className='profile-container'>
           <Segment>
             <Grid columns={2} relaxed="very">
               <Grid.Column>

@@ -1,4 +1,5 @@
 .background-general {
+    /* change height back to 100% if able to add background color below 100% vh */
     height: 200%;
     width: 100%;
     min-height: 100%;

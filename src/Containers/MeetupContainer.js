@@ -68,10 +68,6 @@ const MeetupContainer = (props) => {
                     </Switch>
                     {props.profile? <Route path='/meetups' render={() => <Link to='/meetups/new'>Create a new event!</Link>}></Route> : "Create an account to make an event!"}
                     
-                    <Divider horizontal inverted>Featured Events</Divider>
-                        <br></br>
-                        <MeetupList meetups={props.meetups.filter(meetup => meetup.participants.length > 2 && Date.parse(meetup.meetup_details.date) > Date.parse(new Date()) )}/>
-                        <br></br>
                     
                     <Switch>
                         <Route 
@@ -88,11 +84,13 @@ const MeetupContainer = (props) => {
                                 {dateOfMeetups(props)}
                                 <Divider horizontal inverted> Calendar </Divider>
                                     <Calendar />
-                                <Divider horizontal inverted> Upcoming Events </Divider>
-                                    <MeetupList meetups={props.meetups.filter(meetup => Date.parse(meetup.meetup_details.date) > Date.parse(new Date()) )}/>
+                                <Divider horizontal inverted>Featured Events</Divider>
+                                    <MeetupList meetups={props.meetups.filter(meetup => meetup.participants.length > 2 && Date.parse(meetup.meetup_details.date) > Date.parse(new Date()) )}/>
                             </div>
                         }/>  
                     </Switch>
+                        <Divider horizontal inverted> Upcoming Events </Divider>
+                            <MeetupList meetups={props.meetups.filter(meetup => Date.parse(meetup.meetup_details.date) > Date.parse(new Date()) )}/>
                     <br></br>
                     <Divider horizontal inverted>Past Events</Divider>
                         <Button onClick={() => {props.menuToggle("pastEvents")}}>{props.menu.pastEvents? "Hide" : "Show"} Past Events</Button>

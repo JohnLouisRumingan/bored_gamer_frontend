@@ -17,4 +17,11 @@
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 5%;
+    color: black;
+    /* background-color: rgb(0, 0, 0, 0.2); */
+}
+
+.additional-background {
+    background-color: rgb(0, 0, 0, 0.2);
+    margin-top: 100%;
 }

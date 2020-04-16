@@ -15,7 +15,9 @@ const Profile = (props) => {
           <Segment>
             <Grid columns={2} relaxed="very">
               <Grid.Column>
-                Profile page
+                {avatar? <Image src={avatar} alt={username + bio } size='medium'/> : null }
+              </Grid.Column>
+              <Grid.Column >
                 Username: {username}
                 <br></br>
                 Name: {name}
@@ -23,7 +25,6 @@ const Profile = (props) => {
                 <p>
                 Bio: {bio}
                 </p>
-                {avatar? <Image src={avatar} alt={username + bio } size='medium'/> : null }
                 <br></br>
                 <p>
                   Games owned: {props.games.filter(game => game.owned===true).length}
@@ -31,16 +32,15 @@ const Profile = (props) => {
                   Games favorited: {props.games.filter(game => game.favorite===true).length}
                 </p>
               </Grid.Column>
-              <Grid.Column >
-                <div className='profile-games'>
-                  <Container>
-                    <GameList source={"/profile"}/>
-                  </Container>
-                </div>
-              </Grid.Column>
             </Grid>
-            <Divider vertical>Shelf</Divider>
+            <Divider vertical>Profile</Divider>
           </Segment>
+          <Divider horizontal> Shelf </Divider>
+                <div className='profile-games'>
+                    <GameList source={"/profile"}/>
+                </div>
+        </div>
+        <div className='additional-background'>
         </div>
       </div>
     )

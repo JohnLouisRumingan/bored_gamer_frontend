@@ -311,7 +311,7 @@ function getInvites(profile){
         fetch(URL+`invites/user/${profileID}`)
         .then(res=> res.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
             dispatch({type: "LOGIN_USER_INVITES", allInvites: data.users_invites})
         })
     }

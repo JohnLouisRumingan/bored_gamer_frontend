@@ -6,6 +6,8 @@ function fetchedGames(games) {
     return {type: "FETCHED_GAMES", payload: games}
 }
 
+// As of 2020.8.1, the API for board games will be changed to api. instead of www.
+// If fetching does not work after this date, check the back-end portion for compatibility.
 
 function fetchingGames(){
     return (dispatch) => {

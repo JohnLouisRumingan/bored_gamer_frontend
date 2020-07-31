@@ -49,10 +49,6 @@ function loginFailed(){
 
 function login(username, password){
 
-    // similar to fetching games, if return is true, send the profile. If it's false, return an action 
-    // that can be used for something else 
-
-    // return {type: "LOGIN_SUCCESSFUL", payload: profile}
     return (dispatch) => {
         fetch(URL+"login", {
             method: 'POST', //syntactic sugar: {user: {username, password}} instead 

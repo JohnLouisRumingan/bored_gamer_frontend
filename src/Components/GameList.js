@@ -55,4 +55,7 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
+// split into multiple components with an if/else? Same component works but gets messy with larger /paths
+// also currently shows up with odd bugs for games collections 
+
 export default connect(mapStateToProps)(GameList)

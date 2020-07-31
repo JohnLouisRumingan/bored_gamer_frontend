@@ -74,9 +74,6 @@ const meetupReducer = (state=initialState.meetups, action) => {
                 return 0;
             })
             return meetups;
-        // below currently not used, gets the entire set of meetups again 
-        // case "JOINED_MEETUPS":
-        //     return state;
         case "MODIFY_MEETUP":
             let newState = [...state]
             newState.forEach((meetup, index) => {

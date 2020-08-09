@@ -223,17 +223,13 @@ function submitSearchForm(searchParams){
         })
         .then(res => res.json())
         .then(data => {
-            console.log("back from back end:", data)
             if(data.random){
                 dispatch(randomGame(data.random))
             }
             else{
                 dispatch(fetchedGames(data.result))
             }
-        })
-
-
-        
+        })   
     }
 }
 

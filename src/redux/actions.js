@@ -9,6 +9,7 @@ function fetchedGames(games) {
 // As of 2020.8.1, the API for board games will be changed to api. instead of www.
 // If fetching does not work after this date, check the back-end portion for compatibility.
 
+// number of games fetched from API is 100 by default. Search component does a new fetch of 100 when clicked
 function fetchingGames(){
     return (dispatch) => {
         fetch(URL+"games")

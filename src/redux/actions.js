@@ -340,7 +340,7 @@ function meetupEventToggler(menu){
     return {type: "TOGGLE_MEETUP_MENU", payload: menu}
 }
 
-export {fetchingMeetups, fetchingGames, getGameDetails, showGameDetails,
+export {fetchedMeetups, fetchingMeetups, fetchedGames, fetchingGames, getGameDetails, showGameDetails,
     login, logout, addToCollection,
     calendarDateSelect, dispatchTodaysDate, calendarNullDate,
     newEvent, joinEvent, addGamesToEvent, 

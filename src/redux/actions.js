@@ -1,6 +1,7 @@
 //place all action creators here 
 
-const URL = "http://localhost:3000/api/v1/"
+// const URL = "http://localhost:3000/api/v1" //reinstate this line for development environment
+// add URL to any url's for development
 
 function fetchedGames(games) {
     return {type: "FETCHED_GAMES", payload: games}
@@ -12,12 +13,13 @@ function fetchedGames(games) {
 // number of games fetched from API is 100 by default. Search component does a new fetch of 100 when clicked
 function fetchingGames(){
     return (dispatch) => {
-        fetch(URL+"games")
+        fetch("/games") //removed hard-coded path
         .then(res => res.json())
         .then( games => {
             dispatch(fetchedGames(games))
             fetchingMeetups()
         })
+        .catch(errors => errors)
     }
 }
 
@@ -27,7 +29,7 @@ function fetchedMeetups(meetups) {
 
 function fetchingMeetups(){
     return (dispatch) => {
-        fetch(URL+"meetups/detailed")
+        fetch("meetups/detailed")
         .then(res => res.json())
         .then(meetups => {
             dispatch(fetchedMeetups(meetups))
@@ -51,7 +53,7 @@ function loginFailed(){
 function login(username, password){
 
     return (dispatch) => {
-        fetch(URL+"login", {
+        fetch("/login", {
             method: 'POST', //syntactic sugar: {user: {username, password}} instead 
             body: JSON.stringify({user: {username: username, password:password}}),
             headers: {
@@ -89,7 +91,7 @@ function addToCollection(gameInfo, profile, relationshipToUpdate){
     //this allows user to favorite/own games from their profile page
     
     return (dispatch) => {
-        fetch(URL+"collections/create", {
+        fetch("/collections/create", {
             method: 'POST',
             body: JSON.stringify({
                 collection: {
@@ -124,7 +126,7 @@ function newEvent(formDetails, profile, date){
     let submitObj = {form: formDetails, profile, date}
 
     return (dispatch) => {
-        fetch(URL+'meetups', {
+        fetch('/meetups', {
             method: 'POST',
             body: JSON.stringify(submitObj),
             headers: {
@@ -149,7 +151,7 @@ function backdropClick(){
 
 function joinEvent(meetupId, profile){
 
-   return (dispatch) => {fetch(URL+`meetups/join`, {
+   return (dispatch) => {fetch(`/meetups/join`, {
         method: 'POST', 
         body: JSON.stringify({user: profile.id, meetup: meetupId}),
         headers: {
@@ -171,7 +173,7 @@ function addGamesToEvent(userID,meetupID, chosenGames){
 
     // console.log('AddGamesToEventHandlerProp', userID, meetupID, chosenGames)
 
-    return (dispatch) => {fetch(URL+'meetups/addgame', {
+    return (dispatch) => {fetch('/meetups/addgame', {
         method: 'POST',
         body: JSON.stringify({userID, meetupID, chosenGames}),
         headers: {
@@ -194,7 +196,7 @@ function getGameDetails(gameID){
     // console.log('getGameDetails', gameID, "url:", URL+'games/search')
     
     return (dispatch) => {
-        fetch(URL+'games/search', {
+        fetch('/games/search', {
             method: 'POST',
             body: JSON.stringify({gameID}),
             headers: {
@@ -215,7 +217,7 @@ function randomGame(game){
 function submitSearchForm(searchParams){
 
     return (dispatch) => {
-        fetch(URL+'games/search', {
+        fetch('/games/search', {
             method: 'POST',
             body: JSON.stringify(searchParams), 
             headers: {
@@ -237,7 +239,7 @@ function submitSearchForm(searchParams){
 function createAccount(accountDetails){
 
     return (dispatch) => {
-        fetch(URL+'users', {
+        fetch('/users', {
             method: 'POST',
             body: JSON.stringify({user: accountDetails}),
             headers: {
@@ -267,7 +269,7 @@ function updateAllUsers(users){
 
 function fetchAllUsers(){
     return (dispatch) => {
-        fetch(URL+'users')
+        fetch('/users')
         .then(res => res.json())
         .then(users => dispatch(updateAllUsers(users)))
     }
@@ -282,7 +284,7 @@ function sendInvites(inviteForm, meetupDetails, profile){
     return(dispatch) => {
         // console.log("sending form..", inviteForm, meetupDetails, profile)
 
-        fetch(URL+'invites/create', {
+        fetch('/invites/create', {
             method: 'POST',
             body: JSON.stringify({description: inviteForm.description, inviteList: inviteForm.invited, meetup: meetupDetails, profile }),
             headers: {
@@ -303,7 +305,7 @@ function getInvites(profile){
     let profileID = profile.id
 
     return (dispatch) => {
-        fetch(URL+`invites/user/${profileID}`)
+        fetch(`/invites/user/${profileID}`)
         .then(res=> res.json())
         .then(data => {
             // console.log(data)
@@ -321,7 +323,7 @@ function respondToInvite(meetupID, profileID, inviteID, response){
     return (dispatch) => {
         console.log("response to invite:", meetupID, profileID, inviteID, response)
 
-        fetch(URL+'invites/reply', {
+        fetch('/invites/reply', {
             method: 'POST',
             body: JSON.stringify({meetupID, profileID, inviteID, response}),
             headers: {

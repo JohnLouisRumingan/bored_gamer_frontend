@@ -1,6 +1,8 @@
 //place all action creators here 
 
-const URL = "http://localhost:3000/api/v1/"
+// const URL = "http://localhost:3000/api/v1/" //reinstate this line for development environment
+// add URL to any url's for development
+const URL = "https://bored-game-backend.herokuapp.com/" //production URL
 
 function fetchedGames(games) {
     return {type: "FETCHED_GAMES", payload: games}
@@ -18,6 +20,7 @@ function fetchingGames(){
             dispatch(fetchedGames(games))
             fetchingMeetups()
         })
+        .catch(errors => errors)
     }
 }
 
@@ -149,7 +152,7 @@ function backdropClick(){
 
 function joinEvent(meetupId, profile){
 
-   return (dispatch) => {fetch(URL+`meetups/join`, {
+   return (dispatch) => {fetch(`/meetups/join`, {
         method: 'POST', 
         body: JSON.stringify({user: profile.id, meetup: meetupId}),
         headers: {
@@ -191,8 +194,6 @@ function showGameDetails(gameDetails){
 
 function getGameDetails(gameID){
 
-    // console.log('getGameDetails', gameID, "url:", URL+'games/search')
-    
     return (dispatch) => {
         fetch(URL+'games/search', {
             method: 'POST',
@@ -280,8 +281,6 @@ function inviteToggleHandler(){
 function sendInvites(inviteForm, meetupDetails, profile){
 
     return(dispatch) => {
-        // console.log("sending form..", inviteForm, meetupDetails, profile)
-
         fetch(URL+'invites/create', {
             method: 'POST',
             body: JSON.stringify({description: inviteForm.description, inviteList: inviteForm.invited, meetup: meetupDetails, profile }),
@@ -319,8 +318,6 @@ function updateInvite(inviteInfo){
 function respondToInvite(meetupID, profileID, inviteID, response){
 
     return (dispatch) => {
-        console.log("response to invite:", meetupID, profileID, inviteID, response)
-
         fetch(URL+'invites/reply', {
             method: 'POST',
             body: JSON.stringify({meetupID, profileID, inviteID, response}),

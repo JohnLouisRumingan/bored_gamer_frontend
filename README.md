@@ -1,8 +1,9 @@
 Project BoredGamer/GameNight:
 
+[App is deployed on Heroku!](https://bored-gamer-meetup.herokuapp.com/)
+
 # BORED GAMER/GAME NIGHT
 Welcome to Bored Gamer, where you can explore a selection of board games, save your favorites or add them to your collection. You can create events, join events, and see who is bringing what game to the party! This app uses the API from Board Game Atlas to render detailed game info.
- - No currently deployed version, install locally and make your own user/pass
 
 ## Available features:
 - Users can browse games and events without an account.

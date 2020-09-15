@@ -1,8 +1,8 @@
 //place all action creators here 
 
-// const URL = "http://localhost:3000/api/v1/" //reinstate this line for development environment
+const URL = "http://localhost:3000/api/v1/" //reinstate this line for development environment
 // add URL to any url's for development
-const URL = "https://bored-game-backend.herokuapp.com/" //production URL
+// const URL = "https://bored-game-backend.herokuapp.com/" //production URL
 
 function fetchedGames(games) {
     return {type: "FETCHED_GAMES", payload: games}

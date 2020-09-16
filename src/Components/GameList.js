@@ -11,14 +11,14 @@ const GameList = (props) => {
         <div className='scrollable-list'>
             <div className='game-list'>
                 <Card.Group>
-                    {(props.games) ? props.games.map(game => (
+                    {(props.games && Array.isArray(props.games)) ? props.games.map(game => (
                         <GameCard 
                             key={game.game_id? game.game_id : game.id}
                             game={game}
                         />
                     )) : null }
 
-                    {(props.collection)? props.collection.map( collection => (
+                    {(props.collection && Array.isArray(props.collection))? props.collection.map( collection => (
                         <GameCard 
                         key={collection.game.game_id}
                         game={collection.game}

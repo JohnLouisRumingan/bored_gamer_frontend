@@ -1,8 +1,8 @@
 //place all action creators here 
 
-// const URL = "http://localhost:3000/api/v1/" //reinstate this line for development environment
+const URL = "http://localhost:3000/api/v1/" //reinstate this line for development environment
 // add URL to any url's for development
-const URL = "https://bored-game-backend.herokuapp.com/api/v1/" //production URL
+// const URL = "https://bored-game-backend.herokuapp.com/api/v1/" //production URL
 
 function fetchedGames(games) {
     return {type: "FETCHED_GAMES", payload: games}
@@ -35,6 +35,7 @@ function fetchingMeetups(){
         .then(meetups => {
             dispatch(fetchedMeetups(meetups))
         })
+        .catch(errors => errors)
     }
 }
 
@@ -246,7 +247,6 @@ function createAccount(accountDetails){
             }
         }).then(res => res.json())
         .then(result => {
-            console.log(result)
             if (result.error){
                 dispatch({type: "NEW_ERROR", payload: result.error})
             }

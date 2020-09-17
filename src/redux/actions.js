@@ -173,8 +173,6 @@ function updateMeetup(meetupInfo){
 
 function addGamesToEvent(userID,meetupID, chosenGames){
 
-    // console.log('AddGamesToEventHandlerProp', userID, meetupID, chosenGames)
-
     return (dispatch) => {fetch(URL+'meetups/addgame', {
         method: 'POST',
         body: JSON.stringify({userID, meetupID, chosenGames}),

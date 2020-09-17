@@ -6,6 +6,10 @@ import {addGamesToEvent} from '../redux/actions'
 
 class GameAddForm extends React.Component {
 
+    state={
+        chosenGames: []
+    }
+
     handleDropdown = (e, {value}) => {
         
         //note: {value} is used with semantic react components. Allows the use of arrays 

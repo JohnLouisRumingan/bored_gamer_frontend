@@ -39,12 +39,12 @@ After the backend server is running, ```cd``` to the bored-gamer frontend reposi
 
 # Bored-Gamer Demo
 
-- Coming Soon
+[![Bored Gamer App description](http://img.youtube.com/vi/BlOVTwTuQAw/0.jpg)](http://www.youtube.com/watch?v=BlOVTwTuQAw "Bored Gamer")
 
 # Frameworks and Libraries Used
 - Front-end: JavaScript ES6+ and React.js with Redux.js
 - Back-end: Ruby on Rails
-- Testing: JEST, 
+- Testing: Jest, Enzyme
 - Styling: Semantic UI React, CSS
 - Auth: JWT & bcrypt
 
@@ -61,9 +61,11 @@ Code available as open source under the terms of the [MIT License](https://opens
 
 
 
-Current TODO:
-- Deploy to Heroku
-- Display all events on clicked date
+# *Current TODO:*
+- Update tests before redeployment to Heroku
+- Set up CI/CD workflow
 - Calendar date changes color based on events 
-
-Future TODO:
+## Notes:
+- Test utils in (./__tests__) folder of root directory
+- Component tests found in (./src/Components/__tests__) folder
+- Action/dispatch tests found in (./redux) folder

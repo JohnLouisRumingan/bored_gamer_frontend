@@ -4,21 +4,43 @@ import {connect} from 'react-redux'
 import {addToCollection, getGameDetails} from '../redux/actions.js';
 import {Card, Image } from 'semantic-ui-react'
 import '../Containers/css/game-container.css'
+import PropTypes from 'prop-types'
+
+const propTypes = {
+    game: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        image_url: PropTypes.string.isRequired,
+        favorite: PropTypes.bool.isRequired,
+        owned: PropTypes.bool.isRequired,
+        game_id: PropTypes.string.isRequired,
+    })},
+
+    defaultProps = {
+        game: {
+            id: 1,
+            name: "defaultName",
+            image_url: "defaultURL",
+            favorite: false,
+            owned: false,
+            game_id: "defaultID"
+        }
+    }
 
 const GameCard = (props) => {
 
-    let {id, name, designers, image_url, favorite, owned, game_id} = props.game
+    const { id, name, image_url, favorite, owned, game_id } = props.game;
 
     //need to come back to this later and fix the dual-use nature of displaying in game page and displaying in profile page
     // will likely need to assign two sets of game info props and just make two sets of logic 
+    // bad imperative design, will have to consider declarative design with a data provider pattern 
 
     return (
         <Card>
         <h2>
             <em>
                 <Image src={image_url} size='small'/>
-                {name}<br></br>
-                {/* {designers? designers : null  } */}
+                <span>{name}</span><br></br>
             </em>
             {props.owner? <div>Owned by: {props.owner.name}</div>: null}
             {props.profile? 
@@ -31,10 +53,11 @@ const GameCard = (props) => {
                 </div>
                 :null
             }
-            <Link className="item" to={game_id? `/games/${game_id}`: `/games/${id}`}>
+            {/* change Link to a due to failing tests */}
+            <a className="item" to={game_id? `/games/${game_id}`: `/games/${id}`}>
                 <button className="ui small button" onClick={()=> 
                     game_id? props.getGameDetails(game_id) : props.getGameDetails(id)}>See details</button>
-            </Link>
+            </a>
         </h2>
         </Card>
     )
@@ -57,4 +80,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(GameCard)
+export default connect(mapStateToProps, mapDispatchToProps)(GameCard);
+
+GameCard.propTypes = propTypes;
+GameCard.defaultProps = defaultProps;

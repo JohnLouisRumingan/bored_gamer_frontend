@@ -33,7 +33,7 @@ Go to the directory of the bored-gamer backend repository:
     - Run ```rails db:migrate```
     - Run ```rails server```
 After the backend server is running, ```cd``` to the bored-gamer frontend repository:
-    - Run ```npm install redux reat-redux redux-thunk```
+    - Run ```npm install redux react-redux redux-thunk```
     - Run ```npm start```
 
 

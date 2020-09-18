@@ -1,7 +1,5 @@
-import {
-    fetchedGames,
-    fetchedMeetups,
-} from './actions'
+import * as actions from './actions'
+import * as types from './actionTypes'
 
 test('fetchedGames should return an action object with type and payload', () => {
 
@@ -9,9 +7,9 @@ test('fetchedGames should return an action object with type and payload', () => 
         title: "game title",
         players: "game players"
     }
-    expect(fetchedGames(games)).toStrictEqual({type: "FETCHED_GAMES", payload: games});
+    expect(actions.fetchedGames(games)).toStrictEqual({type: types.FETCHED_GAMES, payload: games});
     expect.objectContaining({type: expect.any(String)});
-    expect.objectContaining({type: "FETCHED_GAMES"});
+    expect.objectContaining({type: types.FETCHED_GAMES});
 });
 
 test('fetchedMeetups should return an action object with type "FETCHED_MEETUPS" and payload', () => {
@@ -23,9 +21,9 @@ test('fetchedMeetups should return an action object with type "FETCHED_MEETUPS" 
         date: "sample date",
         id: "sample id"
     }
-    expect(fetchedMeetups(event)).toStrictEqual({type: "FETCHED_MEETUPS", payload: event});
+    expect(actions.fetchedMeetups(event)).toStrictEqual({type: types.FETCHED_MEETUPS, payload: event});
     expect.objectContaining({type: expect.any(String)});
-    expect.objectContaining({type: "FETCHED_GAMES"});
+    expect.objectContaining({type: types.FETCHED_GAMES});
 })
 
 test('fetchingGames should fetch from the correct URL and receive the correct JSON object', () => {

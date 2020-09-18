@@ -1,6 +1,7 @@
-import {combineReducers, /*bindActionCreators*/ } from 'redux';
+import {combineReducers } from 'redux'
+import * as types from './actionTypes'
 
-let initialState = {
+const initialState = {
     profile: null,
     games: [],
     gamesInCollection: [],
@@ -52,8 +53,7 @@ const gamesReducer = (state=initialState.games, action) => {
     switch(action.type){
         case "FETCHED_GAMES":
             return action.payload;
-        case "RANDOM_GAME":
-            //random games are returned as a single large hash 
+        case types.SHOW_RANDOM_GAME:
             return [action.payload]
         default:
             return state;
@@ -122,7 +122,7 @@ const dateReducer = (state=initialState.dateSelected, action) => {
 
 const detailedGameReducer = (state=initialState.detailedGame, action) => {
     switch(action.type){
-        case "UPDATE_DETAILS":
+        case types.UPDATE_GAME_DETAILS:
             return action.payload.result[0]
         default:
             return state;
@@ -131,11 +131,11 @@ const detailedGameReducer = (state=initialState.detailedGame, action) => {
 
 const errorReducer = (state=initialState.errorMessage, action) => {
     switch(action.type){
-        case "NEW_ERROR":
-            return action.payload;
+        case types.RETURN_ERROR:
+            return action.errorMessage;
         case "LOGIN_FAILED":
             return "Incorrect Username or Password";
-        case "NO_ERRORS":
+        case types.NO_ERRORS:
             return null;
         default:
             return state;

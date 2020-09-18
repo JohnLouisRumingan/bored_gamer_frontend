@@ -46,6 +46,7 @@ describe('GameAddForm', () => {
     it('renders passed in props', () => {
         const cardComponent = mount(<Provider store={store}><GameCard {...props}/></Provider>);
         expect(cardComponent.find('span').text()).toEqual('Prop Name');
+        // expect(cardComponent.find('a').getAttribute('href')).toEqual(`/games/${props.game.image_url}`);
     })
 
     // it('check children prop type', () => {  

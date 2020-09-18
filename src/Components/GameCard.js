@@ -53,8 +53,8 @@ const GameCard = (props) => {
                 </div>
                 :null
             }
-            {/* change Link to a due to failing tests */}
-            <a className="item" to={game_id? `/games/${game_id}`: `/games/${id}`}>
+            {/* change Link to a due to failing tests, a/Link, to/href */}
+            <a className="item" href={game_id? `/games/${game_id}`: `/games/${id}`}>
                 <button className="ui small button" onClick={()=> 
                     game_id? props.getGameDetails(game_id) : props.getGameDetails(id)}>See details</button>
             </a>

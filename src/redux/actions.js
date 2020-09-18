@@ -1,11 +1,11 @@
 //place all action creators here 
+import * as types from './actionTypes'
 
-const URL = "http://localhost:3000/api/v1/" //reinstate this line for development environment
-// add URL to any url's for development
+const URL = "http://localhost:3000/api/v1/" //development URL
 // const URL = "https://bored-game-backend.herokuapp.com/api/v1/" //production URL
 
 function fetchedGames(games) {
-    return {type: "FETCHED_GAMES", payload: games}
+    return {type: types.FETCHED_GAMES, payload: games}
 }
 
 // As of 2020.8.1, the API for board games will be changed to api. instead of www.
@@ -25,7 +25,7 @@ function fetchingGames(){
 }
 
 function fetchedMeetups(meetups) {
-    return {type: "FETCHED_MEETUPS", payload: meetups}
+    return {type: types.FETCHED_MEETUPS, payload: meetups}
 }
 
 function fetchingMeetups(){
@@ -40,15 +40,15 @@ function fetchingMeetups(){
 }
 
 function logout(){
-    return {type: "LOGOUT"}
+    return {type: types.LOGOUT}
 }
 
 function loginSuccessful(profile){
-    return {type: "LOAD_PROFILE", payload: profile}
+    return {type: types.LOAD_PROFILE, payload: profile}
 }
 
 function loginFailed(){
-    return {type: "LOGIN_FAILED"}
+    return {type: types.LOGIN_FAILED}
 }
 
 
@@ -56,15 +56,14 @@ function login(username, password){
 
     return (dispatch) => {
         fetch(URL+"login", {
-            method: 'POST', //syntactic sugar: {user: {username, password}} instead 
-            body: JSON.stringify({user: {username: username, password:password}}),
+            method: 'POST',
+            body: JSON.stringify({user: { username, password }}),
             headers: {
                 'Content-Type':'application/json'
             }
         })
         .then(res => res.json())
         .then(reply => {
-            //if-else here. If login not found, send a message and kick back to login page
             if(reply.user){
                 dispatch(loginSuccessful(reply.user))
                 dispatch(updateCollection(reply.user_collection))
@@ -77,8 +76,7 @@ function login(username, password){
 }
 
 function updateCollection(collection){
-    // console.log(collection)
-    return {type: "UPDATE_COLLECTION", payload: collection}
+    return {type: types.UPDATE_COLLECTION, payload: collection}
 }
 
 function addToCollection(gameInfo, profile, relationshipToUpdate){
@@ -108,19 +106,19 @@ function addToCollection(gameInfo, profile, relationshipToUpdate){
 }
 
 function calendarDateSelect(day){
-    return {type: "SELECT_DATE", payload: day}
+    return {type: types.SELECT_DATE, payload: day}
 }
 
 function calendarNullDate(){
-    return {type: "NULL_DATE"}
+    return {type: types.NULL_DATE}
 }
 
 function dispatchTodaysDate(day){
-    return {type: "TODAYS_DATE", payload: day}
+    return {type: types.TODAYS_DATE, payload: day}
 }
 
 function addNewEvent(event){
-    return {type: "ADD_NEW_EVENT", payload: event}
+    return {type: types.ADD_NEW_EVENT, payload: event}
 }
 
 function newEvent(formDetails, profile, date){
@@ -134,21 +132,19 @@ function newEvent(formDetails, profile, date){
             headers: {
                 "Content-Type":"application/json"
             }
-        }).then(res => res.json()).then(event => {
-            // console.log("back from the back end:", event)
+        })
+        .then(res => res.json()).then(event => {
             dispatch(addNewEvent(event))
-            })
-
+        })
     }
-    // return {type: "SUBMIT_FORM", payload: formDetails}
 }
 
 function drawerClickHandler(){
-    return{type:"SWITCH_DRAWER"}
+    return{type: types.SWITCH_DRAWER }
 }
 
 function backdropClick(){
-    return {type: "CLOSE_DRAWER"}
+    return {type: types.CLOSE_DRAWER }
 }
 
 function joinEvent(meetupId, profile){
@@ -168,7 +164,7 @@ function joinEvent(meetupId, profile){
 }
 
 function updateMeetup(meetupInfo){
-    return{type: "MODIFY_MEETUP", payload: meetupInfo}
+    return{type: types.MODIFY_MEETUP, payload: meetupInfo}
 }
 
 function addGamesToEvent(userID,meetupID, chosenGames){
@@ -187,8 +183,7 @@ function addGamesToEvent(userID,meetupID, chosenGames){
 }
 
 function showGameDetails(gameDetails){
-    // console.log("show game details", gameDetails)
-    return {type: "UPDATE_DETAILS", payload: gameDetails}
+    return {type: types.UPDATE_GAME_DETAILS, payload: gameDetails}
 }
 
 function getGameDetails(gameID){
@@ -209,7 +204,7 @@ function getGameDetails(gameID){
 }
 
 function randomGame(game){
-    return {type: "RANDOM_GAME", payload: game}
+    return {type: types.SHOW_RANDOM_GAME, payload: game}
 }
 
 function submitSearchForm(searchParams){
@@ -246,18 +241,23 @@ function createAccount(accountDetails){
         }).then(res => res.json())
         .then(result => {
             if (result.error){
-                dispatch({type: "NEW_ERROR", payload: result.error})
+                dispatch(newError(result.error))
             }
             if (result.user){
                 dispatch(loginSuccessful(result.user))
+                dispatch(updateCollection(result.user_collection))
                 dispatch(noError())
             }
         })
     }
 }
 
+function newError(error){
+    return {type: types.RETURN_ERROR, errorMessage: error}
+}
+
 function noError(){
-    return {type: "NO_ERRORS"}
+    return {type: types.NO_ERRORS}
 }
 
 function updateAllUsers(users){
@@ -289,9 +289,6 @@ function sendInvites(inviteForm, meetupDetails, profile){
         .then(data => {
             dispatch({type: "NEW_INVITES", newInvites: data.invites_sent})
         })
-
-
-
     }
 }
 
@@ -303,7 +300,6 @@ function getInvites(profile){
         fetch(URL+`invites/user/${profileID}`)
         .then(res=> res.json())
         .then(data => {
-            // console.log(data)
             dispatch({type: "LOGIN_USER_INVITES", allInvites: data.users_invites})
         })
     }
@@ -335,12 +331,17 @@ function meetupEventToggler(menu){
     return {type: "TOGGLE_MEETUP_MENU", payload: menu}
 }
 
-export {fetchedMeetups, fetchingMeetups, fetchedGames, fetchingGames, getGameDetails, showGameDetails,
-    login, logout, addToCollection,
+export {
+    fetchedMeetups, fetchingMeetups, fetchedGames, fetchingGames, 
+    getGameDetails, showGameDetails,
+    login, logout, 
+    addToCollection,
     calendarDateSelect, dispatchTodaysDate, calendarNullDate,
     newEvent, joinEvent, addGamesToEvent, 
     drawerClickHandler, backdropClick, 
-    submitSearchForm, createAccount,
-    inviteToggleHandler, fetchAllUsers, sendInvites,
-    getInvites, respondToInvite, meetupEventToggler,
+    submitSearchForm, 
+    createAccount,
+    inviteToggleHandler, fetchAllUsers, 
+    sendInvites, getInvites, respondToInvite, meetupEventToggler,
+    newError, noError,
     };

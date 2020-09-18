@@ -21,7 +21,7 @@ Object {
           </em>
           <a
             class="item"
-            to="/games/defaultID"
+            href="/games/defaultID"
           >
             <button
               class="ui small button"
@@ -50,7 +50,7 @@ Object {
         </em>
         <a
           class="item"
-          to="/games/defaultID"
+          href="/games/defaultID"
         >
           <button
             class="ui small button"

@@ -48,7 +48,7 @@ function loginSuccessful(profile){
 }
 
 function loginFailed(){
-    return {type: types.LOGIN_FAILED}
+    return newError("Incorrect Username or Password");
 }
 
 
@@ -70,7 +70,9 @@ function login(username, password){
                 dispatch(getInvites(reply.user))
                 dispatch(noError())
             }
-            else{dispatch(loginFailed())}
+            else{
+                dispatch(loginFailed())
+            }
         })
     }
 }

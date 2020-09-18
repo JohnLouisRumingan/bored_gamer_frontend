@@ -133,8 +133,6 @@ const errorReducer = (state=initialState.errorMessage, action) => {
     switch(action.type){
         case types.RETURN_ERROR:
             return action.errorMessage;
-        case "LOGIN_FAILED":
-            return "Incorrect Username or Password";
         case types.NO_ERRORS:
             return null;
         default:

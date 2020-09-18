@@ -65,6 +65,8 @@ Code available as open source under the terms of the [MIT License](https://opens
 - Update tests before redeployment to Heroku
 - Set up CI/CD workflow
 - Calendar date changes color based on events 
+- Add received-invites and sent-invites to user mailbox
+- When user invites others to an event, user gets update in received-invites mailbox
 ## Notes:
 - Test utils in (./__tests__) folder of root directory
 - Component tests found in (./src/Components/__tests__) folder

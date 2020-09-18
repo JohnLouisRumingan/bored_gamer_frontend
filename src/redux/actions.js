@@ -263,7 +263,7 @@ function noError(){
 }
 
 function updateAllUsers(users){
-    return {type: "UPDATE_ALL_USERS", payload: users}
+    return {type: types.UPDATE_ALL_USERS, users}
 }
 
 function fetchAllUsers(){
@@ -275,7 +275,7 @@ function fetchAllUsers(){
 }
 
 function inviteToggleHandler(){
-    return {type: "INVITE_TOGGLE"}
+    return {type: types.INVITE_TOGGLE}
 }
 
 function sendInvites(inviteForm, meetupDetails, profile){
@@ -289,9 +289,13 @@ function sendInvites(inviteForm, meetupDetails, profile){
             }
         }).then(res => res.json())
         .then(data => {
-            dispatch({type: "NEW_INVITES", newInvites: data.invites_sent})
+            dispatch(updateInvites(data.invites_sent))
         })
     }
+}
+
+function updateInvites(invites){
+    return { type: types.UPDATE_INVITES, newInvites: invites }
 }
 
 function getInvites(profile){
@@ -302,13 +306,17 @@ function getInvites(profile){
         fetch(URL+`invites/user/${profileID}`)
         .then(res=> res.json())
         .then(data => {
-            dispatch({type: "LOGIN_USER_INVITES", allInvites: data.users_invites})
+            dispatch(getUserInvitesAfterLogin(data.users_invites))
         })
     }
 }
 
+function getUserInvitesAfterLogin(invites){
+    return {type: types.LOGIN_USER_INVITES, allInvites: invites}
+}
+
 function updateInvite(inviteInfo){
-    return {type: "MODIFY_INVITE", payload: inviteInfo}
+    return {type: types.MODIFY_INVITE, payload: inviteInfo}
 }
 
 function respondToInvite(meetupID, profileID, inviteID, response){
@@ -322,7 +330,6 @@ function respondToInvite(meetupID, profileID, inviteID, response){
             }
         }).then(res => res.json())
         .then(data => {
-            console.log(data)
             dispatch(updateMeetup(data.meetup[0]))
             dispatch(updateInvite(data.invite[0]))
         })
@@ -330,7 +337,7 @@ function respondToInvite(meetupID, profileID, inviteID, response){
 }
 
 function meetupEventToggler(menu){
-    return {type: "TOGGLE_MEETUP_MENU", payload: menu}
+    return {type: types.TOGGLE_MEETUP_MENU, payload: menu}
 }
 
 export {

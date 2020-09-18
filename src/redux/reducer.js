@@ -29,9 +29,9 @@ const initialState = {
 
 const drawerReducer = (state=initialState.sideDrawerOpen, action) => {
     switch(action.type){
-        case "SWITCH_DRAWER":
+        case types.SWITCH_DRAWER:
             return !state;
-        case "CLOSE_DRAWER":
+        case types.CLOSE_DRAWER:
             return false;
         default:
             return state;
@@ -40,9 +40,9 @@ const drawerReducer = (state=initialState.sideDrawerOpen, action) => {
 
 const profileReducer = (state = initialState.profile, action) => {
     switch(action.type){
-        case "LOAD_PROFILE":
+        case types.LOAD_PROFILE:
             return action.payload;
-        case "LOGOUT":
+        case types.LOGOUT:
             return null 
         default:
             return state;
@@ -51,7 +51,7 @@ const profileReducer = (state = initialState.profile, action) => {
 
 const gamesReducer = (state=initialState.games, action) => {
     switch(action.type){
-        case "FETCHED_GAMES":
+        case types.FETCHED_GAMES:
             return action.payload;
         case types.SHOW_RANDOM_GAME:
             return [action.payload]
@@ -62,7 +62,7 @@ const gamesReducer = (state=initialState.games, action) => {
 
 const meetupReducer = (state=initialState.meetups, action) => {
     switch(action.type){
-        case "FETCHED_MEETUPS":
+        case types.FETCHED_MEETUPS:
             let meetups = action.payload;
             meetups.sort((a,b)=>{
                 if(a.meetup_details.date < b.meetup_details.date){
@@ -74,7 +74,7 @@ const meetupReducer = (state=initialState.meetups, action) => {
                 return 0;
             })
             return meetups;
-        case "MODIFY_MEETUP":
+        case types.MODIFY_MEETUP:
             let newState = [...state]
             newState.forEach((meetup, index) => {
                 if(meetup.meetup_details.id === action.payload.meetup_details.id){
@@ -82,7 +82,7 @@ const meetupReducer = (state=initialState.meetups, action) => {
                 }
             })
             return newState;
-        case "ADD_NEW_EVENT":
+        case types.ADD_NEW_EVENT:
             let newEvent = [...state, action.payload]
             return newEvent;
         default:
@@ -92,7 +92,7 @@ const meetupReducer = (state=initialState.meetups, action) => {
 
 const collectionReducer = (state=initialState.gamesInCollection, action) => {
     switch(action.type){
-        case "UPDATE_COLLECTION":
+        case types.UPDATE_COLLECTION:
             return action.payload
         default:
             return state;
@@ -101,7 +101,7 @@ const collectionReducer = (state=initialState.gamesInCollection, action) => {
 
 const currentDateReducer = (state=initialState.todaysDate, action) => {
     switch(action.type){
-        case "TODAYS_DATE":
+        case types.TODAYS_DATE:
             return action.payload;
         default: 
             return state;
@@ -110,10 +110,10 @@ const currentDateReducer = (state=initialState.todaysDate, action) => {
 
 const dateReducer = (state=initialState.dateSelected, action) => {
     switch(action.type){
-        case "SELECT_DATE":
+        case types.SELECT_DATE:
             return action.payload
         // make another reducer here for the week. Need this to be able to filter events weekly
-        case "NULL_DATE":
+        case types.NULL_DATE:
             return null;
         default:
             return state;
@@ -142,14 +142,17 @@ const errorReducer = (state=initialState.errorMessage, action) => {
 
 const inviteReducer = (state = initialState.invites, action) => {
 
+    // new feature to be added later:
+    // currently only one mailbox. will have to create two mailboxes and have separate invite lists for sent/received
+    // UPDATE_INVITES currently an action when a user SENDS invites. will have to refactor and create a new reducer
     switch(action.type){
-        case "LOGIN_USER_INVITES":
+        case types.LOGIN_USER_INVITES:
             return action.allInvites;
-        case "NEW_INVITES":
+        case types.UPDATE_INVITES:
             let newArray = action.newInvites 
             let newState = [...state, ...newArray]
             return newState;
-        case "MODIFY_INVITE":
+        case types.MODIFY_INVITE:
             let updateInviteState = [...state]
             updateInviteState.forEach((invite, index) => {
                 if(invite.invite_details.id === action.payload.invite_details.id){
@@ -165,7 +168,7 @@ const inviteReducer = (state = initialState.invites, action) => {
 const inviteToggleReducer = (state = initialState.inviteToggle, action) => {
 
     switch(action.type){
-        case "INVITE_TOGGLE":
+        case types.INVITE_TOGGLE:
             let newState = state;
             return !newState;
         default:
@@ -175,8 +178,8 @@ const inviteToggleReducer = (state = initialState.inviteToggle, action) => {
 
 const usersReducer = (state = initialState.users, action) => {
     switch(action.type){
-        case "UPDATE_ALL_USERS":
-            return action.payload;
+        case types.UPDATE_ALL_USERS:
+            return action.users;
         default:
             return state;
     }
@@ -184,7 +187,7 @@ const usersReducer = (state = initialState.users, action) => {
 
 const meetupMenuReducer = (state=initialState.meetupMenu, action) => {
     switch(action.type){
-        case "TOGGLE_MEETUP_MENU":
+        case types.TOGGLE_MEETUP_MENU:
             let newState = {...state};
             newState[action.payload] = !state[action.payload]
             return newState;

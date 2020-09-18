@@ -42,8 +42,8 @@ const profileReducer = (state = initialState.profile, action) => {
     switch(action.type){
         case types.LOAD_PROFILE:
             return action.payload;
-        case types.LOGOUT:
-            return null 
+        // case types.LOGOUT:
+        //     return null 
         default:
             return state;
     }
@@ -166,7 +166,6 @@ const inviteReducer = (state = initialState.invites, action) => {
 }
 
 const inviteToggleReducer = (state = initialState.inviteToggle, action) => {
-
     switch(action.type){
         case types.INVITE_TOGGLE:
             let newState = state;
@@ -196,7 +195,7 @@ const meetupMenuReducer = (state=initialState.meetupMenu, action) => {
     }
 }
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
     profile: profileReducer,
     games: gamesReducer,
     gamesInCollection: collectionReducer,
@@ -211,6 +210,15 @@ const rootReducer = combineReducers({
     users: usersReducer,
     meetupMenu: meetupMenuReducer,
 })
+
+const rootReducer = (state, action) => {
+
+    if(action.types === types.LOGOUT){
+        state = undefined;
+    }
+
+    return appReducer(state, action);
+}
 
 
 export default rootReducer

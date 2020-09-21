@@ -348,7 +348,7 @@ export {
     login, logout, loginSuccessful,
     addToCollection,
     calendarDateSelect, dispatchTodaysDate, calendarNullDate,
-    newEvent, addNewEvent, joinEvent, addGamesToEvent, 
+    newEvent, addNewEvent, joinEvent, addGamesToEvent, updateMeetup,
     drawerClickHandler, backdropClick, 
     submitSearchForm, 
     createAccount,

@@ -4,9 +4,6 @@ import * as types from './actionTypes'
 const URL = "http://localhost:3000/api/v1/" //development URL
 // const URL = "https://bored-game-backend.herokuapp.com/api/v1/" //production URL
 
-function fetchedGames(games) {
-    return {type: types.FETCHED_GAMES, payload: games}
-}
 
 // As of 2020.8.1, the API for board games will be changed to api. instead of www.
 // If fetching does not work after this date, check the back-end portion for compatibility.
@@ -24,9 +21,10 @@ function fetchingGames(){
     }
 }
 
-function fetchedMeetups(meetups) {
-    return {type: types.FETCHED_MEETUPS, payload: meetups}
+function fetchedGames(games) {
+    return {type: types.FETCHED_GAMES, payload: games}
 }
+
 
 function fetchingMeetups(){
     return (dispatch) => {
@@ -37,6 +35,10 @@ function fetchingMeetups(){
         })
         .catch(errors => errors)
     }
+}
+
+function fetchedMeetups(meetups) {
+    return {type: types.FETCHED_MEETUPS, payload: meetups}
 }
 
 function logout(){
@@ -342,11 +344,11 @@ function meetupEventToggler(menu){
 
 export {
     fetchedMeetups, fetchingMeetups, fetchedGames, fetchingGames, 
-    getGameDetails, showGameDetails,
+    getGameDetails, showGameDetails, randomGame,
     login, logout, loginSuccessful,
     addToCollection,
     calendarDateSelect, dispatchTodaysDate, calendarNullDate,
-    newEvent, joinEvent, addGamesToEvent, 
+    newEvent, addNewEvent, joinEvent, addGamesToEvent, 
     drawerClickHandler, backdropClick, 
     submitSearchForm, 
     createAccount,

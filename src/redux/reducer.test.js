@@ -2,45 +2,15 @@ import rootReducer from './reducer'
 import { createStore } from 'redux'
 import * as actions from './actions'
 
-/*
-Not used, only here as reminder of initialState found in reducer:
 
-const initialState = {
-    profile: null,
-    games: [],
-    gamesInCollection: [],
-    meetups: [],
-    dateSelected: null,
-    todaysDate: null,
-    sideDrawerOpen: false,
-    search: [],
-    detailedGame: null,
-    errorMessage: null,
-    invites: [],
-    inviteToggle: false,
-    users: [],
-    meetupMenu: {
-        pastEvents: false,
-        allEvents: false,
-        calendar: false,
-        upcomingEvents: false,
-        featuredEvents: true,
-        meetupsOnDate: false,
-    },
-}
-*/
+const testProfile = {name: "Sample Name", id: 1, username: "sample", bio: "sample bio", avatar: "avatar url"}
+
 
 // integration test with store test is more useful than smoke tests for rootReducers, which can be redundant
 describe('drawerReducer', () => {
 
-    beforeEach(() => {
-    });
-    
-    afterEach(() => {
-    });
-    
     it('should switch the drawer state with the drawerClickHandler action', ()=> {
-        const store = createStore(rootReducer, []);
+        const store = createStore(rootReducer, {});
 
         const action = actions.drawerClickHandler();
         store.dispatch(action);
@@ -56,7 +26,48 @@ describe('drawerReducer', () => {
     })
 
     it('should set the drawer state to false with the backdropClick action', () => {
+        const store = createStore(rootReducer, {sideDrawerOpen: true});
 
+        const action = actions.backdropClick();
+        store.dispatch(action);
+
+        const actual = store.getState().sideDrawerOpen;
+        const expected = false;
+        expect(actual).toEqual(expected);
     })
-
 })
+
+describe('LOGOUT', () => {
+
+    it('should reset state to initial conditions', () => {
+        const store = createStore(rootReducer, {sideDrawerOpen: true, profile: testProfile});
+
+        const action = actions.logout();
+        store.dispatch(action);
+
+        const actualDrawer = store.getState().sideDrawerOpen,
+            actualProfile = store.getState().profile;
+
+        const expectedDrawer = false, 
+            expectedProfile = null;
+
+        expect(actualDrawer).toEqual(expectedDrawer);
+        expect(actualProfile).toEqual(expectedProfile);
+        expect(actualProfile).not.toEqual(testProfile);
+    })
+})
+
+describe('profileReducer', () => {
+
+    it('should load the correct profile', () => {
+        const store = createStore(rootReducer, {});
+
+        const action = actions.loginSuccessful(testProfile);
+        store.dispatch(action);
+
+        const actual = store.getState().profile;
+        const expected = testProfile;
+        expect(actual).toEqual(expected);
+    })
+})
+

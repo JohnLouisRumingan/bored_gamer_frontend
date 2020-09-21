@@ -42,8 +42,6 @@ const profileReducer = (state = initialState.profile, action) => {
     switch(action.type){
         case types.LOAD_PROFILE:
             return action.payload;
-        // case types.LOGOUT:
-        //     return null 
         default:
             return state;
     }
@@ -213,7 +211,7 @@ const appReducer = combineReducers({
 
 const rootReducer = (state, action) => {
 
-    if(action.types === types.LOGOUT){
+    if(action.type === types.LOGOUT){
         state = undefined;
     }
 

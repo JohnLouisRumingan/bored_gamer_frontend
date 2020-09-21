@@ -44,27 +44,27 @@ describe('GameAddForm', () => {
         expect(component).toMatchSnapshot();
     })
 
-    it('should dispatch an action on form submit', () => {
+    // it('should dispatch an action on form submit', () => {
         
-        let mockGameAdd = {
-            userID:1,
-            meetupID:1,
-            chosenGames:[{game_id: "XsyadT", game_name: "Catan", id: 1}]
-        }
-        // renderer.act(() => {
-        //     wrappedComponent.root.findByType('dropdown').props.onChange(mockGameAdd);
-        // })
+    //     let mockGameAdd = {
+    //         userID:1,
+    //         meetupID:1,
+    //         chosenGames:[{game_id: "XsyadT", game_name: "Catan", id: 1}]
+    //     }
+    //     // renderer.act(() => {
+    //     //     wrappedComponent.root.findByType('dropdown').props.onChange(mockGameAdd);
+    //     // })
 
-        renderer.act(() => {
-            wrappedComponent.root.findByType('button').props.onClick();
-        });
+    //     renderer.act(() => {
+    //         wrappedComponent.root.findByType('button').props.onClick();
+    //     });
 
 
-        expect(store.dispatch).toHaveBeenCalledTimes(1);
-        expect(store.dispatch).toHaveBeenCalledWith(
-            addGamesToEvent(mockGameAdd)
-        );
-    })
+    //     expect(store.dispatch).toHaveBeenCalledTimes(1);
+    //     expect(store.dispatch).toHaveBeenCalledWith(
+    //         addGamesToEvent(mockGameAdd)
+    //     );
+    // })
 
 
 })

@@ -343,7 +343,7 @@ function meetupEventToggler(menu){
 export {
     fetchedMeetups, fetchingMeetups, fetchedGames, fetchingGames, 
     getGameDetails, showGameDetails,
-    login, logout, 
+    login, logout, loginSuccessful,
     addToCollection,
     calendarDateSelect, dispatchTodaysDate, calendarNullDate,
     newEvent, joinEvent, addGamesToEvent, 

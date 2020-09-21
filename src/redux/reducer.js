@@ -74,8 +74,8 @@ const meetupReducer = (state=initialState.meetups, action) => {
             return meetups;
         case types.MODIFY_MEETUP:
             let modifiedMeetups = [...state]
-            let foundIndex = modifiedMeetups.findIndex(meetup => meetup.meetup_details.id === action.payload.meetup_details.id)
-            modifiedMeetups[foundIndex] = action.payload
+            let foundIndex = modifiedMeetups.findIndex(meetup => meetup.meetup_details.id === action.updatedMeetup.meetup_details.id)
+            modifiedMeetups[foundIndex] = action.updatedMeetup;
             return modifiedMeetups;
         case types.ADD_NEW_EVENT:
             let newEvent = [...state, action.payload]

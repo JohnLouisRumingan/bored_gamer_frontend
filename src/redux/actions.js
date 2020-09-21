@@ -161,14 +161,18 @@ function joinEvent(meetupId, profile){
         }
         })
         .then(res => res.json())
-        .then(meetups => {
-            dispatch(fetchedMeetups(meetups))
+        .then(updatedMeetup => {
+            dispatch(updateMeetup(updatedMeetup))
         })
+        // .then(meetups => {
+        //     dispatch(fetchedMeetups(meetups))
+        // })
+        
    }
 }
 
 function updateMeetup(meetupInfo){
-    return{type: types.MODIFY_MEETUP, payload: meetupInfo}
+    return{type: types.MODIFY_MEETUP, updatedMeetup: meetupInfo}
 }
 
 function addGamesToEvent(userID,meetupID, chosenGames){

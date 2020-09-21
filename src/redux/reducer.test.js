@@ -157,15 +157,16 @@ describe('meetupReducer', () => {
         expect(actual).toEqual(expected);
     })
 
-    it('should modify events', () => {
+    it('should find and modify events', () => {
+
         const store = createStore(rootReducer, {});
-        const action = actions.fetchedMeetups([newEvent]);
-        store.dispatch(action);
+        store.dispatch(actions.fetchedMeetups(events));
+        store.dispatch(actions.addNewEvent(newEvent))
         const modifiedEvent = {...newEvent, title: "sample4", collection: [{}, {}]}
         store.dispatch(actions.updateMeetup(modifiedEvent));
 
         const actual = store.getState().meetups;
-        const expected = [modifiedEvent];
+        const expected = [...events, modifiedEvent];
         expect(actual).toEqual(expected);
     })
 })

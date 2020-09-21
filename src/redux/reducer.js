@@ -73,13 +73,10 @@ const meetupReducer = (state=initialState.meetups, action) => {
             })
             return meetups;
         case types.MODIFY_MEETUP:
-            let newState = [...state]
-            newState.forEach((meetup, index) => {
-                if(meetup.meetup_details.id === action.payload.meetup_details.id){
-                    newState[index] = action.payload
-                }
-            })
-            return newState;
+            let modifiedMeetups = [...state]
+            let foundIndex = modifiedMeetups.findIndex(meetup => meetup.meetup_details.id === action.payload.meetup_details.id)
+            modifiedMeetups[foundIndex] = action.payload
+            return modifiedMeetups;
         case types.ADD_NEW_EVENT:
             let newEvent = [...state, action.payload]
             return newEvent;

@@ -217,10 +217,13 @@ function randomGame(game){
 
 function submitSearchForm(searchParams){
 
+    const searchObj = {searchParams}
+    // former searchObj = {searchParams}
+
     return (dispatch) => {
         fetch(URL+'games/search', {
             method: 'POST',
-            body: JSON.stringify(searchParams), 
+            body: JSON.stringify(searchObj), 
             headers: {
                 'Content-Type' : 'application/json'
             }

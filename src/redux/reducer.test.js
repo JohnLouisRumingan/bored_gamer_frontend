@@ -173,3 +173,23 @@ describe('meetupReducer', () => {
         expect(actual[2].meetup_details.title).toBe("sample4");
     })
 })
+
+describe('collectionReducer', () => {
+
+    it('should update the collection', () => {
+        const store = createStore(rootReducer, {});
+        const testCollection = [
+            {
+                title: "some game"
+            }, 
+            {
+                title: "another game"
+            }
+        ];
+
+        store.dispatch(actions.updateCollection(testCollection));
+        const actual = store.getState().gamesInCollection;
+        const expected = testCollection;
+        expect(actual).toEqual(expected);
+    })
+})

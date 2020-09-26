@@ -353,7 +353,7 @@ export {
     fetchedMeetups, fetchingMeetups, fetchedGames, fetchingGames, 
     getGameDetails, showGameDetails, randomGame,
     login, logout, loginSuccessful,
-    addToCollection,
+    addToCollection, updateCollection, 
     calendarDateSelect, dispatchTodaysDate, calendarNullDate,
     newEvent, addNewEvent, joinEvent, addGamesToEvent, updateMeetup,
     drawerClickHandler, backdropClick, 

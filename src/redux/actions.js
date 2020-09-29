@@ -67,6 +67,7 @@ function login(username, password){
         .then(res => res.json())
         .then(reply => {
             if(reply.user){
+                // set this async pattern to start with noError and end with loginSuccessful
                 dispatch(loginSuccessful(reply.user))
                 dispatch(updateCollection(reply.user_collection))
                 dispatch(getInvites(reply.user))

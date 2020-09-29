@@ -63,10 +63,10 @@ Code available as open source under the terms of the [MIT License](https://opens
 
 # *Current TODO:*
 - Update tests before redeployment to Heroku
-- Set up CI/CD workflow
-- Calendar date changes color based on events 
+- Set up CI/CD workflow 
 - Add received-invites and sent-invites to user mailbox
 - When user invites others to an event, user gets update in received-invites mailbox
+- Calendar will use Google Calendar and Google Maps for locations and dates
 ## Notes:
 - Test utils in (./__tests__) folder of root directory
 - Component tests found in (./src/Components/__tests__) folder

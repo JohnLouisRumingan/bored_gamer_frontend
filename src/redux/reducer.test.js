@@ -1,6 +1,7 @@
 import rootReducer from './reducer'
 import { createStore } from 'redux'
 import * as actions from './actions'
+import * as dateFns from 'date-fns'
 
 
 const testProfile = {name: "Sample Name", id: 1, username: "sample", bio: "sample bio", avatar: "avatar url"}
@@ -191,5 +192,11 @@ describe('collectionReducer', () => {
         const actual = store.getState().gamesInCollection;
         const expected = testCollection;
         expect(actual).toEqual(expected);
+    })
+})
+
+
+describe('currentDateReducer', () => {
+    it('should use the correct current date', () => {
     })
 })

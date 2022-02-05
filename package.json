@@ -10,7 +10,7 @@
     "@testing-library/user-event": "^7.1.2",
     "date-fns": "^2.11.0",
     "jest-enzyme": "^7.1.2",
-    "node-forge": "^0.10.0",
+    "node-forge": "^1.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",

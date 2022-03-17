@@ -6,7 +6,6 @@ Welcome to Bored Gamer, where you can explore a selection of board games, save y
 ## Video Walkthrough
 [![Bored Gamer App description](http://img.youtube.com/vi/BlOVTwTuQAw/0.jpg)](http://www.youtube.com/watch?v=BlOVTwTuQAw "Bored Gamer")
 
-[App is deployed on Heroku!](https://bored-gamer-meetup.herokuapp.com/) - currently down for maintenance
 
 ## Available features:
 - Users can browse games and events without an account.
